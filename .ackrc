@@ -1,0 +1,5 @@
+--sort-files
+--group
+--color
+--type-set=html=.htm,.html,.shtml,.xhtml,.tpl,.vm
+--type-set=groovy=.groovy,.grest

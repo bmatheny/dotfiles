@@ -1,0 +1,166 @@
+#!/bin/sh
+# make-project <project-name> [filename extension]
+
+if [ "$#" -eq 0 ]; then
+  echo "Usage: make-project <project-name> [source file extension (c, cpp, etc)]"
+  exit 1
+fi
+
+if [ "$#" -ne 2 ]; then
+  EXT="c"
+else
+  EXT=$2
+fi
+
+if [ -d $1 ]; then
+  echo "$1 exists, exiting"
+  exit 1
+fi
+
+mkdir $1
+mkdir $1/src
+mkdir $1/src/include
+mkdir $1/doc
+mkdir $1/contrib
+mkdir $1/tests
+touch $1/configure.ac
+touch $1/Makefile.am
+touch $1/bootstrap
+chmod +x $1/bootstrap
+touch $1/src/Makefile.am
+touch $1/AUTHORS
+touch $1/ChangeLog
+touch $1/README
+touch $1/TODO
+touch $1/COPYING
+touch $1/NEWS
+
+cat <<eof >$1/COPYING
+Insert licensing information here, preferably GNU GPLv2 or later
+eof
+
+cat <<eof >$1/NEWS
+See ChangeLog
+eof
+
+cat <<eof >$1/src/$1.$EXT
+#include <stdio.h>
+
+int
+main(void)
+{
+  printf("Hello World!\n");
+  return 0;
+}
+eof
+
+cat <<eof >$1/bootstrap
+autoreconf -f -i
+eof
+
+cat <<eof >$1/AUTHORS
+Primary Developers:
+Blake Matheny <bmatheny@purdue.edu>
+
+Code contributions also came from:
+eof
+
+DATE=`date "+%Y-%m-%d"`
+cat <<eof >$1/ChangeLog
+$DATE Blake Matheny <bmatheny@purdue.edu>
+  * Built initial directory structure
+  * Initial CVS import
+eof
+
+cat <<eof >$1/README
+What is $1?
+===============================================
+Description
+
+How to install?
+===============================================
+If you are a developer, you will need the GNU Autotools. The development team
+is currently using Autoconf version 2.53 and Automake version 1.5. Developers
+should start by running the bootstrap script. If you have downloaded a package
+you will already have the files that the bootstrap script creates. For a
+single-user installation in $HOME, do the following:
+
+# ./configure --prefix=$HOME
+# make install
+
+In general the configure script will try and detect a good set of defaults for
+you, but it may be necessary to enable or disable some input or output
+methods.
+
+Header files will be installed in $HOME/include and the library and plugins
+will be installed in $HOME/lib. If you are going to link against the library
+and it is installed in your home directory, it may be necessary to set the
+LD_LIBRARY_PATH environmental variable, so that the linker can find the
+library.
+eof
+
+cat <<eof >$1/TODO
+* Write some code
+eof
+
+cat <<eof >$1/configure.ac
+AC_INIT($1, 0.0.1, $1@changeme.com, $1)
+AM_INIT_AUTOMAKE($1, 0.0.1)
+AM_CONFIG_HEADER(src/include/config.h)
+
+AC_CANONICAL_HOST
+AC_PROG_CC
+AC_PROG_CXX
+AC_PROG_INSTALL
+AC_PROG_MAKE_SET
+AC_PROG_LIBTOOL
+AM_PROG_LEX
+AC_PROG_YACC
+
+case "$host_os" in
+linux*)
+  AC_DEFINE(LINUX,1,[This is a GNU/Linux system])
+  AC_CHECK_LIB(pthread, pthread_create)
+  ;;
+freebsd*)
+  AC_DEFINE(FREEBSD,1,[This is a FreeBSD system])
+  CFLAGS="-D_THREAD_SAFE $CFLAGS"
+  LIBS="-pthread $LIBS"
+  ;;
+openbsd*)
+  AC_DEFINE(OPENBSD,1,[This is an OpenBSD system])
+  CFLAGS="-pthread $CFLAGS"
+  ;;
+netbsd*)
+  AC_DEFINE(NETBSD,1,[This is a NetBSD system])
+  CFLAGS="-pthread $CFLAGS"
+  ;;
+*solaris*)
+  AC_DEFINE(SOLARIS,1,[This is a Solaris system])
+  AC_DEFINE_UNQUOTED(_REENTRANT,1,[Need with solaris or errno doesnt work])
+  AC_CHECK_LIB(pthread, pthread_create)
+  ;;
+*)
+  AC_MSG_RESULT(Unrecognized OS $host_os)
+  AC_DEFINE(OTHEROS,1,[Some strange OS])
+  ;;
+esac
+
+AC_HEADER_TIME
+AC_CHECK_HEADERS(strings.h unistd.h sys/time.h)
+
+AC_OUTPUT(Makefile
+src/Makefile)
+eof
+
+cat <<eof >$1/Makefile.am
+INCLUDES  = -I\$(top_srcdir)/src/include
+SUBDIRS = src
+eof
+
+cat << eof >$1/src/Makefile.am
+INCLUDES = -I\$(top_srcdir)/src/include
+SUBDIRS = .
+bin_PROGRAMS = $1
+$1_SOURCES = $1.$EXT
+eof

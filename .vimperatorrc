@@ -1,0 +1,65 @@
+" Colors
+colorscheme simple
+
+""""""""""""""""""""""""""""""""""""""""
+" Options
+""""""""""""""""""""""""""""""""""""""""
+" Use awesome bar then search engine suggestions
+set complete=lS
+set defsearch=google
+" set editor=bash -lc "mvim -g -f \$*" mvim 
+set focuscontent
+" need <CR> anytime in hints mode
+set followhints=1
+" Show bookmarks and tab number
+set guioptions=nB
+" all type pages are opened in new tab addons + downloads + help + javascript + prefs
+set newtab=all
+" Open popup in new window if specified size
+set popups=tab
+" Show link in command line on hover
+set showstatuslinks=2
+set suggestengines=google
+set titlestring=
+" Don't do audible bell
+set visualbell
+" Allow complete option to be respected
+set wildoptions=auto
+
+" Custom Commands
+" command -nargs=+ calc !echo <q-args>|bc
+command -nargs=1 jira o https://jira.chacha.com/jira/browse/<args>
+
+" Application Configuration
+let g:instapaper_username = "instapaper@mobocracy.net"
+
+" Custom Keyboard Mappings
+noremap S :open google<Space>
+noremap j 4j
+noremap k 4k
+noremap RL :rl<CR>
+noremap EN :en<CR>
+map <C-f> /
+map <C-w> :quit<CR>
+map <C-t> :t<CR>
+imap <C-k> :o google<Space>
+cmap <C-k> :o google<Space>
+map <C-k> :o google<Space>
+
+" QuickMarks
+qmark c https://calendar.google.com/
+qmark C https://calendar.google.com/a/eng.chacha.com
+qmark h http://www.hulu.com/profile/queue
+qmark m https://mail.google.com/mail/#search/label%3Aunread
+qmark M https://mail.google.com/a/eng.chacha.com/#search/label%3Aunread
+qmark r https://www.google.com/reader/view/
+
+" Disable keys on sites with lots of keyboard shortcuts
+:autocmd LocationChange .* :js modes.passAllKeys = /mail\.google\.com|www\.google\.com\/reader\/view/.test(buffer.URL)
+
+" Browser Options
+set! browser.tabs.closeWindowWithLastTab=false
+set! browser.tabs.loadDivertedInBackground=true
+set! browser.tabs.closeButtons=2
+set! security.dialog_enable_delay=0
+set! dom.disable_window_move_resize=true

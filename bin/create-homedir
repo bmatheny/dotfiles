@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if [ -z $1 ]; then
+	echo "$0 copies the relevant files from your home directory to a remote host";
+	echo "Usage: $0 hostname";
+	exit;
+fi;
+
+rm -f ~/tmp/homecopy.tar.bz2
+tar -cjvf ~/tmp/homecopy.tar.bz2 .bashrc .bash .dir_colors .svn_bash_completion .vim .vimrc .screenrc .ssh/authorized_keys .ssh/*.pub src/templates/
+scp ~/tmp/homecopy.tar.bz2 $1:
+ssh $1 'tar -xjvf homecopy.tar.bz2;rm -f homecopy.tar.bz2'

@@ -1,0 +1,12 @@
+source $HOME/.screenrc
+
+screen -t bash			0 bash
+screen -t bash			1 bash
+screen -t test			2 bash
+screen -t "test run"		3 bash
+screen -t logs			4 tail -f logs/php.errors logs/messages.log
+screen -t mysql			5 mysql -u root -pnone
+screen -t phpsh			6 phpsh
+
+focus
+select 0

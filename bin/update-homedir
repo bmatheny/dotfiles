@@ -1,0 +1,10 @@
+#!/bin/sh
+
+cd $HOME
+
+for i in ".bashrc .vim .vimrc .bash .svn_bash_completion .dir_colors .screenrc src/templates"; do
+	rm -rf $i;
+done;
+
+HD=https://fizz-buzz.googlecode.com/svn/trunk/misc/home_directory
+svn checkout --force $HD .

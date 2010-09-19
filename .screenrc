@@ -1,0 +1,23 @@
+#screen -t PMAIL		0 mutt
+#screen -t GMAIL		1 google.mail
+#screen -t IRC			2 ssh devserver
+#screen -t AIM			3 naim
+
+bind j focus down
+bind k focus up
+bind t focus top
+bind b focus bottom
+
+shelltitle	'>|zsh'
+
+startup_message off
+
+nethack		on
+vbell		on
+vbell_msg	DOH!
+
+defscrollback	2000
+caption always "%{kc}%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{kc}%?%+Lw%?"
+hardstatus alwayslastline "%{kc}%H %l %50=%D %M %d %c %Y%="
+sorendition	kG
+activity	"%C -> %n%f %t activity!"
