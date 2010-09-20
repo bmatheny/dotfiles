@@ -1,6 +1,6 @@
 require 'pathname'
 
-SYMLINK_FILES = %w{.vim .vimperator .ackrc .dir_colors .screen.development .screenrc .vimperatorrc .vimrc .zshrc src/js src/phpsh src/templates .oh-my-zsh}
+SYMLINK_FILES = %w{.vim .vimperator .ackrc .dir_colors .screen.development .screenrc .vimperatorrc .vimrc .zshrc .oh-my-zsh}
 SYMLINK_DIRS = %w{bin src .ssh}
 
 $cwd = File.dirname(__FILE__)
