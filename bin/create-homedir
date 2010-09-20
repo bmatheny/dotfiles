@@ -1,12 +1,10 @@
 #!/bin/sh
 
-if [ -z $1 ]; then
-	echo "$0 copies the relevant files from your home directory to a remote host";
-	echo "Usage: $0 hostname";
-	exit;
-fi;
+# Run it as curl
+FILE="bmatheny-dotfiles.tar.gz";
+DIR="~/tmp";
+FULL_FILE="${DIR}/${FILE}";
 
-rm -f ~/tmp/homecopy.tar.bz2
-tar -cjvf ~/tmp/homecopy.tar.bz2 .bashrc .bash .dir_colors .svn_bash_completion .vim .vimrc .screenrc .ssh/authorized_keys .ssh/*.pub src/templates/
-scp ~/tmp/homecopy.tar.bz2 $1:
-ssh $1 'tar -xjvf homecopy.tar.bz2;rm -f homecopy.tar.bz2'
+mkdir ${DIR};
+rm -f ${FULL_FILE};
+wget -O ${FULL_FILE} http://github.com/bmatheny/dotfiles/tarball/master
