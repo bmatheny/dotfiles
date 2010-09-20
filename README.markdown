@@ -10,6 +10,7 @@ HAVE_WGET=`wget --version 2>&1 >/dev/null`
 if [[ $? -ne 0 ]]; then
         echo "# Install wget";
         echo "yum install wget";
+	exit;
 fi
 
 if [[ ! -d tmp ]]; then
