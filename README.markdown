@@ -32,7 +32,7 @@ if [[ ! -d bin ]]; then
         mkdir bin;
 fi
 
-if [[ ! -l "bin/ec2-api-tools" ]]; then
+if [ ! -L "bin/ec2-api-tools" ]; then
 	cd bin;
 	wget -q http://s3.amazonaws.com/ec2-downloads/ec2-api-tools.zip
 	unzip -q ec2-api-tools.zip
