@@ -13,6 +13,13 @@ if [[ $? -ne 0 ]]; then
 	exit;
 fi
 
+HAVE_UNZIP=`unzip -version 2>&1 >/dev/null`
+if [[ $? -ne 0 ]]; then
+	echo "# Install unzip";
+	echo "yum install unzip";
+	exit;
+fi
+
 if [[ ! -d tmp ]]; then
         mkdir tmp;
 fi
@@ -23,6 +30,15 @@ fi
 
 if [[ ! -d bin ]]; then
         mkdir bin;
+fi
+
+if [[ ! -l "bin/ec2-api-tools" ]]; then
+	cd bin;
+	wget -q http://s3.amazonaws.com/ec2-downloads/ec2-api-tools.zip
+	unzip -q ec2-api-tools.zip
+	ln -s ec2-api-tools-* ec2-api-tools
+	rm -f ec2-api-tools.zip
+	cd $HOME;
 fi
 
 if [[ -f ${TMP_FILE} ]]; then
