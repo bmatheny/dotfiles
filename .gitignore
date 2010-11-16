@@ -1,9 +1,8 @@
 .DS_Store
 Thumbs.db
-.ssh/akamai
-.ssh/Commerce.pem
-.ssh/commerce.ppk
-.ssh/commerce.rsa
+.ssh/compendium.rsa
+.ssh/compendium.x509.pem
+.ssh/compendium.x509.pk.pem
 .ssh/id_dsa
 .ssh/id_rsa
 .ssh/known_hosts
