@@ -1,0 +1,16 @@
+# Changes will be lost if made to ~/.gitconfig
+[user]
+	name = Blake Matheny
+	email = bmatheny@mobocracy.net
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+	ui = true
+	pager = true
+[alias]
+	co = checkout
+	st = status
+[core]
+	editor = vim

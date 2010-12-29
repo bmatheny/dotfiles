@@ -1,5 +1,6 @@
 .DS_Store
 Thumbs.db
+.gitconfig.private
 .ssh/compendium.rsa
 .ssh/compendium.x509.pem
 .ssh/compendium.x509.pk.pem

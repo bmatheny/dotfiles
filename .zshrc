@@ -6,7 +6,7 @@ export ZSH=$HOME/.oh-my-zsh
 export ZSH_THEME="xiong-chiamiov-plus"
 
 # Set to this to use case-sensitive completion
-# export CASE_SENSITIVE="true"
+export CASE_SENSITIVE="true"
 
 # Comment this out to disable weekly auto-update checks
 # export DISABLE_AUTO_UPDATE="true"
@@ -16,10 +16,15 @@ export ZSH_THEME="xiong-chiamiov-plus"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git osx)
+plugins=(git osx brew)
 
 export PATH="/usr/local/bin:/usr/local/Cellar/python/2.7/bin/:/usr/local/mysql/bin:$HOME/bin:$HOME/bin/ec2-api-tools/bin:$PATH"
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
+if [ -f ~/.zshrc.private ]; then
+	source ~/.zshrc.private
+fi
+
+export PDSH_SSH_ARGS_APPEND="-t -t"
