@@ -72,6 +72,7 @@ au FileType php			set cindent tw=85
 au FileType xml			set ai
 au FileType mkd			set ai formatoptions=tcroqn2 comments=n:>
 au FileType cucumber		set ai tw=120 ts=2
+au FileType ruby		set shiftwidth=2 softtabstop=2
 
 augroup java
 	autocmd BufNewFile *.java 0r ~/src/templates/skeleton.java
