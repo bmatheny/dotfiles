@@ -45,12 +45,12 @@ if [[ -f ${TMP_FILE} ]]; then
         rm -f ${TMP_FILE};
 fi
 
-wget --no-certificate-check -q -O $TMP_FILE http://github.com/bmatheny/dotfiles/tarball/master
+wget --no-check-certificate -q -O $TMP_FILE http://github.com/bmatheny/dotfiles/tarball/master
 cd src
 tar -xzf ${TMP_FILE}
 cd bmatheny-dot*
 cd .oh-my-zsh
-wget --no-certificate-check -q -O oh-my-zsh.tar.gz http://github.com/bmatheny/oh-my-zsh/tarball/master
+wget --no-check-certificate -q -O oh-my-zsh.tar.gz http://github.com/bmatheny/oh-my-zsh/tarball/master
 tar --strip-components 1 -xzf oh-my-zsh.tar.gz
 cd $HOME
 rm -f ${TMP_FILE}
