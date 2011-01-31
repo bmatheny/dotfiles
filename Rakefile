@@ -1,6 +1,6 @@
 require 'pathname'
 
-SYMLINK_FILES = %w{.vim .vimperator .ackrc .dir_colors .screen.development .screenrc .vimperatorrc .vimrc .zshrc .oh-my-zsh}
+SYMLINK_FILES = %w{.vim .vimperator .ackrc .dir_colors .screen.development .screenrc .vimperatorrc .vimrc .zshrc .oh-my-zsh .colordiffrc}
 SYMLINK_DIRS = %w{bin src .ssh}
 MERGE_FILES = {
   ['.gitconfig','.gitconfig.private'] => '.gitconfig',
@@ -35,12 +35,12 @@ task :install do
   SYMLINK_DIRS.each do |d|
     dir = "#{d}/*"
     Dir.glob(dir).each do |f|
-      #symlink(f)
+      symlink(f)
     end
   end
 
   SYMLINK_FILES.each do |f|
-    #symlink(f)
+    symlink(f)
   end
 
   MERGE_FILES.each do |sources,dest|
