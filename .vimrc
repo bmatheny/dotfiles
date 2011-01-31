@@ -20,7 +20,7 @@ set wildmenu
 " Files to ignore
 set wildignore=*.o,*.lo,*.la,#*#,.*.rej,*.rej,.*~,*~,.#*,*.class
 
-
+set tags=~/.vim/mytags/blog
 
 " ****************************************************************************
 " Visuals
@@ -58,7 +58,6 @@ set formatoptions=tcro
 
 " Skeleton Files
 autocmd BufNewFile *.pl 0r ~/src/templates/skeleton.pl
-autocmd BufNewFile *.php 0r ~/src/templates/skeleton.php
 
 " Set file types for uncommon extensions
 au BufRead,BufNewFile *.sc setfiletype scheme
@@ -73,6 +72,13 @@ au FileType xml			set ai
 au FileType mkd			set ai formatoptions=tcroqn2 comments=n:>
 au FileType cucumber		set ai tw=120 ts=2
 au FileType ruby		set shiftwidth=2 softtabstop=2
+
+augroup php
+	autocmd BufNewFile *.php 0r ~/src/templates/skeleton.php
+	highlight ExtraWhitespace ctermbg=red guibg=red
+	match ExtraWhitespace /\s\+$/
+	set foldmethod=marker
+augroup END
 
 augroup java
 	autocmd BufNewFile *.java 0r ~/src/templates/skeleton.java
