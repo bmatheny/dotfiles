@@ -133,10 +133,9 @@ map dm :!rm -f %.html<CR><CR>
 " ****************************************************************************
 " Custom Colors
 " ****************************************************************************
-hi! Comment ctermfg=grey ctermbg=black guifg=blue guibg=black
-hi! Search ctermfg=blue ctermbg=white
-
-
+colorscheme peachpuff
+hi! Comment ctermfg=white ctermbg=black
+hi! Search ctermfg=green ctermbg=white
 
 " ****************************************************************************
 " Misc Stuff
