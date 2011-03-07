@@ -1,16 +1,21 @@
 <?php
 
-/*
-    (C) 2008 Blake Matheny
-*/
-
 /**
- * @brief What's the skivvy on this file?
+ * Provide a brief description of functionality provided.
  *
- * Now give a long description about the file
+ * Provide a longer description of functionality provided.
  *
- * @author Blake Matheny
- * @version 0.1
+ * PHP version 5.3
+ *
+ * LICENSE: This source file is licensed for internal use as part of the
+ * Compendium Blogware application.
+ *
+ * @author	Blake Matheny <bmatheny@eng.compendium.com> $Author$
+ * @license	Compendium Software, LLC, Internal Use Only
+ * @version	$Rev$ $Date$
+ * @copyright	2010, Compendium Software, LLC
+ * @version	SVN: $Id$
+ * @since	File available since release ##REL_NUM##
  */
 
 ?>

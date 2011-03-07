@@ -12,6 +12,8 @@ shelltitle	'>|zsh'
 
 startup_message off
 
+term		xterm-256color
+
 nethack		on
 vbell		on
 vbell_msg	DOH!

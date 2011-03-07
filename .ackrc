@@ -4,3 +4,10 @@
 --type-set=html=.htm,.html,.shtml,.xhtml,.tpl,.vm
 --type-set=groovy=.groovy,.grest
 --type-set=haml=.haml
+--ignore-dir=pub/build
+--ignore-dir=pub/coverage
+--ignore-dir=pub/min
+--ignore-dir=pub/js/fckeditor
+--ignore-dir=pub/js/ext
+--ignore-dir=app/models/blog/map
+--ignore-dir=app/models/blog/om

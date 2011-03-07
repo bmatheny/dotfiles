@@ -68,7 +68,8 @@ au FileType javascript		set ai cindent tw=3000
 au FileType perl		set cindent
 au FileType cpp			set cindent
 au FileType php			set cindent tw=85
-au FileType xml			set ai
+au FileType smarty		set tw=500 colorcolumn=500
+au FileType xml			set ai tw=3000
 au FileType mkd			set ai formatoptions=tcroqn2 comments=n:>
 au FileType cucumber		set ai tw=120 ts=2
 au FileType ruby		set shiftwidth=2 softtabstop=2
@@ -78,6 +79,7 @@ augroup php
 	highlight ExtraWhitespace ctermbg=red guibg=red
 	match ExtraWhitespace /\s\+$/
 	set foldmethod=marker
+	set colorcolumn=86
 augroup END
 
 augroup java
@@ -89,7 +91,19 @@ let java_highlight_functions="style"
 let java_allow_cpp_keywords=1
 
 source ~/.vim/python.vim
-cabbr jslint !~/bin/js.sh ~/src/js/runjslint.js "`cat %`" \| ~/src/js/format_lint_output.py
+function JSLint()
+	let s:home_dir = expand("~/")
+	let s:file_name = expand("%:p")
+	let s:js_sh = s:home_dir . 'bin/js.sh'
+	let s:js_run = s:home_dir . 'src/js/runjslint.js'
+	let s:cmd = s:js_sh . ' ' . s:js_run . " \"`cat " . s:file_name . "`\""
+  	botright new
+    	setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
+        call setline(1, 'Ran ' . s:cmd)
+	execute '$read !'. s:cmd
+	setlocal nomodifiable
+endfunction
+command -nargs=0 JSLint call JSLint()
 
 " Some abbreviations
 ab #d #define
@@ -142,6 +156,9 @@ map dm :!rm -f %.html<CR><CR>
 colorscheme peachpuff
 hi! Comment ctermfg=white ctermbg=black
 hi! Search ctermfg=green ctermbg=white
+hi! Directory ctermfg=159
+hi! Pmenu cterm=reverse
+hi! PmenuSel cterm=bold ctermbg=255
 
 " ****************************************************************************
 " Misc Stuff

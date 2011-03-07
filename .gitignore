@@ -1,5 +1,8 @@
 .DS_Store
 Thumbs.db
+src/templates/skeleton.php
+.vim/mytags/
+.vim/.netrwhist
 .gitconfig.private
 .ssh/compendium.rsa
 .ssh/compendium.x509.pem

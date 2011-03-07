@@ -16,7 +16,7 @@ export CASE_SENSITIVE="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git osx brew)
+plugins=(git)
 
 export PATH="/usr/local/bin:/usr/local/Cellar/python/2.7/bin/:/usr/local/mysql/bin:$HOME/bin:$HOME/bin/ec2-api-tools/bin:$PATH"
 
