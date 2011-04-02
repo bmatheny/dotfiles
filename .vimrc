@@ -68,28 +68,11 @@ au FileType c			set cindent
 au FileType javascript		set ai cindent tw=3000
 au FileType perl		set cindent
 au FileType cpp			set cindent
-au FileType php			set cindent tw=85
 au FileType smarty		set tw=500 colorcolumn=500
 au FileType xml			set ai tw=3000
 au FileType mkd			set ai formatoptions=tcroqn2 comments=n:>
 au FileType cucumber		set ai tw=120 ts=2
 au FileType ruby		set shiftwidth=2 softtabstop=2
-
-augroup php
-	autocmd BufNewFile *.php 0r ~/src/templates/skeleton.php
-	highlight ExtraWhitespace ctermbg=red guibg=red
-	match ExtraWhitespace /\s\+$/
-	set foldmethod=marker
-	set colorcolumn=86
-augroup END
-
-augroup java
-	autocmd BufNewFile *.java 0r ~/src/templates/skeleton.java
-	au FileType java		set ai tabstop=4 expandtab
-augroup END
-let java_highlight_all=1
-let java_highlight_functions="style"
-let java_allow_cpp_keywords=1
 
 source ~/.vim/python.vim
 function JSLint()
