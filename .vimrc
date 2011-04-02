@@ -61,6 +61,7 @@ autocmd BufNewFile *.pl 0r ~/src/templates/skeleton.pl
 
 " Set file types for uncommon extensions
 au BufRead,BufNewFile *.sc setfiletype scheme
+au BufRead,BufnewFile *.ejs setfiletype erb
 
 " Language Specific Options
 au FileType c			set cindent
@@ -153,12 +154,14 @@ map dm :!rm -f %.html<CR><CR>
 " ****************************************************************************
 " Custom Colors
 " ****************************************************************************
-colorscheme peachpuff
-hi! Comment ctermfg=white ctermbg=black
-hi! Search ctermfg=green ctermbg=white
-hi! Directory ctermfg=159
-hi! Pmenu cterm=reverse
-hi! PmenuSel cterm=bold ctermbg=255
+"colorscheme peachpuff
+colorscheme solarized
+set background=dark
+"hi! Comment ctermfg=white ctermbg=black
+"hi! Search ctermfg=green ctermbg=white
+"hi! Directory ctermfg=159
+"hi! Pmenu cterm=reverse
+"hi! PmenuSel cterm=bold ctermbg=255
 
 " ****************************************************************************
 " Misc Stuff
