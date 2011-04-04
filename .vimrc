@@ -137,9 +137,9 @@ map dm :!rm -f %.html<CR><CR>
 " ****************************************************************************
 " Custom Colors
 " ****************************************************************************
-"colorscheme peachpuff
-colorscheme solarized
+let g:solarized_termcolors=16
 set background=dark
+colorscheme solarized
 "hi! Comment ctermfg=white ctermbg=black
 "hi! Search ctermfg=green ctermbg=white
 "hi! Directory ctermfg=159
