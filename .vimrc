@@ -74,7 +74,6 @@ au FileType mkd			set ai formatoptions=tcroqn2 comments=n:>
 au FileType cucumber		set ai tw=120 ts=2
 au FileType ruby		set shiftwidth=2 softtabstop=2
 
-source ~/.vim/python.vim
 function JSLint()
 	let s:home_dir = expand("~/")
 	let s:file_name = expand("%:p")
@@ -140,11 +139,6 @@ map dm :!rm -f %.html<CR><CR>
 let g:solarized_termcolors=16
 set background=dark
 colorscheme solarized
-"hi! Comment ctermfg=white ctermbg=black
-"hi! Search ctermfg=green ctermbg=white
-"hi! Directory ctermfg=159
-"hi! Pmenu cterm=reverse
-"hi! PmenuSel cterm=bold ctermbg=255
 
 " ****************************************************************************
 " Misc Stuff
@@ -152,18 +146,8 @@ colorscheme solarized
 filetype plugin on
 filetype indent on
 
-" ****************************************************************************
-" Spelling Stuff
-" ****************************************************************************
-" setlocal spell spelllang=en_us
-" highlight clear SpellBad
-" highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
-" highlight clear SpellCap
-" highlight SpellCap term=underline cterm=underline
-" highlight clear SpellRare
-" highlight SpellRare term=underline cterm=underline
-" highlight clear SpellLocal
-" highlight SpellLocal term=underline cterm=underline
-
 " Use ack instead of grep because ack rocks
 set grepprg=~/bin/ack\ -a
+
+" Enable pathogen for easy plugin handling
+call pathogen#runtime_append_all_bundles()
