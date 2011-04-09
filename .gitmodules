@@ -4,3 +4,21 @@
 [submodule ".vim/bundle/vim-markdown-preview"]
 	path = .vim/bundle/vim-markdown-preview
 	url = https://github.com/robgleeson/vim-markdown-preview.git
+[submodule ".vim/bundle/vim-haml"]
+	path = .vim/bundle/vim-haml
+	url = https://github.com/tpope/vim-haml.git
+[submodule ".vim/bundle/vim-rails"]
+	path = .vim/bundle/vim-rails
+	url = https://github.com/tpope/vim-rails.git
+[submodule ".vim/bundle/vim-surround"]
+	path = .vim/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule ".vim/bundle/vim-markdown"]
+	path = .vim/bundle/vim-markdown
+	url = https://github.com/plasticboy/vim-markdown.git
+[submodule ".vim/bundle/vim-cuccumber"]
+	path = .vim/bundle/vim-cuccumber
+	url = https://github.com/tpope/vim-cucumber.git
+[submodule ".vim/bundle/vcscommand"]
+	path = .vim/bundle/vcscommand
+	url = git://repo.or.cz/vcscommand.git
