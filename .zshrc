@@ -3,7 +3,7 @@ export ZSH=$HOME/.oh-my-zsh
 
 # Set to the name theme to load.
 # Look in ~/.oh-my-zsh/themes/
-export ZSH_THEME="xiong-chiamiov-plus"
+export ZSH_THEME="pmcgee"
 
 # Set to this to use case-sensitive completion
 export CASE_SENSITIVE="true"
@@ -16,7 +16,7 @@ export CASE_SENSITIVE="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(git brew cap gem osx rails ruby)
 
 export PATH="/usr/local/bin:/usr/local/Cellar/python/2.7/bin/:/usr/local/mysql/bin:$HOME/bin:$HOME/bin/ec2-api-tools/bin:$PATH"
 
