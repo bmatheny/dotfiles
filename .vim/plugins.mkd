@@ -1,0 +1,117 @@
+# VIM Plugin Guide
+
+Shortcuts, keys, crucial options, etc for some plugins
+
+## bufexplorer
+
+Convenient exploring of your open buffers.
+
+### Insert Mode
+
+<table border="1">
+	<tr>
+		<th>Keystroke</th><th>Description</th>
+	</tr>
+	<tr>
+		<td>\be</td><td>Explore in current window</td>
+	</tr>
+	<tr>
+		<td>\bs</td><td>Explore in split horizontal window</td>
+	</tr>
+	<tr>
+		<td>\bv</td><td>Explore in split vertical window</td>
+	</tr>
+</table>
+
+### Buffer Mode
+
+<table border="1">
+	<tr>
+		<th>Keystroke</th><th>Description</th>
+	</tr>
+	<tr>
+		<td>R</td><td>Togles relative path/absolute path</td>
+	</tr>
+</table>
+
+## nerdtree
+
+Use as a netrw replacement or a project explorer.
+
+## command-t
+
+	\t bring up the command-t file window
+	\b bring up the command-t buffer window (not as nice as bufexplorer)
+
+Note that we have remapped the CR key to open split instead of current window.
+
+<table border="1">
+	<tr>
+		<th>Keystroke</th><th>Description</th>
+	</tr>
+	<tr>
+		<td>&lt;CR&gt;</td><td>open selected file in a new split window</td>
+	</tr>
+	<tr>
+		<td>&lt;C-v&gt;</td><td>open selected file in a new vertical split window</td>
+	</tr>
+	<tr>
+		<td>&lt;C-n&gt;</td><td>next file in list</td>
+	</tr>
+	<tr>
+		<td>&lt;C-p&gt;</td><td>previous file in list</td>
+	</tr>
+</table>
+
+## vcscommand
+
+Used for exploring version controlled directories and files.
+
+VCSAdd
+:	Add current file to source control
+:	\ca
+
+VCSBlame
+:	Displays current file with each line annotated, ! splits it
+:	\cn VCSBlame
+:	\cN VCSBlame!
+
+VCSCommit
+:	Commit current file to revision control system
+:	\cc
+
+VCSDiff
+:	Display differences between current file and parent in scratch buffer
+:	\cd
+
+VCSLog
+:	Display version history of current file in new buffer
+:	\cl
+
+VCSStatus
+:	Display versioning information about current file in scratch buffer
+:	\ci
+
+VCSVimDiff
+:	Uses vimdiff to display differences
+:	\cv
+
+## vim-markdown-preview
+
+Defaults to using :Mm but is remapped in vimrc
+
+<table border="1">
+	<tr>
+		<th>Keystroke</th><th>Description</th>
+	</tr>
+	<tr>
+		<td>\pm</td><td>preview markdown</td>
+	</tr>
+	<tr>
+		<td>\dm</td><td>delete markdown generated html file</td>
+	</tr>
+</table>
+
+## vim-surround
+
+Help with automatically surrounding text with other text

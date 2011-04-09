@@ -18,7 +18,7 @@ set backspace=indent,eol,start
 set wildmenu
 
 " Files to ignore
-set wildignore=*.o,*.lo,*.la,#*#,.*.rej,*.rej,.*~,*~,.#*,*.class
+set wildignore=*.o,*.lo,*.la,#*#,.*.rej,*.rej,.*~,*~,.#*,*.class,*.swp
 
 set tags=~/.vim/mytags/blog
 
@@ -130,8 +130,12 @@ set pastetoggle=<F7>
 map <F8> :set tw=30000<cr>
 
 " Preview markdown, delete markdown
-map pm :w!<CR>:!markdown % \| smartypants > %.html && open %.html<CR><CR>
-map dm :!rm -f %.html<CR><CR>
+map <Leader>pm :Mm<CR>
+map <Leader>dm :!rm -f /tmp/%.html<CR>
+
+" Custom key bindings for command-t
+let g:CommandTAcceptSelectionMap=[]
+let g:CommandTAcceptSelectionSplitMap=['<C-CR>','<CR>']
 
 " ****************************************************************************
 " Custom Colors
