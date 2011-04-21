@@ -12,5 +12,8 @@
 [alias]
 	co = checkout
 	st = status
+	pu = !"git fetch origin -v; git fetch upstream -v; git merge upstream/master"
+	info = !"~/bin/git-info.sh"
+
 [core]
 	editor = vim
