@@ -58,6 +58,7 @@ set formatoptions=tcro
 
 " Skeleton Files
 autocmd BufNewFile *.pl 0r ~/src/templates/skeleton.pl
+autocmd BufNewFile *.php 0r ~/src/templates/skeleton.php
 
 " Set file types for uncommon extensions
 au BufRead,BufNewFile *.sc setfiletype scheme
@@ -73,6 +74,9 @@ au FileType xml			set ai tw=3000
 au FileType mkd			set ai formatoptions=tcroqn2 comments=n:>
 au FileType cucumber		set ai tw=120 ts=2
 au FileType ruby		set shiftwidth=2 softtabstop=2
+au FileType php		 	set cindent tw=85 colorcolumn=86 foldmethod=marker tabstop=4 expandtab shiftwidth=4
+au FileType php			match ExtraWhitespace /\s\+$/
+highlight ExtraWhitespace ctermbg=red guibg=red
 
 function JSLint()
 	let s:home_dir = expand("~/")
