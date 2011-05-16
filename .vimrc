@@ -134,7 +134,7 @@ set pastetoggle=<F7>
 map <F8> :set tw=30000<cr>
 
 " Preview markdown, delete markdown
-map <Leader>pm :Mm<CR>
+map <Leader>pm :Hammer<CR>
 map <Leader>dm :!rm -f /tmp/%.html<CR>
 
 " Custom key bindings for command-t

@@ -25,3 +25,6 @@
 [submodule ".oh-my-zsh"]
 	path = .oh-my-zsh
 	url = https://github.com/bmatheny/oh-my-zsh.git
+[submodule ".vim/bundle/hammer"]
+	path = .vim/bundle/hammer
+	url = https://github.com/robgleeson/hammer.vim.git
