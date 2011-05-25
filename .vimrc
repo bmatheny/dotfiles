@@ -5,6 +5,11 @@
 " ****************************************************************************
 set nocompatible
 
+" Enable pathogen for easy plugin handling
+runtime! autoload/pathogen.vim
+silent! call pathogen#helptags()
+silent! call pathogen#runtime_append_all_bundles()
+
 " By default ignore the case of searches
 set ignorecase
 
@@ -19,8 +24,6 @@ set wildmenu
 
 " Files to ignore
 set wildignore=*.o,*.lo,*.la,#*#,.*.rej,*.rej,.*~,*~,.#*,*.class,*.swp
-
-set tags=~/.vim/mytags/blog
 
 " ****************************************************************************
 " Visuals
@@ -46,19 +49,20 @@ set incsearch
 " Show me a ruler
 set ruler
 
+" Store more history
+set history=1000
 
 
 " ****************************************************************************
 " Software Development
 " ****************************************************************************
-syntax on
 
 " How do we format code?
 set formatoptions=tcro
 
 " Skeleton Files
 autocmd BufNewFile *.pl 0r ~/src/templates/skeleton.pl
-autocmd BufNewFile *.php 0r ~/src/templates/skeleton.php
+"autocmd BufNewFile *.php 0r ~/src/templates/skeleton.php
 
 " Set file types for uncommon extensions
 au BufRead,BufNewFile *.sc setfiletype scheme
@@ -74,9 +78,6 @@ au FileType xml			set ai tw=3000
 au FileType mkd			set ai formatoptions=tcroqn2 comments=n:>
 au FileType cucumber		set ai tw=120 ts=2
 au FileType ruby		set shiftwidth=2 softtabstop=2
-au FileType php		 	set cindent tw=85 colorcolumn=86 foldmethod=marker tabstop=4 expandtab shiftwidth=4
-au FileType php			match ExtraWhitespace /\s\+$/
-highlight ExtraWhitespace ctermbg=red guibg=red
 
 function JSLint()
 	let s:home_dir = expand("~/")
@@ -147,15 +148,10 @@ let g:CommandTAcceptSelectionSplitMap=['<C-CR>','<CR>']
 let g:solarized_termcolors=16
 set background=dark
 colorscheme solarized
+syn sync fromstart
 
-" ****************************************************************************
-" Misc Stuff
-" ****************************************************************************
-filetype plugin on
-filetype indent on
+syntax on
+filetype plugin indent on
 
 " Use ack instead of grep because ack rocks
 set grepprg=~/bin/ack\ -a
-
-" Enable pathogen for easy plugin handling
-call pathogen#runtime_append_all_bundles()
