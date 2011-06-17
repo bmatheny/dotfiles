@@ -1,6 +1,7 @@
 .DS_Store
 Thumbs.db
 src/templates/skeleton.php
+src/phpsh/*.pyc
 .vim/mytags/
 .vim/.netrwhist
 .gitconfig.private
