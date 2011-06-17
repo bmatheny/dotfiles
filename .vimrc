@@ -70,6 +70,7 @@ au BufRead,BufnewFile *.ejs setfiletype erb
 
 " Language Specific Options
 au FileType c			set cindent
+au FileType scala		set si et sw=2 st=2
 au FileType javascript		set ai cindent tw=3000
 au FileType perl		set cindent
 au FileType cpp			set cindent
