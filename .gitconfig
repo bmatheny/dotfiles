@@ -14,6 +14,7 @@
 	st = status
 	pu = !"git fetch origin -v; git fetch upstream -v; git merge upstream/master"
 	info = !"~/bin/git-info.sh"
-
+	ldiff = "git diff origin/master..HEAD"
 [core]
 	editor = vim
+	excludesfile = /Users/bmatheny/.gitglobalignore

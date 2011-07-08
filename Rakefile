@@ -1,6 +1,6 @@
 require 'pathname'
 
-SYMLINK_FILES = %w{.vim .ackrc .dir_colors .screen.development .screenrc .vimrc .zshrc .oh-my-zsh .colordiffrc}
+SYMLINK_FILES = %w{.vim .ackrc .dir_colors .screen.development .screenrc .vimrc .zshrc .oh-my-zsh .colordiffrc .gitglobalignore}
 SYMLINK_DIRS = %w{bin src .ssh}
 MERGE_FILES = {
   ['.gitconfig','.gitconfig.private'] => '.gitconfig',
