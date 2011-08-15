@@ -1,5 +1,0 @@
-#!/bin/sh
-
-PHPSH=$HOME/src/phpsh/phpsh
-
-exec $PHPSH

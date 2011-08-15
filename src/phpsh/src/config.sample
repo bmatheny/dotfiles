@@ -1,0 +1,98 @@
+[General]
+
+#UndefinedFunctionCheck: yes
+#  If set to "yes", phpsh will use rudimentary static analysis and PHP's
+#  get_defined_functions() to try to prevent you from accidentally calling any
+#  undefined function (which is an uncatchable PHP fatal and therefore restarts
+#  your phpsh session).  If set to "no", this check is disabled.  Default is
+#  "yes".
+
+[Debugging]
+
+#Xdebug: /path/to/xdebug.so
+#  Location of xdebug.so, a debugging extension for the Zend
+#  engine. If set to "yes" (without quoutes) phpsh will look for
+#  xdebug.so in the extensions directory reported by php-config. Set
+#  to "no" to disable loading xdebug into php VM. This will disable
+#  all debugging support. Default is "yes".
+
+#DebugClient: emacs
+#  Command to run to start an xdebug client. Default is "emacs", which starts
+#  emacs under X and loads geben xdebug client module.
+
+#ClientTimeout: 60
+#  Number of seconds to wait for debug client to start up and begin listening
+#  for xdebug connections. Default is 60. If set to "none", 0 or a negative
+#  number phpsh will wait until killed.
+
+#ClientHost: localhost
+#  Name of host on which debug client is running. You should not set this
+#  unless you are running your own debug client. Default is localhost.
+
+#ClientPort: 9001
+#  Port on which the debug client listens for xdebug connections. By default
+#  ProxyPort+1 is used. Phpsh always tries to connect to this port on
+#  ClientHost before launching a debug client. If connection is accepted,
+#  phpsh assumes that an externally launched debug client is already running
+#  and does not start its own client.
+
+#ProxyPort: 9000
+#  The port on which the proxy should listen for xdebug connections. If left
+#  unset the proxy will use the lowest available even-numbered port between
+#  9002 and 9998. If DebugClient is also unset or set to "emacs", the proxy
+#  will configure emacs to listen on the next port up.
+
+#X11: yes
+#  If set to "yes", phpsh looks at the value of DISPLAY environment variable 
+#  to determine how it should start debug client, such as Emacs. If DISPLAY 
+#  is set, debug client is started in a separate X window, otherwise it is 
+#  started without X support in the terminal where phpsh is running. If this 
+#  option is set to "no", debug client will always be started in the terminal. 
+#  If set to "require", debug client will not be started unless DISPLAY is set. 
+#  Default is "yes".
+
+#Help: no
+#  This option works only if DebugClient is unset or set to "emacs". If
+#  set to "yes", when emacs starts it will show a help screen for its PHP
+#  debugging mode. If set to "no", a help file will be loaded into an Emacs
+#  buffer but will not be displayed on startup. Default is "no".
+
+#LogDBGp: no
+#  If "yes", debug proxy will log DBGp (xdebug protocol) messages to
+#  file dbgp.log in the current directory. Defaul is "no".
+
+[Emacs]
+
+#  The following options control the appearance of Emacs debug client.
+#  They take effect only if DebugClient option above is set to "emacs" or left
+#  unset.
+
+#ForegroundColor: black
+#  Foreground color of default typeface. Default is black.
+
+#BackgroundColor: white
+#  Background color of default typeface when a debugging session is in
+#  progress. Default is white.
+
+#InactiveColor: grey75
+#  Background color of default typeface when Emacs window is inactive (no
+#  debugging in progress). Default is grey75.
+
+#InactiveMinimize: yes
+#  If set to "yes", minimize (iconify) Emacs window upon completion of
+#  debugging session. Restore (deiconify) window when next session begins.
+#  Default is "yes". On some X servers Emacs fails to deiconify correctly.
+#  If that's the case for you, set this to "no".
+
+#FontFamily: adobe-courier
+#  Font family to use for default Emacs face. If not set, Emacs defaults are
+#  used.
+
+#FontSize: 160
+#  Font size in points for default Emacs face. If unset, Emacs defaults are used.
+
+#XdebugClientPath: /path/to/debugclient
+#  Emacs debug client, geben, uses a simple command-line debug client, aptly
+#  called debugclient, a part of xdebug package. This setting controls
+#  the location that Emacs should use to start debugclient. Default is just
+#  to pass "debugclient" to shell.

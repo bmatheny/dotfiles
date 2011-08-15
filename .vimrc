@@ -23,7 +23,7 @@ set backspace=indent,eol,start
 set wildmenu
 
 " Files to ignore
-set wildignore=*.o,*.lo,*.la,#*#,.*.rej,*.rej,.*~,*~,.#*,*.class,*.swp
+set wildignore=*.o,*.lo,*.la,#*#,.*.rej,*.rej,.*~,*~,.#*,*.class,*.swp,*.jar
 
 " ****************************************************************************
 " Visuals
@@ -155,4 +155,9 @@ syntax on
 filetype plugin indent on
 
 " Use ack instead of grep because ack rocks
-set grepprg=~/bin/ack\ -a
+set grepprg=~/bin/ack\ --column\ --nocolor\ --nogroup
+set grepformat=%f:%l:%c:%m
+
+" Stuff for tabs
+map ,t gt<CR>
+map ,T gT<CR>

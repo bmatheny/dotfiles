@@ -18,7 +18,7 @@ export DISABLE_AUTO_UPDATE="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(brew bundler cap extract gem git github osx rails ruby)
 
-export PATH="/usr/local/bin:/usr/local/Cellar/python/2.7/bin/:/usr/local/mysql/bin:$HOME/bin:$HOME/bin/ec2-api-tools/bin:$PATH:/usr/local/share/python"
+export PATH="/usr/local/bin:$HOME/bin:$HOME/bin/ec2-api-tools/bin:$PATH"
 
 source $ZSH/oh-my-zsh.sh
 
