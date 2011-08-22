@@ -30,4 +30,4 @@
 	url = https://github.com/spf13/PIV.git
 [submodule ".vim/bundle/vim-scala"]
 	path = .vim/bundle/vim-scala
-	url = https://github.com/ewiplayer/vim-scala.git
+	url = https://github.com/bmatheny/vim-scala.git
