@@ -54,6 +54,9 @@ set incsearch
 " Show me a ruler
 set ruler
 
+" Set ruler for show current line/total lines,column percentage
+set rulerformat=%17(%l/%L,%c\ %p%%%)
+
 " Store more history
 set history=1000
 

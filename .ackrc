@@ -4,4 +4,5 @@
 --type-set=html=.htm,.html,.shtml,.xhtml,.tpl,.vm
 --type-set=groovy=.groovy,.grest
 --type-set=haml=.haml
+--type-set=thrift=.thrift
 --ignore-dir=src_managed
