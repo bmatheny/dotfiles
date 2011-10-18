@@ -7,4 +7,5 @@ alias vi=vim
 alias v=vim
 alias diff=colordiff
 
+alias -g ff='ack -g'
 alias -g XS='| grep -v \\.svn'
