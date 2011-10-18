@@ -28,3 +28,6 @@
 [submodule ".vim/bundle/PIV"]
 	path = .vim/bundle/PIV
 	url = https://github.com/spf13/PIV.git
+[submodule ".vim/bundle/vim-scala"]
+	path = .vim/bundle/vim-scala
+	url = git@github.com:bmatheny/vim-scala.git
