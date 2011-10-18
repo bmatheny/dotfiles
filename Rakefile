@@ -11,7 +11,7 @@ $home = ENV['HOME'];
 
 task :install do
 
-  def symlink(f)
+  def symlink_wrapper(f)
     src = "#{$cwd}/#{f}"
     dst = "#{$home}/#{f}"
 
@@ -35,12 +35,12 @@ task :install do
   SYMLINK_DIRS.each do |d|
     dir = "#{d}/*"
     Dir.glob(dir).each do |f|
-      symlink(f)
+      symlink_wrapper(f)
     end
   end
 
   SYMLINK_FILES.each do |f|
-    symlink(f)
+    symlink_wrapper(f)
   end
 
   MERGE_FILES.each do |sources,dest|
