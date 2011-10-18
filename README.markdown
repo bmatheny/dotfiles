@@ -49,9 +49,7 @@ wget --no-check-certificate -q -O $TMP_FILE http://github.com/bmatheny/dotfiles/
 cd src
 tar -xzf ${TMP_FILE}
 cd bmatheny-dot*
-cd .oh-my-zsh
-wget --no-check-certificate -q -O oh-my-zsh.tar.gz http://github.com/bmatheny/oh-my-zsh/tarball/master
-tar --strip-components 1 -xzf oh-my-zsh.tar.gz
+git submodule update --init --recursive
 cd $HOME
 rm -f ${TMP_FILE}
 
@@ -64,5 +62,6 @@ echo "chsh -s /bin/zsh"
 echo ""
 
 echo "# Install home dir files"
-echo "cd src/bmathen-dotfiles* && rake install"
+echo "cd src/bmatheny-dotfiles* && rake install"
+echo "gem install jekyll RedCloth redcarpet jeweler github-markup"
 </code></pre>
