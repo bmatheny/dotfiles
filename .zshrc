@@ -19,7 +19,7 @@ export DISABLE_AUTO_UPDATE="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew git github osx)
+plugins=(brew git github osx ssh-agent)
 
 export PATH="/usr/local/bin:$HOME/bin:$HOME/bin/ec2-api-tools/bin:$PATH"
 
@@ -29,5 +29,6 @@ source $ZSH/oh-my-zsh.sh
 if [ -f ~/.zshrc.private ]; then
 	source ~/.zshrc.private
 fi
+zstyle :omz:plugins:ssh-agent id_rsa id_dsa
 
 export PDSH_SSH_ARGS_APPEND="-t -t"
