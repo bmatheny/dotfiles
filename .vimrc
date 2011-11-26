@@ -147,6 +147,10 @@ map <F8> :set tw=30000<cr>
 map <Leader>pm :Hammer<CR>
 map <Leader>dm :!rm -f /tmp/%.html<CR>
 
+" Tagbar Bindings
+map <Leader>b :TagbarToggle<CR>
+set tags=./tags,tags,~/src/tags/commontags
+
 " Custom key bindings for command-t
 let g:CommandTAcceptSelectionMap=[]
 let g:CommandTAcceptSelectionSplitMap=['<C-CR>','<CR>']

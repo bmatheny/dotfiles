@@ -88,4 +88,10 @@ task :install do
     File.open(d_file, 'w') { |f| f.write(final_s) }
   end # End MERGE_FILES
 
+  `./updateSubmodules.sh`
+  ctags_dst = "#{$home}/.ctags"
+  if !File.exists?(ctags_dst) then
+    File.symlink("#{$cwd}/.vim/bundle/vim-scala/ctags", "#{$home}/.ctags")
+  end
+
 end

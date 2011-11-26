@@ -14,3 +14,4 @@ src/phpsh/*.pyc
 .ssh/mobocracy.pem
 .ssh/mobocracy.x509.pem
 .ssh/mobocracy.x509.pk.pem
+*.swp
