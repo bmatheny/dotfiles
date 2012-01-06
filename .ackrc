@@ -5,4 +5,5 @@
 --type-set=groovy=.groovy,.grest
 --type-set=haml=.haml
 --type-set=thrift=.thrift
+--type-set=sbt=.sbt
 --ignore-dir=src_managed
