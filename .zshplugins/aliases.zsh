@@ -11,4 +11,4 @@ alias diff=colordiff
 alias tmux='tmux -2'
 
 alias -g ff='ack -g'
-alias -g XS='| egrep -v \\.svn\|\\.class$'
+alias -g XS='| egrep -v \\.svn\|\\.class$\|\\.git'
