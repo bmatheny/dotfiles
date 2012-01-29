@@ -9,6 +9,7 @@ if filereadable(".NERDTreeBookmarks")
 	let NERDTreeBookmarksFile=".NERDTreeBookmarks"
 endif
 let PHP_outdentphpescape=0
+let g:NERDTreeDirArrows=0
 
 " Enable pathogen for easy plugin handling
 runtime! autoload/pathogen.vim
