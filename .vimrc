@@ -89,7 +89,7 @@ au FileType smarty		set tw=500 colorcolumn=500
 au FileType xml			set ai tw=3000
 au FileType mkd			set ai formatoptions=tcroqn2 comments=n:>
 au FileType cucumber		set ai tw=120 ts=2
-au FileType ruby		set shiftwidth=2 softtabstop=2
+au FileType ruby		set shiftwidth=2 softtabstop=2 tabstop=2 ai expandtab smarttab
 
 function JSLint()
 	let s:home_dir = expand("~/")
