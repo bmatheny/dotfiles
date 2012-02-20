@@ -4,6 +4,7 @@ SYMLINK_FILES = %w{.vim .ackrc .dir_colors .screen.development .screenrc .vimrc 
 SYMLINK_DIRS = %w{bin src .ssh}
 MERGE_FILES = {
   ['.gitconfig','.gitconfig.private'] => '.gitconfig',
+  ['.ssh_config','.ssh_config.private'] => '.ssh/config'
 }
 
 $cwd = File.dirname(__FILE__)

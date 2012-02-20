@@ -5,6 +5,7 @@ src/phpsh/*.pyc
 .vim/mytags/
 .vim/.netrwhist
 .gitconfig.private
+.ssh_config.private
 .ssh/compendium.rsa
 .ssh/compendium.x509.pem
 .ssh/compendium.x509.pk.pem

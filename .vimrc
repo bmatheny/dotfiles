@@ -9,6 +9,7 @@ if filereadable(".NERDTreeBookmarks")
 	let NERDTreeBookmarksFile=".NERDTreeBookmarks"
 endif
 let PHP_outdentphpescape=0
+let g:NERDTreeDirArrows=0
 
 " Enable pathogen for easy plugin handling
 runtime! autoload/pathogen.vim
@@ -75,6 +76,8 @@ autocmd BufNewFile *.pl 0r ~/src/templates/skeleton.pl
 " Set file types for uncommon extensions
 au BufRead,BufNewFile *.sc setfiletype scheme
 au BufRead,BufnewFile *.ejs setfiletype erb
+au BufRead,BufNewFile Capfile setfiletype ruby
+au BufRead,BufNewFile Gemfile setfiletype ruby
 
 " Language Specific Options
 au FileType c			set cindent
