@@ -25,9 +25,6 @@
 [submodule ".vim/bundle/PIV"]
 	path = .vim/bundle/PIV
 	url = https://github.com/spf13/PIV.git
-[submodule ".vim/bundle/vim-scala"]
-	path = .vim/bundle/vim-scala
-	url = git@github.com:bmatheny/vim-scala.git
 [submodule ".oh-my-zsh"]
 	path = .oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
