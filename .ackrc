@@ -6,4 +6,5 @@
 --type-set=haml=.haml
 --type-set=thrift=.thrift
 --type-set=sbt=.sbt
+--type-set=puppet=.pp
 --ignore-dir=src_managed
