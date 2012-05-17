@@ -34,3 +34,6 @@
 [submodule ".vim/bundle/vim-scala"]
 	path = .vim/bundle/vim-scala
 	url = https://github.com/derekwyatt/vim-scala.git
+[submodule ".vim/bundle/vim-treetop"]
+	path = .vim/bundle/vim-treetop
+	url = https://github.com/nanki/treetop.vim.git
