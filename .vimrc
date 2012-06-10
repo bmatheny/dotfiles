@@ -9,12 +9,13 @@ if filereadable(".NERDTreeBookmarks")
 	let NERDTreeBookmarksFile=".NERDTreeBookmarks"
 endif
 let PHP_outdentphpescape=0
-let g:NERDTreeDirArrows=0
 
 " Enable pathogen for easy plugin handling
 runtime! autoload/pathogen.vim
 silent! call pathogen#helptags()
 silent! call pathogen#runtime_append_all_bundles()
+
+let g:Powerline_colorscheme='skwp'
 
 " By default ignore the case of searches
 set ignorecase
