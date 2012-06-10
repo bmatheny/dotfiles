@@ -34,3 +34,6 @@
 [submodule ".vim/bundle/vim-treetop"]
 	path = .vim/bundle/vim-treetop
 	url = https://github.com/nanki/treetop.vim.git
+[submodule ".vim/bundle/hammer"]
+	path = .vim/bundle/hammer
+	url = https://github.com/matthias-guenther/hammer.vim
