@@ -20,12 +20,13 @@ plugins=(brew git github osx ssh-agent)
 
 export PATH="/usr/local/bin:$HOME/bin:$HOME/bin/ec2-api-tools/bin:$PATH"
 
-source $ZSH/oh-my-zsh.sh
-
 # Customize to your needs...
 if [ -f ~/.zshrc.private ]; then
 	source ~/.zshrc.private
 fi
+
+source $ZSH/oh-my-zsh.sh
+
 zstyle :omz:plugins:ssh-agent id_rsa id_dsa
 
 export PDSH_SSH_ARGS_APPEND="-t -t"

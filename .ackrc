@@ -4,6 +4,7 @@
 --type-set=html=.htm,.html,.shtml,.xhtml,.tpl,.vm
 --type-set=groovy=.groovy,.grest
 --type-set=haml=.haml
+--type-set=thor=.thor
 --type-set=thrift=.thrift
 --type-set=sbt=.sbt
 --type-set=puppet=.pp

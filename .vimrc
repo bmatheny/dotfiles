@@ -29,7 +29,7 @@ set backspace=indent,eol,start
 set wildmenu
 
 " Files to ignore
-set wildignore=*.o,*.lo,*.la,#*#,.*.rej,*.rej,.*~,*~,.#*,*.class,*.swp,*.jar
+set wildignore=*.o,*.lo,*.la,#*#,.*.rej,*.rej,.*~,*~,.#*,*.class,*.swp,*.jar,*.gem
 
 " ****************************************************************************
 " Visuals
@@ -78,6 +78,7 @@ au BufRead,BufNewFile *.sc setfiletype scheme
 au BufRead,BufnewFile *.ejs setfiletype erb
 au BufRead,BufNewFile Capfile setfiletype ruby
 au BufRead,BufNewFile Gemfile setfiletype ruby
+au BufRead,BufNewFile *.thor setfiletype ruby
 
 " Language Specific Options
 au FileType c			set cindent
@@ -90,6 +91,7 @@ au FileType xml			set ai tw=3000
 au FileType mkd			set ai formatoptions=tcroqn2 comments=n:>
 au FileType cucumber		set ai tw=120 ts=2
 au FileType ruby		set shiftwidth=2 softtabstop=2 tabstop=2 ai expandtab smarttab
+au FileType treetop		set shiftwidth=2 softtabstop=2 tabstop=2 ai expandtab smarttab
 au FileType puppet		set shiftwidth=2 softtabstop=2 tabstop=2 ai expandtab smarttab
 
 function JSLint()
