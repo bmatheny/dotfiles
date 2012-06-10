@@ -19,9 +19,6 @@
 [submodule ".vim/bundle/nerdtree"]
 	path = .vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule ".vim/bundle/hammer"]
-	path = .vim/bundle/hammer
-	url = https://github.com/matthias-guenther/hammer.vim
 [submodule ".vim/bundle/PIV"]
 	path = .vim/bundle/PIV
 	url = https://github.com/spf13/PIV.git

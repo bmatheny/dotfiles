@@ -22,11 +22,11 @@ task :install do
       print "Error symlinking. #{dst} already exists and isn't linked to #{src}. (A)bort, (C)ontinue?"
       response = STDIN.gets
       if response =~ /^c.*/i
-	puts "Continuing..."
-	return
+        puts "Continuing..."
+        return
       else
-	puts "Exiting"
-	exit
+        puts "Exiting"
+        exit
       end
     elsif !File.exists?(dst)
       File.symlink(src, dst)
@@ -49,8 +49,8 @@ task :install do
     sources.each do |source|
       s_file = "#{$cwd}/#{source}"
       if not File.exists?(s_file) or not File.readable?(s_file) then
-	puts "Could not find source file #{s_file} or file not readable"
-	next
+        puts "Could not find source file #{s_file} or file not readable"
+        next
       end
       final_s << File.open(s_file).read()
     end
@@ -75,14 +75,14 @@ task :install do
       response = STDIN.gets
       case response
       when /^u.*/i then
-	puts "Unlinking #{d_file}"
-	File.unlink(d_file)
+        puts "Unlinking #{d_file}"
+        File.unlink(d_file)
       when /^p.*/i then
-	preview = true
-	puts File.open(d_file).read() + "\n\n"
+        preview = true
+        puts File.open(d_file).read() + "\n\n"
       else
-	puts "Skipping #{d_file}"
-	next
+        puts "Skipping #{d_file}"
+        next
       end
     end
     puts "Writing to #{d_file}"
