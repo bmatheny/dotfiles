@@ -69,6 +69,7 @@ task :install do
     end
 
     preview = true
+    skip = false
     while File.exists?(d_file) and preview
       preview = false
       print "Destination file #{d_file} already exists. (P)review, (S)kip, (U)nlink? "
@@ -82,11 +83,13 @@ task :install do
         puts File.open(d_file).read() + "\n\n"
       else
         puts "Skipping #{d_file}"
-        next
+        skip = true
       end
     end
-    puts "Writing to #{d_file}"
-    File.open(d_file, 'w') { |f| f.write(final_s) }
+    if not skip then
+      puts "Writing to #{d_file}"
+      File.open(d_file, 'w') { |f| f.write(final_s) }
+    end
   end # End MERGE_FILES
 
   `./updateSubmodules.sh`
