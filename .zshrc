@@ -6,7 +6,7 @@ export ZSH=$HOME/.oh-my-zsh
 
 # Set to the name theme to load.
 # Look in ~/.oh-my-zsh/themes/
-export ZSH_THEME="candy"
+export ZSH_THEME="blinks"
 
 # Set to this to use case-sensitive completion
 export CASE_SENSITIVE="true"
@@ -30,3 +30,5 @@ source $ZSH/oh-my-zsh.sh
 zstyle :omz:plugins:ssh-agent id_rsa id_dsa
 
 export PDSH_SSH_ARGS_APPEND="-t -t"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
