@@ -15,8 +15,6 @@ runtime! autoload/pathogen.vim
 silent! call pathogen#helptags()
 silent! call pathogen#runtime_append_all_bundles()
 
-let g:Powerline_colorscheme='skwp'
-
 " By default ignore the case of searches
 set ignorecase
 
@@ -167,6 +165,8 @@ let g:solarized_termcolors=16
 set background=dark
 colorscheme solarized
 syn sync fromstart
+
+let g:Powerline_colorscheme='skwp'
 
 syntax on
 filetype plugin indent on
