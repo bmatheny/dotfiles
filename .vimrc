@@ -34,10 +34,10 @@ set wildignore=*.o,*.lo,*.la,#*#,.*.rej,*.rej,.*~,*~,.#*,*.class,*.swp,*.jar,*.g
 " Visuals
 " ****************************************************************************
 " Show visually what is being done
-set	showcmd
+set showcmd
 
 " Highlight our search
-set	hlsearch
+set hlsearch
 
 " Show matching brace
 set showmatch
@@ -72,6 +72,11 @@ set formatoptions=tcro
 autocmd BufNewFile *.pl 0r ~/src/templates/skeleton.pl
 "autocmd BufNewFile *.php 0r ~/src/templates/skeleton.php
 
+" Open NERDTree by default
+autocmd VimEnter * NERDTree
+autocmd BufEnter * NERDTreeMirror
+autocmd VimEnter * wincmd w
+
 " Set file types for uncommon extensions
 au BufRead,BufNewFile *.sc setfiletype scheme
 au BufRead,BufnewFile *.ejs setfiletype erb
@@ -81,6 +86,7 @@ au BufRead,BufNewFile *.thor setfiletype ruby
 
 " Language Specific Options
 au FileType c			set cindent
+au FileType zsh                 set si et sw=2 st=2 tw=120
 au FileType scala		set si et sw=2 st=2 tw=100
 au FileType javascript		set ai cindent tw=3000
 au FileType perl		set cindent
@@ -167,6 +173,8 @@ colorscheme solarized
 syn sync fromstart
 
 let g:Powerline_colorscheme='skwp'
+let g:Powerline_symbols='fancy'
+let laststatus=2
 
 syntax on
 filetype plugin indent on
@@ -175,6 +183,11 @@ filetype plugin indent on
 set grepprg=~/bin/ack\ --column\ --nocolor\ --nogroup
 set grepformat=%f:%l:%c:%m
 
+" Lusty options
+set hidden
+
 " Stuff for tabs
-map ,t gt<CR>
-map ,T gT<CR>
+map <Leader>T gt<CR>
+
+" , is easier to type than \
+let mapleader=","
