@@ -85,19 +85,19 @@ au BufRead,BufNewFile Gemfile setfiletype ruby
 au BufRead,BufNewFile *.thor setfiletype ruby
 
 " Language Specific Options
-au FileType c			set cindent
-au FileType zsh                 set si et sw=2 st=2 tw=120
-au FileType scala		set si et sw=2 st=2 tw=100
-au FileType javascript		set ai cindent tw=3000
-au FileType perl		set cindent
-au FileType cpp			set cindent
-au FileType smarty		set tw=500 colorcolumn=500
-au FileType xml			set ai tw=3000
-au FileType mkd			set ai formatoptions=tcroqn2 comments=n:>
-au FileType cucumber		set ai tw=120 ts=2
-au FileType ruby		set shiftwidth=2 softtabstop=2 tabstop=2 ai expandtab smarttab
-au FileType treetop		set shiftwidth=2 softtabstop=2 tabstop=2 ai expandtab smarttab
-au FileType puppet		set shiftwidth=2 softtabstop=2 tabstop=2 ai expandtab smarttab
+au FileType c		set cindent
+au FileType zsh         set si et sw=2 st=2 tw=120
+au FileType scala	set si et sw=2 st=2 tw=100
+au FileType javascript	set ai cindent tw=3000
+au FileType perl	set cindent
+au FileType cpp		set cindent
+au FileType smarty	set tw=500 colorcolumn=500
+au FileType xml		set ai tw=3000
+au FileType mkd		set ai formatoptions=tcroqn2 comments=n:>
+au FileType cucumber	set ai tw=120 ts=2
+au FileType ruby	set tw=100 shiftwidth=2 softtabstop=2 tabstop=2 ai expandtab smarttab
+au FileType treetop	set shiftwidth=2 softtabstop=2 tabstop=2 ai expandtab smarttab
+au FileType puppet	set shiftwidth=2 softtabstop=2 tabstop=2 ai expandtab smarttab
 
 function JSLint()
 	let s:home_dir = expand("~/")
@@ -171,6 +171,7 @@ let g:solarized_termcolors=16
 set background=dark
 colorscheme solarized
 syn sync fromstart
+set cursorline
 
 let g:Powerline_colorscheme='skwp'
 let g:Powerline_symbols='fancy'

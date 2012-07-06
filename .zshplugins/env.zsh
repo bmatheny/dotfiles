@@ -22,6 +22,9 @@ export HOST=`hostname`
 # Be sure to use SSH when connecting to repository
 export CVS_RSH='ssh'
 
+# Boo.... http://git.661346.n2.nabble.com/quot-git-pull-quot-doesn-t-know-quot-edit-quot-td7276525.html
+export GIT_MERGE_AUTOEDIT=no
+
 # Because UTF-8 is all the rage
 for lc in LANG LC_CTYPE LC_NUMERIC LC_TIME	\
 	  LC_COLLATE LC_MONETARY LC_MESSAGES	\
