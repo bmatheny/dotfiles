@@ -5,6 +5,9 @@
 " ****************************************************************************
 set nocompatible
 
+" , is easier to type than \
+let mapleader=","
+
 if filereadable(".NERDTreeBookmarks")
 	let NERDTreeBookmarksFile=".NERDTreeBookmarks"
 endif
@@ -157,7 +160,7 @@ map <Leader>pm :Hammer<CR>
 map <Leader>dm :!rm -f /tmp/%.html<CR>
 
 " Tagbar Bindings
-map <Leader>b :TagbarToggle<CR>
+map <Leader>B :TagbarToggle<CR>
 set tags=./tags,tags,~/src/tags/commontags
 
 " Custom key bindings for command-t
@@ -189,6 +192,3 @@ set hidden
 
 " Stuff for tabs
 map <Leader>T gt<CR>
-
-" , is easier to type than \
-let mapleader=","
