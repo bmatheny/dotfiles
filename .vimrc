@@ -28,7 +28,6 @@ set scrolloff=8                " Start scrolling when 8 lines away from margins
 syn sync fromstart             " Sync whole file
 
 
-
 " ========== Search Settings ==========
 
 set hlsearch           " Highlight searches by default
