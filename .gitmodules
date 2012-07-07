@@ -43,3 +43,6 @@
 [submodule ".vim/bundle/vim-ack"]
 	path = .vim/bundle/vim-ack
 	url = https://github.com/mileszs/ack.vim.git
+[submodule ".vim/bundle/vim-easytags"]
+	path = .vim/bundle/vim-easytags
+	url = https://github.com/xolox/vim-easytags.git
