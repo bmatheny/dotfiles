@@ -1,68 +1,85 @@
-" Blake Matheny vimrc $Revision$
+" Blake Matheny vimrc
 
-" ****************************************************************************
-" General Settings
-" ****************************************************************************
+" ========== First Settings ==========
+" These are settings that should be first, so that when pathogen loads plugins they are respected
 set nocompatible
+let mapleader="," " , is just easier to type than \
 
-" , is easier to type than \
-let mapleader=","
-
+" This must be set before nerdtree is loaded. Allows you to specify per directory bookmarks
 if filereadable(".NERDTreeBookmarks")
 	let NERDTreeBookmarksFile=".NERDTreeBookmarks"
 endif
-let PHP_outdentphpescape=0
 
-" Enable pathogen for easy plugin handling
-runtime! autoload/pathogen.vim
-silent! call pathogen#helptags()
-silent! call pathogen#runtime_append_all_bundles()
+" ========== Pathogen Initialization ==========
+" https://github.com/tpope/vim-pathogen/
+call pathogen#infect()   " Load all plugins in ~/.vim/bundle
+call pathogen#helptags() " Invoke :helptags on all non-$VIM doc directories in runtime path
 
-" By default ignore the case of searches
-set ignorecase
+" ========== General Configuration ==========
 
-" Default the textwidth to 78
-set tw=78
+set autoread                   " Reload files changed outside vim
+set backspace=indent,eol,start " Allow backspace in indent mode
+set hidden                     " Allow buffers to exist in the background
+set history=1000               " More history for :cmdline
+set showcmd                    " Show incomplete commands at the bottom
+set visualbell                 " Tell me when I mess up
+syntax on                      " Turn on syntax highlighting
+set scrolloff=8                " Start scrolling when 8 lines away from margins
 
-" How to operate in insert mode for BS
-set backspace=indent,eol,start
 
-" Enhanced command-line completion
-set wildmenu
+" ========== Search Settings ==========
 
-" Files to ignore
-set wildignore=*.o,*.lo,*.la,#*#,.*.rej,*.rej,.*~,*~,.#*,*.class,*.swp,*.jar,*.gem
+set hlsearch           " Highlight searches by default
+set incsearch          " Find the next match as we type the search
+set viminfo='100,f1    " Save up to 100 marks, enable capital marks
+set ignorecase         " Case insensitive *-style searches
+set smartcase          " Case sensitive / search if there is a capital letter
 
-" ****************************************************************************
-" Visuals
-" ****************************************************************************
-" Show visually what is being done
-set showcmd
 
-" Highlight our search
-set hlsearch
+" ========== Indentation Settings ==========
 
-" Show matching brace
-set showmatch
+set autoindent
+set smartindent
+set smarttab
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+set expandtab
+set textwidth=78
 
-" Show me when I mess up
-set visualbell
+filetype plugin on
+filetype indent on
 
-" Let me know I'm doing something
-set showmode
 
-" Show me how my search is doing
-set incsearch
+" ========== Completion ==========
 
-" Show me a ruler
-set ruler
+set wildmode=list:longest
+set wildmenu                " enable ctrl-n/ctrl-p to scroll through matches
+set wildignore=*.o,*.obj,*~ " stuff to ignore automatically
+set wildignore+=*.lo,*.la,*.class,*.jar,*.gem
+set wildignore+=*.rej,.*.rej
+set wildignore+=*.png,*.jpg,*.gif,*DS_Store*
+set wildignore=*.swp
 
-" Set ruler for show current line/total lines,column percentage
-set rulerformat=%17(%l/%L,%c\ %p%%%)
 
-" Store more history
-set history=1000
+" ========== Swap/Undo File Settings ==========
 
+set backupdir=~/.vim-swap,~/.tmp,~/tmp,/var/tmp,/tmp " Use ~/.vim-swap
+set directory=~/.vim-swap,~/.tmp,~/tmp,/var/tmp,/tmp " Use ~/.vim-swap
+set undodir=~/.vim-undo                              " Use ~/.vim-undo
+set undofile                                         " Use it
+
+" ========== Visuals ==========
+
+set showmatch                        " Show matching brace
+set showmode                         " Good if vim-powerline not installed
+set ruler                            " Good if vim-powerline not installed
+set rulerformat=%17(%l/%L,%c\ %p%%%) " Good if vim-powerline not installed
+
+
+for f in split(glob('~/.vim/plugin/settings/*.vim'), '\n')
+  exe 'source' f
+endfor
 
 " ****************************************************************************
 " Software Development
@@ -75,10 +92,6 @@ set formatoptions=tcro
 autocmd BufNewFile *.pl 0r ~/src/templates/skeleton.pl
 "autocmd BufNewFile *.php 0r ~/src/templates/skeleton.php
 
-" Open NERDTree by default
-autocmd VimEnter * NERDTree
-autocmd BufEnter * NERDTreeMirror
-autocmd VimEnter * wincmd w
 
 " Set file types for uncommon extensions
 au BufRead,BufNewFile *.sc setfiletype scheme
@@ -101,20 +114,6 @@ au FileType cucumber	set ai tw=120 ts=2
 au FileType ruby	set tw=100 shiftwidth=2 softtabstop=2 tabstop=2 ai expandtab smarttab
 au FileType treetop	set shiftwidth=2 softtabstop=2 tabstop=2 ai expandtab smarttab
 au FileType puppet	set shiftwidth=2 softtabstop=2 tabstop=2 ai expandtab smarttab
-
-function JSLint()
-	let s:home_dir = expand("~/")
-	let s:file_name = expand("%:p")
-	let s:js_sh = s:home_dir . 'bin/js.sh'
-	let s:js_run = s:home_dir . 'src/js/runjslint.js'
-	let s:cmd = s:js_sh . ' ' . s:js_run . " \"`cat " . s:file_name . "`\""
-  	botright new
-    	setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
-        call setline(1, 'Ran ' . s:cmd)
-	execute '$read !'. s:cmd
-	setlocal nomodifiable
-endfunction
-command -nargs=0 JSLint call JSLint()
 
 " Some abbreviations
 ab #d #define
@@ -155,12 +154,6 @@ set pastetoggle=<F7>
 " When you're stuck in long line hell
 map <F8> :set tw=30000<cr>
 
-" Preview markdown, delete markdown
-map <Leader>pm :Hammer<CR>
-map <Leader>dm :!rm -f /tmp/%.html<CR>
-
-" Tagbar Bindings
-map <Leader>B :TagbarToggle<CR>
 set tags=./tags,tags,~/src/tags/commontags
 
 " Custom key bindings for command-t
@@ -170,25 +163,11 @@ let g:CommandTAcceptSelectionSplitMap=['<C-CR>','<CR>']
 " ****************************************************************************
 " Custom Colors
 " ****************************************************************************
-let g:solarized_termcolors=16
-set background=dark
-colorscheme solarized
-syn sync fromstart
 set cursorline
+syn sync fromstart
 
-let g:Powerline_colorscheme='skwp'
-let g:Powerline_symbols='fancy'
 let laststatus=2
-
-syntax on
-filetype plugin indent on
 
 " Use ack instead of grep because ack rocks
 set grepprg=~/bin/ack\ --column\ --nocolor\ --nogroup
 set grepformat=%f:%l:%c:%m
-
-" Lusty options
-set hidden
-
-" Stuff for tabs
-map <Leader>T gt<CR>

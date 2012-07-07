@@ -5,7 +5,8 @@ alias lsize='ls --color=always -sh'
 alias more='less'
 
 # vim stuff
-#alias vim="vim -o $@"
+alias vim="vim -o $@"
+alias vtree="vim +NERDTree"
 alias vi=vim
 alias v="f -t -e vim"
 
