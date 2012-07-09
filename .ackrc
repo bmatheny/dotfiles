@@ -1,6 +1,9 @@
 --sort-files
 --group
+--smart-case
 --color
+--color-filename=red
+--color-lineno=white
 --type-set=html=.htm,.html,.shtml,.xhtml,.tpl,.vm
 --type-set=groovy=.groovy,.grest
 --type-set=haml=.haml
@@ -9,3 +12,6 @@
 --type-set=sbt=.sbt
 --type-set=puppet=.pp
 --ignore-dir=src_managed
+--nohtml
+--nocss
+--nojs

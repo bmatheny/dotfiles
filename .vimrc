@@ -69,6 +69,7 @@ set backupdir=~/.vim-swap,~/.tmp,~/tmp,/var/tmp,/tmp " Use ~/.vim-swap
 set directory=~/.vim-swap,~/.tmp,~/tmp,/var/tmp,/tmp " Use ~/.vim-swap
 set undodir=~/.vim-undo                              " Use ~/.vim-undo
 set undofile                                         " Use it
+set updatetime=60000                                 " Write to swap every 60s
 
 " ========== Visuals ==========
 

@@ -1,4 +1,5 @@
 setlocal textwidth=100
+setlocal formatoptions=tcroq
 let g:tagbar_type_scala = {
     \ 'ctagstype' : 'Scala',
     \ 'kinds'     : [
