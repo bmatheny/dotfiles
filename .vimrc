@@ -25,6 +25,7 @@ set showcmd                    " Show incomplete commands at the bottom
 set visualbell                 " Tell me when I mess up
 syntax on                      " Turn on syntax highlighting
 set scrolloff=8                " Start scrolling when 8 lines away from margins
+set scrolljump=5               " Scroll 5 lines at a time
 syn sync fromstart             " Sync whole file
 
 
@@ -50,7 +51,9 @@ set textwidth=80
 
 filetype plugin on
 filetype indent on
-
+" matchit requires that plugin be on before it's loaded, and should be loaded
+" before we pull in any language plugins
+runtime macros/matchit.vim
 
 " ========== Completion ==========
 
