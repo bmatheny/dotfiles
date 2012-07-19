@@ -1,4 +1,4 @@
-if [[ -f $HOME/.fasd ]]; then
+if [ $commands[fasd] ]; then
   eval "$(fasd --init auto)"
   # jump to recently used items
   alias a='fasd -a' # any
