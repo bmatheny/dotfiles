@@ -4,7 +4,10 @@
 BASE=$PWD;
 
 function current_branch () {
-  ref=$(git symbolic-ref HEAD 2> /dev/null)  || return
+  ref=$(git symbolic-ref HEAD 2> /dev/null)
+  if [ -z "${ref}" ]; then
+    ref="refs/heads/master"
+  fi
   echo ${ref#refs/heads/}
 }
 
