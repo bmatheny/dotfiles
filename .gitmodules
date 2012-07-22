@@ -46,3 +46,6 @@
 [submodule ".vim/bundle/vim-easytags"]
 	path = .vim/bundle/vim-easytags
 	url = https://github.com/xolox/vim-easytags.git
+[submodule "src/phpsh"]
+	path = src/phpsh
+	url = https://github.com/facebook/phpsh.git
