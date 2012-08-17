@@ -12,6 +12,6 @@
 --type-set=sbt=.sbt
 --type-set=puppet=.pp
 --ignore-dir=src_managed
---nohtml
---nocss
---nojs
+--type=nohtml
+--type=nocss
+--type=nojs
