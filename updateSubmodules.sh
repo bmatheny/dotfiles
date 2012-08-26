@@ -11,14 +11,12 @@ function current_branch () {
   echo ${ref#refs/heads/}
 }
 
-for gitdir in `find . -name .git|grep -v command-t|sed 's/.git//g'`; do
+submodules=$(git submodule status --recursive|awk '{print $2}'|grep -v command-t)
+for gitdir in $submodules; do
 	BASEGIT=`basename $gitdir`
-	if [ "$BASEGIT" == "." ]; then
-		echo "Skipping $BASEGIT";
-	else
-		echo "Evaluating $BASEGIT";
-		cd $gitdir;
-    git pull origin $(current_branch);
-		cd $BASE;
-	fi
+	cd $gitdir;
+  echo "Evaluating $BASEGIT in $(current_branch)";
+  git checkout $(current_branch);
+  git pull
+	cd $BASE;
 done

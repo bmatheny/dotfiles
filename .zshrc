@@ -27,7 +27,7 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 
-zstyle :omz:plugins:ssh-agent id_rsa id_dsa
+zstyle :omz:plugins:ssh-agent id_rsa
 
 export PDSH_SSH_ARGS_APPEND="-t -t"
 
