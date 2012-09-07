@@ -20,5 +20,10 @@ nmap <silent> md <C-]>
 " Move back
 nmap <silent> mb <C-T>
 
+" Move to next tab
+nmap <silent> tn :tabnext<CR>
+" Move to previous tab
+nmap <silent> tp :tabprevious<CR>
+
 " ack search for the word under the cursor using the current filetype as an argument to ack
 execute "map <silent> <Leader>aw :Ack --" . &ft . " <cword><CR>"
