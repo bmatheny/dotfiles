@@ -11,7 +11,7 @@ function current_branch () {
   echo ${ref#refs/heads/}
 }
 
-submodules=$(git submodule status --recursive|awk '{print $2}'|grep -v command-t)
+submodules=$(git submodule status --recursive|awk '{print $2}')
 for gitdir in $submodules; do
 	BASEGIT=`basename $gitdir`
 	cd $gitdir;

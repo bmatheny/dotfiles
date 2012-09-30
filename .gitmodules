@@ -46,3 +46,6 @@
 [submodule "src/phpsh"]
 	path = src/phpsh
 	url = https://github.com/facebook/phpsh.git
+[submodule ".vim/bundle/command-t"]
+	path = .vim/bundle/command-t
+	url = https://github.com/wincent/Command-T.git
