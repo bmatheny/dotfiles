@@ -5,7 +5,7 @@
 export WORKSPACE=~/src/workspace
 
 # List of suffixes to ignore when performing filename completion
-export FIGNORE=".svn:.o:~"
+export FIGNORE=".svn:.o:~:.class"
 
 # Needed for our custom version of 'less'
 export MYVIMDIR="$HOME/.vim/"
@@ -21,6 +21,9 @@ export HOST=`hostname`
 
 # Be sure to use SSH when connecting to repository
 export CVS_RSH='ssh'
+
+# Force pseudo-tty allocation when using SSH with pdsh
+export PDSH_SSH_ARGS_APPEND="-t -t"
 
 # Boo.... http://git.661346.n2.nabble.com/quot-git-pull-quot-doesn-t-know-quot-edit-quot-td7276525.html
 export GIT_MERGE_AUTOEDIT=no

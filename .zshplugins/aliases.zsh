@@ -1,7 +1,7 @@
 alias l='ls --color'
 alias lsize='ls --color=always -sh'
 
-# more is less
+# less is more
 alias more='less'
 
 # vim stuff
