@@ -18,8 +18,9 @@ task :install do
 
     puts "symlink(\"#{src}\", \"#{dst}\")"
 
-    Dir.mkdir(File.absolute_path("~/.vim-undo"))
-    Dir.mkdir(File.absolute_path("~/.vim-swap"))
+    ["~/.vim-undo","~/.vim-swap"].map{|d| File.expand_path(d)}.each do |dir|
+      Dir.mkdir(dir) unless File.exists?(dir)
+    end
 
     if File.exists?(dst) && Pathname.new(dst).realpath.to_s != src
       print "Error symlinking. #{dst} already exists and isn't linked to #{src}. (A)bort, (C)ontinue?"
