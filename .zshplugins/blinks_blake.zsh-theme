@@ -8,19 +8,18 @@ function _prompt_char() {
   fi
 }
 
-# Grab the current version of ruby in use (via RVM): [ruby-1.8.7]
-if which rvm-prompt &> /dev/null; then
-  ZSH_THEME_CURRENT_RUBY_=" [%{%B%F{magenta}%}$(~/.rvm/bin/rvm-prompt i v)${%B%F{green}%}]"
-else
-  if which rbenv &> /dev/null; then
-    ZSH_THEME_CURRENT_RUBY_=" [%{%B%F{magenta}%}ruby@$(rbenv version-name)%{%B%F{green}%}]"
-  fi
-fi
-if [ -z "$ZSH_THEME_CURRENT_RUBY_" ]; then
-  ZSH_THEME_CURRENT_RUBY_=""
-fi
-
 function _current_ruby_prompt() {
+  # Grab the current version of ruby in use (via RVM): [ruby-1.8.7]
+  if which rvm-prompt &> /dev/null; then
+    ZSH_THEME_CURRENT_RUBY_=" [%{%B%F{magenta}%}$(~/.rvm/bin/rvm-prompt i v)${%B%F{green}%}]"
+  else
+    if which rbenv &> /dev/null; then
+      ZSH_THEME_CURRENT_RUBY_=" [%{%B%F{magenta}%}ruby@$(rbenv version-name)%{%B%F{green}%}]"
+    fi
+  fi
+  if [ -z "$ZSH_THEME_CURRENT_RUBY_" ]; then
+    ZSH_THEME_CURRENT_RUBY_=""
+  fi
   echo "$ZSH_THEME_CURRENT_RUBY_"
 }
 

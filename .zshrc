@@ -27,4 +27,4 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 
-zstyle :omz:plugins:ssh-agent id_rsa
+zstyle :omz:plugins:ssh-agent github_rsa id_rsa
