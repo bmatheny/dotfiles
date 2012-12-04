@@ -54,4 +54,4 @@
 	ss = stash save
 [core]
 	editor = vim
-	excludesfile = /Users/bmatheny/.gitglobalignore
+	excludesfile = ~/.gitglobalignore
