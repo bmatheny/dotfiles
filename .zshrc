@@ -18,7 +18,7 @@ export DISABLE_AUTO_UPDATE="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(brew bundler gem git github osx redis-cli rbenv ssh-agent)
 
-export PATH="/usr/local/bin:$HOME/bin:$HOME/bin/ec2-api-tools/bin:$PATH:$HOME/.rvm/bin"
+export PATH="/usr/local/bin:$HOME/bin:$HOME/bin/ec2-api-tools/bin:$PATH"
 
 # Customize to your needs...
 if [ -f ~/.zshrc.private ]; then
@@ -26,5 +26,8 @@ if [ -f ~/.zshrc.private ]; then
 fi
 
 source $ZSH/oh-my-zsh.sh
-
 zstyle :omz:plugins:ssh-agent github_rsa id_rsa
+
+# I hate the autocorrect
+unsetopt correct_all
+
