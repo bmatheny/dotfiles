@@ -99,7 +99,7 @@ task :install do
   `./updateSubmodules.sh`
   ctags_dst = "#{$home}/.ctags"
   if !File.exists?(ctags_dst) then
-    File.symlink("#{$cwd}/.vim/bundle/vim-scala/ctags", "#{$home}/.ctags")
+    File.symlink("#{$cwd}/.vim/bundle/vim-scala/ctags", ctags_dst)
   end
 
 end
