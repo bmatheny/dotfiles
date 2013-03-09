@@ -13,10 +13,10 @@ function current_branch () {
 
 submodules=$(git submodule status --recursive|awk '{print $2}' | grep -v vendor)
 for gitdir in $submodules; do
-	BASEGIT=`basename $gitdir`
-	cd $gitdir;
+  BASEGIT=`basename $gitdir`
+  cd $gitdir;
   echo "Evaluating $BASEGIT in $(current_branch)";
   git checkout $(current_branch);
   git pull
-	cd $BASE;
+  cd $BASE;
 done
