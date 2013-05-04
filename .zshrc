@@ -6,8 +6,7 @@ export ZSH=$HOME/.oh-my-zsh
 
 # Set to the name theme to load.
 # Look in ~/.oh-my-zsh/themes/
-export DEFAULT_USER="bmatheny"
-export ZSH_THEME="agnoster"
+export ZSH_THEME="blinks_blake"
 
 # Set to this to use case-sensitive completion
 export CASE_SENSITIVE="true"
