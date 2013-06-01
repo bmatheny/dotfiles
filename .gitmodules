@@ -7,9 +7,6 @@
 [submodule ".vim/bundle/vim-cuccumber"]
 	path = .vim/bundle/vim-cuccumber
 	url = https://github.com/tpope/vim-cucumber.git
-[submodule ".vim/bundle/vcscommand"]
-	path = .vim/bundle/vcscommand
-	url = git://repo.or.cz/vcscommand.git
 [submodule ".vim/bundle/nerdtree"]
 	path = .vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git

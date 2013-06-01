@@ -18,14 +18,14 @@ else
 fi
 
 submodules=$(git submodule status --recursive|awk '{print $2}' | grep -v vendor)
-#set -x
+set -x
 for gitdir in $submodules; do
   BASEGIT=`basename $gitdir`
   if [ ! -f $gitdir/.git ]; then
     $gitcmd submodule init $gitdir;
     $gitcmd submodule update $gitdir;
-  #else
-  #  $gitcmd pull origin/$(current_branch)
+  else
+    $gitcmd pull origin $(current_branch)
   fi
   cd $BASE;
 done
