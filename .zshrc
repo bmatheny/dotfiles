@@ -16,7 +16,7 @@ export DISABLE_AUTO_UPDATE="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew bundler gem git github osx redis-cli rbenv ssh-agent)
+plugins=(brew bundler gem gitfast github osx redis-cli rbenv ssh-agent)
 
 export PATH="/usr/local/bin:$HOME/bin:$HOME/bin/ec2-api-tools/bin:$PATH"
 

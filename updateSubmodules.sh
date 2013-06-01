@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Where is this running from?
 BASE=$PWD;
@@ -11,12 +11,21 @@ function current_branch () {
   echo ${ref#refs/heads/}
 }
 
+if [ -z "$USE_PROXYCMD" ]; then
+  gitcmd="git"
+else
+  gitcmd="proxycmd.sh git"
+fi
+
 submodules=$(git submodule status --recursive|awk '{print $2}' | grep -v vendor)
+#set -x
 for gitdir in $submodules; do
   BASEGIT=`basename $gitdir`
-  cd $gitdir;
-  echo "Evaluating $BASEGIT in $(current_branch)";
-  git checkout $(current_branch);
-  git pull
+  if [ ! -f $gitdir/.git ]; then
+    $gitcmd submodule init $gitdir;
+    $gitcmd submodule update $gitdir;
+  #else
+  #  $gitcmd pull origin/$(current_branch)
+  fi
   cd $BASE;
 done
