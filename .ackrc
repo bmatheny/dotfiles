@@ -23,15 +23,11 @@
 ##############################################################
 # Sort found files lexically
 --sort-files
-# Show which types each file has
---show-types
 
 
 ##############################################################
 # File finding:
 ##############################################################
-# Only search known types
---known-types
 # Ignore folders with generated source code
 --ignore-dir=src_managed
 
@@ -50,9 +46,9 @@
 --type-add=scala:ext:sbt
 --type-add=thrift:ext:thrift
 
-# By default don't search html, css or javascript
---type=nocsv
---type=nogettext
---type=nohtml
---type=nocss
---type=nojs
+# By default don't search html, css, javascript, etc
+--nocsv
+--nogettext
+--nohtml
+--nocss
+--nojs

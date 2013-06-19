@@ -20,6 +20,7 @@ alias -g XSSF=" -type f | egrep -v ${IGNORES}\|${OBJS}\|/target/"
 
 # dev stuff
 alias diff=colordiff
+alias ackk='ack -k'
 alias tmux='tmux -2'
 alias -g ff='ack -g'
 alias gd='git diff'
