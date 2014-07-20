@@ -17,7 +17,7 @@ export EDITOR=vim
 export PAGER=less
 
 # Set HOST to something we know
-export HOST=`hostname`
+export HOST=$(hostname)
 
 # Be sure to use SSH when connecting to repository
 export CVS_RSH='ssh'

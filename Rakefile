@@ -1,105 +1,137 @@
+require 'rake'
 require 'pathname'
+require 'pp'
+require 'tempfile'
 
-SYMLINK_FILES = %w{.vim .ackrc .tmux.conf .dir_colors .screen.development .screenrc .vimrc .zshrc .oh-my-zsh .colordiffrc .gitglobalignore .zshplugins}
-SYMLINK_DIRS = %w{bin src .ssh}
-MERGE_FILES = {
-  ['.gitconfig','.gitconfig.private'] => '.gitconfig',
-  ['.ssh_config','.ssh_config.private'] => '.ssh/config'
-}
+require File.join(File.dirname(__FILE__), 'lib', 'dot.rb')
 
-$cwd = File.dirname(__FILE__)
-$home = ENV['HOME'];
+config = Dot::Config.create_from_hash ENV, Rake.verbose == true
+config.populate_info_from_yaml 'config.yaml'
+Dot::Config.instance = config
 
-task :install do
+desc "Synchronize dotfiles with $HOME"
+task :install => ['files:mkdirs', 'git:submodule:update'] do
+  print_banner "Install"
 
-  def symlink_wrapper(f)
-    src = "#{$cwd}/#{f}"
-    dst = "#{$home}/#{f}"
+  # Install homebrew (osx only)
+  # Install rbenv (different for osx vs linux)
+  files_install config.simple_symlinks
+  files_install config.subdir_symlinks
+  file_merge config.merged_configs
+  # Configure rbenv
+  # Configure gem
+  # Install fonts (osx only)
+  # Install vim (different for osx vs linux)
+  # Setup zsh
+  Rake::Task['setup_zsh'].execute
+end
 
-    puts "symlink(\"#{src}\", \"#{dst}\")"
+task :setup_zsh do
+  print_banner "zsh setup"
 
-    ["~/.vim-undo","~/.vim-swap"].map{|d| File.expand_path(d)}.each do |dir|
-      Dir.mkdir(dir) unless File.exists?(dir)
+  # Should install or change shell maybe
+
+  # Install zprezto runcom files (copies)
+  fpath = File.join('.zprezto', 'runcoms', 'z*')
+  files = Dir.glob(fpath).reject do |f|
+    file = f.split('/').last
+    %w{zshrc zpreztorc}.include?(file)
+  end.map do |f|
+    dir, base = File.split(f)
+    base = ".#{base}"
+    Dot::FileOperation.new(config, f, base)
+  end
+  files_install files, :copy
+
+  # Install zsh files
+  files_install config.zsh_symlinks
+end
+
+namespace :files do
+  task :mkdirs do
+    dirs = config.create_dirs.map do |dir|
+      File.expand_path(dir)
+    end.reject do |dir|
+      File.exists?(dir)
     end
-
-    if File.exists?(dst) && Pathname.new(dst).realpath.to_s != src
-      print "Error symlinking. #{dst} already exists and isn't linked to #{src}. (A)bort, (C)ontinue?"
-      response = STDIN.gets
-      if response =~ /^c.*/i
-        puts "Continuing..."
-        return
-      else
-        puts "Exiting"
-        exit
-      end
-    elsif !File.exists?(dst)
-      File.symlink(src, dst)
+    if dirs.size > 0 then
+      print_banner "Creating required directories"
+    end
+    dirs.each do |dir|
+      config.logger.info "files:mkdirs creating directory #{dir}"
+      Dir.mkdir(dir)
     end
   end
+end
 
-  SYMLINK_DIRS.each do |d|
-    dir = "#{d}/*"
-    Dir.glob(dir).each do |f|
-      symlink_wrapper(f)
-    end
-  end
-
-  SYMLINK_FILES.each do |f|
-    symlink_wrapper(f)
-  end
-
-  MERGE_FILES.each do |sources,dest|
-    final_s = ''
-    sources.each do |source|
-      s_file = "#{$cwd}/#{source}"
-      if not File.exists?(s_file) or not File.readable?(s_file) then
-        puts "Could not find source file #{s_file} or file not readable"
-        next
-      end
-      final_s << File.open(s_file).read()
-    end
-
-    d_file = "#{$home}/#{dest}"
-
-    if final_s.empty? then
-      raise Exception.new("Empty sources for #{d_file}, bailing")
-    end
-
-    if File.exists?(d_file) and not File.file?(d_file) then
-      raise Exception.new("Destination file #{d_file} not a file")
-    end
-    if File.exists?(d_file) and not File.writable?(d_file) then
-      raise Exception.new("Destination file #{d_file} not writable")
-    end
-
-    preview = true
-    skip = false
-    while File.exists?(d_file) and preview
-      preview = false
-      print "Destination file #{d_file} already exists. (P)review, (S)kip, (U)nlink? "
-      response = STDIN.gets
-      case response
-      when /^u.*/i then
-        puts "Unlinking #{d_file}"
-        File.unlink(d_file)
-      when /^p.*/i then
-        preview = true
-        puts File.open(d_file).read() + "\n\n"
-      else
-        puts "Skipping #{d_file}"
-        skip = true
+namespace :git do
+  namespace :submodule do
+    submodules = nil
+    desc "Update and optionally initialize submodules"
+    task :update do
+      unless config.nogit? then
+        print_banner "Updating submodules"
+        submodules ||= Dot::Git::Submodules.from_config config
+        submodules.update
       end
     end
-    if not skip then
-      puts "Writing to #{d_file}"
-      File.open(d_file, 'w') { |f| f.write(final_s) }
+
+    desc "Checkout/pull on all submodules"
+    task :pull => ['git:submodule:update'] do
+      unless config.nogit? then
+        print_banner "Checkout/pull on all submodules"
+        submodules ||= Dot::Git::Submodules.from_config config
+        submodules.pull
+      end
     end
-  end # End MERGE_FILES
-
-  `./updateSubmodules.sh`
-  ctags_dst = "#{$home}/.ctags"
-  if !File.exists?(ctags_dst) then
-    File.symlink("#{$cwd}/.vim/bundle/vim-scala/ctags", ctags_dst)
   end
+end
 
+task :default do
+  puts "Available tasks:"
+  puts ""
+  begin
+    Dir.chdir File.dirname(File.absolute_path(__FILE__))
+    Kernel.system('rake -sT')
+  ensure
+    Dir.chdir config.root
+  end
+  puts ""
+  puts "Hint: 'rake install' is probably what you want"
+  puts ""
+  puts "Available options:"
+  puts "  DOT_GITCMD=cmd - DOT_GITCMD='wrapper.sh git' to specify how to run git"
+  puts "  DOT_DEBUG=bool - DOT_DEBUG=[true|false] if true don't execute commands"
+  puts "  DOT_NOGIT=bool - DOT_NOGIT=[true|false] perform no git operations"
+  puts "e.g. rake install DOT_DEBUG=true"
+end
+
+def file_install file, method = :symlink
+  files_install [file], method
+end
+
+def files_install files, method = :symlink
+  config = Dot::Config.instance
+  files.each do |f|
+    config.logger.info "#{method}(from=#{f.src}, to=#{f.dst})"
+
+    f.clean! method
+    f.copy_or_link! method
+  end # files.each
+end # file_install
+
+def file_merge files
+  files.each do |merger|
+    merger.with_file(Dot::Config.instance) do |file|
+      file_install file, :copy
+    end
+  end
+end # file_merge
+
+def print_banner name
+  cfg = Dot::Config.instance
+  hd_ft = "=" * 80
+  cfg.logger.info hd_ft
+  cfg.logger.info "== #{name.center(74)} =="
+  cfg.logger.info hd_ft
 end

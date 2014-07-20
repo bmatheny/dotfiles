@@ -1,0 +1,35 @@
+---
+:create_dirs:
+  - ~/bin
+  - ~/src
+  - ~/tmp
+  - ~/.ssh
+  - ~/.vim-undo
+  - ~/.vim-swap
+:simple_symlinks:
+  - .ackrc
+  - .colordiffrc
+  - .dir_colors
+  - .gitglobalignore
+  - .screen.development
+  - .screenrc
+  - .tmux.conf
+  - .vim
+  - .vimrc
+:zsh_symlinks:
+  - .zprezto
+  - .zpreztorc
+  - .zshrc
+:subdir_symlinks:
+  - bin
+  - src
+  - .ssh
+:merged_configs:
+  :gitconfig:
+    :dst: .gitconfig
+    :sys_src: .gitconfig
+    :usr_src: .gitconfig.private
+  :sshconfig:
+    :dst: .ssh/config
+    :sys_src: .ssh_config
+    :usr_src: .ssh_config.private
