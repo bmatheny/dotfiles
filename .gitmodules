@@ -1,52 +1,52 @@
 [submodule ".vim/bundle/vim-haml"]
-	path = .vim/bundle/vim-haml
-	url = https://github.com/tpope/vim-haml.git
+  path = .vim/bundle/vim-haml
+  url = https://github.com/tpope/vim-haml.git
 [submodule ".vim/bundle/vim-rails"]
-	path = .vim/bundle/vim-rails
-	url = https://github.com/tpope/vim-rails.git
+  path = .vim/bundle/vim-rails
+  url = https://github.com/tpope/vim-rails.git
 [submodule ".vim/bundle/vim-cuccumber"]
-	path = .vim/bundle/vim-cuccumber
-	url = https://github.com/tpope/vim-cucumber.git
+  path = .vim/bundle/vim-cuccumber
+  url = https://github.com/tpope/vim-cucumber.git
 [submodule ".vim/bundle/nerdtree"]
-	path = .vim/bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
+  path = .vim/bundle/nerdtree
+  url = https://github.com/scrooloose/nerdtree.git
 [submodule ".oh-my-zsh"]
-	path = .oh-my-zsh
-	url = https://github.com/robbyrussell/oh-my-zsh.git
+  path = .oh-my-zsh
+  url = https://github.com/robbyrussell/oh-my-zsh.git
 [submodule ".vim/bundle/tagbar"]
-	path = .vim/bundle/tagbar
-	url = https://github.com/majutsushi/tagbar.git
+  path = .vim/bundle/tagbar
+  url = https://github.com/majutsushi/tagbar.git
 [submodule ".vim/bundle/vim-scala"]
-	path = .vim/bundle/vim-scala
-	url = https://github.com/derekwyatt/vim-scala.git
+  path = .vim/bundle/vim-scala
+  url = https://github.com/derekwyatt/vim-scala.git
 [submodule ".vim/bundle/vim-treetop"]
-	path = .vim/bundle/vim-treetop
-	url = https://github.com/nanki/treetop.vim.git
+  path = .vim/bundle/vim-treetop
+  url = https://github.com/nanki/treetop.vim.git
 [submodule ".vim/bundle/hammer"]
-	path = .vim/bundle/hammer
-	url = https://github.com/matthias-guenther/hammer.vim
+  path = .vim/bundle/hammer
+  url = https://github.com/matthias-guenther/hammer.vim
 [submodule ".vim/bundle/lusty"]
-	path = .vim/bundle/lusty
-	url = https://github.com/sjbach/lusty.git
+  path = .vim/bundle/lusty
+  url = https://github.com/sjbach/lusty.git
 [submodule ".vim/bundle/vim-markdown"]
-	path = .vim/bundle/vim-markdown
-	url = https://github.com/hallison/vim-markdown.git
+  path = .vim/bundle/vim-markdown
+  url = https://github.com/hallison/vim-markdown.git
 [submodule ".vim/bundle/vim-ack"]
-	path = .vim/bundle/vim-ack
-	url = https://github.com/mileszs/ack.vim.git
+  path = .vim/bundle/vim-ack
+  url = https://github.com/mileszs/ack.vim.git
 [submodule ".vim/bundle/vim-easytags"]
-	path = .vim/bundle/vim-easytags
-	url = https://github.com/xolox/vim-easytags.git
+  path = .vim/bundle/vim-easytags
+  url = https://github.com/xolox/vim-easytags.git
 [submodule "src/phpsh"]
-	path = src/phpsh
-	url = https://github.com/facebook/phpsh.git
+  path = src/phpsh
+  url = https://github.com/facebook/phpsh.git
 [submodule ".vim/bundle/command-t"]
-	path = .vim/bundle/command-t
-	url = https://github.com/wincent/Command-T.git
+  path = .vim/bundle/command-t
+  url = https://github.com/wincent/Command-T.git
 [submodule ".vim/bundle/vim-fugitive"]
-	path = .vim/bundle/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive.git
+  path = .vim/bundle/vim-fugitive
+  url = https://github.com/tpope/vim-fugitive.git
 [submodule ".vim/bundle/powerline"]
-	path = .vim/bundle/powerline
+  path = .vim/bundle/powerline
   url = https://github.com/Lokaltog/powerline.git
   branch = develop
