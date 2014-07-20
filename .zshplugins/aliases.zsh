@@ -4,6 +4,9 @@ alias lsize='ls --color=always -sh'
 # less is more
 alias more='less'
 
+# colorize current day in cal
+alias ccal='cal | grep --before-context 6 --after-context 6 --color -e " $(date +%e)" -e "^$(date +%e)"'
+
 # vim stuff
 alias vim="nocorrect vim -o $@"
 alias vtree="vim +NERDTree +TagbarOpen"

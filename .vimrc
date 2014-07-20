@@ -10,6 +10,10 @@ if filereadable(".NERDTreeBookmarks")
 	let NERDTreeBookmarksFile=".NERDTreeBookmarks"
 endif
 
+" Need to enable these before pathogen loads plugins otherwise some plugins (looking at you VimOrganizer) break
+filetype plugin on
+filetype indent on
+
 " ========== Pathogen Initialization ==========
 " https://github.com/tpope/vim-pathogen/
 call pathogen#infect()   " Load all plugins in ~/.vim/bundle
@@ -49,8 +53,6 @@ set tabstop=2
 set expandtab
 set textwidth=80
 
-filetype plugin on
-filetype indent on
 " matchit requires that plugin be on before it's loaded, and should be loaded
 " before we pull in any language plugins
 runtime macros/matchit.vim

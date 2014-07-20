@@ -3,6 +3,7 @@ Thumbs.db
 src/templates/skeleton.php
 src/phpsh/*.pyc
 .vim/mytags/
+.vim/spell/
 .vim/.netrwhist
 .gitconfig.private
 .ssh_config.private
