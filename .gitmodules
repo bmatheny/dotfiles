@@ -10,9 +10,6 @@
 [submodule ".vim/bundle/nerdtree"]
   path = .vim/bundle/nerdtree
   url = https://github.com/scrooloose/nerdtree.git
-[submodule ".oh-my-zsh"]
-  path = .oh-my-zsh
-  url = https://github.com/robbyrussell/oh-my-zsh.git
 [submodule ".vim/bundle/tagbar"]
   path = .vim/bundle/tagbar
   url = https://github.com/majutsushi/tagbar.git
@@ -34,9 +31,6 @@
 [submodule ".vim/bundle/vim-ack"]
   path = .vim/bundle/vim-ack
   url = https://github.com/mileszs/ack.vim.git
-[submodule ".vim/bundle/vim-easytags"]
-  path = .vim/bundle/vim-easytags
-  url = https://github.com/xolox/vim-easytags.git
 [submodule "src/phpsh"]
   path = src/phpsh
   url = https://github.com/facebook/phpsh.git
