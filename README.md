@@ -1,3 +1,24 @@
+# Customization
+
+## git
+
+Create a `~/.gitconfig.user` and put the following in it:
+
+<pre><code>[user]
+  name = Your Name
+  email = Your Email
+</code></pre>
+
+Also put any other customizations to git you would like in that file.
+
+## zsh
+
+Put customizations in `~/.zsh.before` or `~/.zsh.after`, these will be sourced
+before and after other dotfiles included with this project.
+
+If you don't have much going on, just drop any changes you want in
+`~/.zshrc.private`.
+
 ## Code
 Take the below and drop it into a file, then run it
 

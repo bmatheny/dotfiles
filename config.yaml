@@ -12,6 +12,7 @@
   - .ackrc
   - .colordiffrc
   - .dir_colors
+  - .gitconfig
   - .gitglobalignore
   - .screen.development
   - .screenrc
@@ -27,10 +28,6 @@
   - src
   - .ssh
 :merged_configs:
-  :gitconfig:
-    :dst: .gitconfig
-    :sys_src: .gitconfig
-    :usr_src: .gitconfig.private
   :sshconfig:
     :dst: .ssh/config
     :sys_src: .ssh_config
