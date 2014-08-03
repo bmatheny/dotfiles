@@ -11,10 +11,11 @@ export FIGNORE=".svn:.o:~:.class"
 export MYVIMDIR="$HOME/.vim/"
 
 # vim is our editor of choice
-export EDITOR=vim
+export EDITOR='vim'
+export VISUAL='vim'
 
 # Use less as our pager
-export PAGER=less
+export PAGER='less'
 
 # Set HOST to something we know
 export HOST=$(hostname)

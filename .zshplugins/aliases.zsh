@@ -19,3 +19,4 @@ alias -g XS="| egrep -v ${IGNORES}\|${OBJS}"
 alias tmux='tmux -2'
 alias gd='git diff'
 alias gst='git status'
+alias ggpush='git push origin "$(git-branch-current 2> /dev/null)"'

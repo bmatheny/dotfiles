@@ -6,6 +6,8 @@
   - ~/.ssh
   - ~/.vim-undo
   - ~/.vim-swap
+  - ~/.zsh.after
+  - ~/.zsh.before
 :simple_symlinks:
   - .ackrc
   - .colordiffrc
