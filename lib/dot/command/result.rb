@@ -7,6 +7,9 @@ module Dot; module Command
       self.stderr = stderr
       self.exit_code = exit_code
     end
+    def success?
+      exit_code == 0
+    end
     def sos # stdout stripped
       stdout.strip
     end

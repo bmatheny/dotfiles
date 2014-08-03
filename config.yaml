@@ -32,3 +32,19 @@
     :dst: .ssh/config
     :sys_src: .ssh_config
     :usr_src: .ssh_config.private
+:homebrew_packages:
+  - cscope
+  - ctags
+  - coreutils
+  - curl
+  - fasd
+  - gist
+  - git
+  - hub
+  - mercurial
+  - rbenv
+  - ruby-build
+  - tmux
+  - tree
+  - wget
+  - zsh

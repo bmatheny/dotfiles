@@ -22,7 +22,7 @@ module Dot
 
     attr_accessor :debug, :gitcmd, :logger, :nogit, :root
     def initialize verbose=false, debug=false, gitcmd='git', root=Dir.pwd, nogit=true
-      @debug = Dot::to_bool(debug)
+      @debug = Dot.to_bool(debug)
       @gitcmd = gitcmd
       @info = OpenStruct.new
       @logger = Logger.new(STDOUT)
@@ -32,7 +32,7 @@ module Dot
         @logger.level = Logger::INFO
       end
       @root = root
-      @nogit = Dot::to_bool(nogit)
+      @nogit = Dot.to_bool(nogit)
     end
     def debug?
       debug
@@ -43,6 +43,9 @@ module Dot
 
     def create_dirs
       @info[:create_dirs]
+    end
+    def homebrew_packages
+      @info[:homebrew_packages]
     end
     def merged_configs
       @info[:merged_configs]
@@ -60,6 +63,7 @@ module Dot
     def populate_info_from_yaml file_name
       yaml = get_yaml file_name
       @info[:create_dirs] = yaml[:create_dirs]
+      @info[:homebrew_packages] = yaml[:homebrew_packages]
       @info[:simple_symlinks] = yaml[:simple_symlinks]
       @info[:zsh_symlinks] = yaml[:zsh_symlinks]
       @info[:subdir_symlinks] = yaml[:subdir_symlinks].map do |d|

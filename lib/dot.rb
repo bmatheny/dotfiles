@@ -7,8 +7,13 @@ require 'dot/file'
 require 'dot/git'
 require 'dot/git/submodule'
 require 'dot/git/submodules'
+require 'dot/software'
 
 module Dot
+  def self.is_darwin?
+    RUBY_PLATFORM.downcase.include?("darwin")
+  end
+
   def self.to_bool s
     return s if s.is_a?(TrueClass) or s.is_a?(FalseClass)
     return true if s =~ (/^(true|t|yes|y|1)$/i)

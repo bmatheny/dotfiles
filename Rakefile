@@ -10,11 +10,11 @@ config.populate_info_from_yaml 'config.yaml'
 Dot::Config.instance = config
 
 desc "Synchronize dotfiles with $HOME"
-task :install => ['files:mkdirs', 'git:submodule:update'] do
-  print_banner "Install"
+task :setup => ['files:mkdirs', 'git:submodule:update', 'install:prereq'] do
+  print_banner "Setup"
 
-  # Install homebrew (osx only)
-  # Install rbenv (different for osx vs linux)
+  # Install homebrew (osx only) - done in install:prereq
+  # Install rbenv (different for osx vs linux) - done in install:prereq
   files_install config.simple_symlinks
   files_install config.subdir_symlinks
   file_merge config.merged_configs
@@ -45,6 +45,27 @@ task :setup_zsh do
 
   # Install zsh files
   files_install config.zsh_symlinks
+end
+
+namespace :install do
+  desc "Install pre-requisite software"
+  task :prereq do
+    if Dot.is_darwin? then
+      if Dot::Software.install_homebrew? config then
+        print_banner "Installing Homebrew"
+        Dot::Software.install_homebrew! config
+      else
+        config.logger.debug "Homebrew already installed"
+      end
+
+      # FIXME need to update path
+      print_banner "Updating Homebrew"
+      Dot::Software.update_homebrew! config
+
+      print_banner "Installing/Updating Homebrew Packages"
+      Dot::Software.install_homebrew_packages! config, config.homebrew_packages
+    end
+  end
 end
 
 namespace :files do
@@ -97,13 +118,13 @@ task :default do
     Dir.chdir config.root
   end
   puts ""
-  puts "Hint: 'rake install' is probably what you want"
+  puts "Hint: 'rake setup' is probably what you want"
   puts ""
   puts "Available options:"
   puts "  DOT_GITCMD=cmd - DOT_GITCMD='wrapper.sh git' to specify how to run git"
   puts "  DOT_DEBUG=bool - DOT_DEBUG=[true|false] if true don't execute commands"
   puts "  DOT_NOGIT=bool - DOT_NOGIT=[true|false] perform no git operations"
-  puts "e.g. rake install DOT_DEBUG=true"
+  puts "e.g. rake setup DOT_DEBUG=true"
 end
 
 def file_install file, method = :symlink
