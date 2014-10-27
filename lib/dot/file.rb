@@ -80,7 +80,11 @@ module Dot
       # If dst is a symlink and already points to src, there's nothing to do
       return if (File.identical?(src, dst) && method == :symlink)
 
-      lnk = Pathname.new(File.expand_path(dst)).realdirpath.to_s
+      begin
+        lnk = Pathname.new(File.expand_path(dst)).realdirpath.to_s
+      rescue Exception
+        lnk = Pathname.new(File.expand_path(dst)).to_s
+      end
       msg = "[UNLINK] #{dst} is symlink to #{lnk} "
       if method == :copy then
         msg += "but should be a copy. Unlinking."

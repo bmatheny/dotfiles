@@ -23,6 +23,7 @@
   - .zprezto
   - .zpreztorc
   - .zshrc
+  - .zshplugins
 :subdir_symlinks:
   - bin
   - src
