@@ -69,7 +69,12 @@ function prompt_brm_setup {
 
   # Set vcs_info parameters.
   zstyle ':vcs_info:*' enable bzr git hg svn
-  zstyle ':vcs_info:*:prompt:*' check-for-changes false
+  if (( $+functions[estyle-cfc] )) ; then
+    zstyle -e ':vcs_info:*:prompt:*' check-for-changes \
+      'estyle-cfc && reply=( true ) || reply=( false )'
+  else
+    zstyle ':vcs_info:*:prompt:*' check-for-changes true
+  fi
   zstyle ':vcs_info:*:prompt:*' unstagedstr "${unstaged_format}"
   zstyle ':vcs_info:*:prompt:*' stagedstr "${staged_format}"
   zstyle ':vcs_info:*:prompt:*' actionformats "${branch_format}${action_format}"
