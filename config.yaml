@@ -24,6 +24,7 @@
   - .zpreztorc
   - .zshrc
   - .zshplugins
+  - .zsh.prompts
 :subdir_symlinks:
   - bin
   - src

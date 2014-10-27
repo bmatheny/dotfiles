@@ -13,7 +13,10 @@ Also put any other customizations to git you would like in that file.
 ## zsh
 
 Put customizations in `~/.zsh.before` or `~/.zsh.after`, these will be sourced
-before and after other dotfiles included with this project.
+before and after other dotfiles included with this project. If you want a custom
+theme put it in `~/.zsh.prompts` and create a `~/.zsh.after/prompt.zsh` with a
+single line like `prompt "pname"` assuming you put your custom prompt as
+`~/.zsh.prompts/prompt_pname_setup`.
 
 If you don't have much going on, just drop any changes you want in
 `~/.zshrc.private`.
