@@ -68,7 +68,10 @@ function prompt_brm_setup {
   local staged_format="${_prompt_brm_colors[5]}●%f"
 
   # Set vcs_info parameters.
-  zstyle ':vcs_info:*' enable bzr git hg svn
+  zstyle ':vcs_info:*' enable git hg
+  zstyle ':vcs_info:hg*:prompt:*' get-bookmarks true
+  zstyle ':vcs_info:hg*:prompt:*' get-revision true
+  zstyle ':vcs_info:hg*:prompt:*' use-simple true
   if (( $+functions[estyle-cfc] )) ; then
     zstyle -e ':vcs_info:*:prompt:*' check-for-changes \
       'estyle-cfc && reply=( true ) || reply=( false )'
