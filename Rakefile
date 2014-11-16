@@ -24,6 +24,9 @@ task :setup => ['files:mkdirs', 'git:submodule:update', 'install:prereq'] do
   # Install vim (different for osx vs linux)
   # Setup zsh
   Rake::Task['setup_zsh'].execute
+
+  # Install gems
+  Rake::Task['install:gems'].execute
 end
 
 task :setup_zsh do
@@ -48,6 +51,14 @@ task :setup_zsh do
 end
 
 namespace :install do
+  desc "Install/Update gems"
+  task :gems do
+    print_banner "Installing gems"
+    config.gems.each do |gem|
+      system("gem install #{gem}")
+    end
+  end
+
   desc "Install pre-requisite software"
   task :prereq do
     if Dot.is_darwin? then

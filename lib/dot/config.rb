@@ -44,6 +44,9 @@ module Dot
     def create_dirs
       @info[:create_dirs]
     end
+    def gems
+      @info[:gems]
+    end
     def homebrew_packages
       @info[:homebrew_packages]
     end
@@ -63,6 +66,7 @@ module Dot
     def populate_info_from_yaml file_name
       yaml = get_yaml file_name
       @info[:create_dirs] = yaml[:create_dirs]
+      @info[:gems] = yaml[:gems] || []
       @info[:homebrew_packages] = yaml[:homebrew_packages]
       @info[:simple_symlinks] = yaml[:simple_symlinks]
       @info[:zsh_symlinks] = yaml[:zsh_symlinks]

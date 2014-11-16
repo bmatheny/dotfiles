@@ -50,3 +50,19 @@
   - tree
   - wget
   - zsh
+:gems:
+  - bundler
+  - cheat
+  - chronic
+  - chronic_duration
+  - facter
+  - jeweler
+  - kramdown
+  - mustache
+  - pry
+  - rake
+  - redcarpet
+  - rspec
+  - terminal-table
+  - thor
+  - yard
