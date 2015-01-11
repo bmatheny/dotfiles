@@ -75,7 +75,6 @@ function prompt_brm_setup {
     zstyle -e ':vcs_info:*:prompt:*' check-for-changes \
       'estyle-cfc && reply=( true ) || reply=( false )'
   else
-    echo "Not using estyle"
     zstyle ':vcs_info:*:prompt:*' check-for-changes true
   fi
   zstyle ':vcs_info:hg*+gen-hg-bookmark-string:prompt:*' hooks hgbookmarks
