@@ -31,13 +31,12 @@ function prompt_brm_setup {
 
   # Load required functions.
   autoload -Uz add-zsh-hook
+  autoload -Uz colors && colors
+  [[ -z $(functions zsh/terminfo) ]] && autoload -Uz zsh/terminfo
   autoload -Uz vcs_info
 
-  # Add hook for calling vcs_info before each command.
-  add-zsh-hook precmd prompt_brm_precmd
-
   # Use extended color pallete if available.
-  if [[ $TERM = *256color* || $TERM = *rxvt* ]]; then
+  if [[ "$terminfo[colors]" -ge 8 ]]; then
     _prompt_brm_colors=(
       "%F{81}"  # Turquoise
       "%F{166}" # Orange
@@ -76,8 +75,10 @@ function prompt_brm_setup {
     zstyle -e ':vcs_info:*:prompt:*' check-for-changes \
       'estyle-cfc && reply=( true ) || reply=( false )'
   else
+    echo "Not using estyle"
     zstyle ':vcs_info:*:prompt:*' check-for-changes true
   fi
+  zstyle ':vcs_info:hg*+gen-hg-bookmark-string:prompt:*' hooks hgbookmarks
   zstyle ':vcs_info:*:prompt:*' unstagedstr "${unstaged_format}"
   zstyle ':vcs_info:*:prompt:*' stagedstr "${staged_format}"
   zstyle ':vcs_info:*:prompt:*' actionformats "${branch_format}${action_format}"
@@ -87,11 +88,32 @@ function prompt_brm_setup {
   # Set python-info parameters.
   zstyle ':prezto:module:python:info:virtualenv' format '(%v)'
 
+  # Add hook for calling vcs_info before each command.
+  add-zsh-hook precmd prompt_brm_precmd
+
   # Define prompts.
   PROMPT="
 ${_prompt_brm_colors[3]}%n%f at ${_prompt_brm_colors[2]}%m%f in ${_prompt_brm_colors[5]}%~%f "'${vcs_info_msg_0_}'"
 "'$python_info[virtualenv]'"$ "
   RPROMPT=''
+}
+
+function +vi-hgbookmarks() {
+  local s i
+# The bookmarks returned by `hg' are available in
+# the functions positional parameters.
+  for i in "$@"; do
+# I frequently use hg-git, which creates a master bookmark, I'd prefer for that to be ignored
+    if [[ $i != "master" ]]; then
+      [[ -n $s ]] && s=$s,
+      s=${s}$i
+    fi
+  done
+# tiny styling tweak when bookmark exists
+  [[ -n $s ]] && s=/$s
+  hook_com[hg-bookmark-string]=$s
+  ret=1
+  return 0
 }
 
 prompt_brm_setup "$@"

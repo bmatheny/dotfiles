@@ -65,7 +65,8 @@ set wildignore=*.o,*.obj,*~ " stuff to ignore automatically
 set wildignore+=*.lo,*.la,*.class,*.jar,*.gem
 set wildignore+=*.rej,.*.rej
 set wildignore+=*.png,*.jpg,*.gif,*DS_Store*
-set wildignore=*.swp
+set wildignore+=*.swp
+set wildignore+=*.orig " ignore mercurial backups
 
 
 " ========== Swap/Undo File Settings ==========
