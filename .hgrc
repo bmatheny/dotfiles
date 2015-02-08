@@ -1,0 +1,15 @@
+[ui]
+logtemplate = '\033[0;33mcommit: {rev}:{node}\n\033[0mAuthor: {author|user}\nDate:   {date|rfc822date}\n\n\t{desc|strip|fill68|tabindent}\n\n'
+
+[alias]
+gitlog = log --template '\033[0;33mcommit: {rev}:{node}\n\033[0mAuthor: {author|user}\nDate:   {date|rfc822date}\n\n\t{desc|strip|fill68|tabindent}\n\n'
+blame = annotate --changeset --user --date --line-number
+
+[pager]
+pager = LESS='FSRX' less
+attend = annotate, cat, diff, export, glog, log, qdiff, gitlog, blame
+
+[extensions]
+pager =
+
+%include ~/.hgrc.user

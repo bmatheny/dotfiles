@@ -13,9 +13,10 @@
 #
 
 function prompt_brm_precmd {
-  branch_format="(${_prompt_brm_colors[1]}%b%f%u%c)"
-
-  zstyle ':vcs_info:*:prompt:*' formats "${branch_format}"
+  local misc_branch_format="(${_prompt_brm_colors[1]}%b%f%u%c)"
+  local hg_branch_format="(${_prompt_brm_colors[1]}%b%m%f%u%c)"
+  zstyle ':vcs_info:*:prompt:*' formats "${misc_branch_format}"
+  zstyle ':vcs_info:hg*:prompt:*' formats "${hg_branch_format}"
 
   vcs_info 'prompt'
 
