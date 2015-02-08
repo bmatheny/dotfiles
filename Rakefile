@@ -53,9 +53,11 @@ end
 namespace :install do
   desc "Install/Update gems"
   task :gems do
-    print_banner "Installing gems"
-    config.gems.each do |gem|
-      system("gem install #{gem}")
+    unless config.nogems? then
+      print_banner "Installing gems"
+      config.gems.each do |gem|
+        system("gem install #{gem}")
+      end
     end
   end
 
@@ -73,8 +75,10 @@ namespace :install do
       print_banner "Updating Homebrew"
       Dot::Software.update_homebrew! config
 
-      print_banner "Installing/Updating Homebrew Packages"
-      Dot::Software.install_homebrew_packages! config, config.homebrew_packages
+      unless config.nobrew? then
+        print_banner "Installing/Updating Homebrew Packages"
+        Dot::Software.install_homebrew_packages! config, config.homebrew_packages
+      end
     end
   end
 end
@@ -135,6 +139,8 @@ task :default do
   puts "  DOT_GITCMD=cmd - DOT_GITCMD='wrapper.sh git' to specify how to run git"
   puts "  DOT_DEBUG=bool - DOT_DEBUG=[true|false] if true don't execute commands"
   puts "  DOT_NOGIT=bool - DOT_NOGIT=[true|false] perform no git operations"
+  puts "  DOT_NOGEM=bool - DOT_NOGEM=[true|false] to install gems"
+  puts "  DOT_NOBREW=bool - DOT_NOBREW=[true|false] don't brew update"
   puts "e.g. rake setup DOT_DEBUG=true"
 end
 

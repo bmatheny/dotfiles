@@ -17,11 +17,13 @@ module Dot
       gitcmd = hash.fetch('DOT_GITCMD', 'git')
       root = hash.fetch('DOT_ROOT', Dir.pwd)
       nogit = hash.fetch('DOT_NOGIT', 'false')
-      Dot::Config.new verbose, debug, gitcmd, root, nogit
+      nogem = hash.fetch('DOT_NOGEM', 'false')
+      nobrew = hash.fetch('DOT_NOBREW', 'false')
+      Dot::Config.new verbose, debug, gitcmd, root, nogit, nogem, nobrew
     end
 
-    attr_accessor :debug, :gitcmd, :logger, :nogit, :root
-    def initialize verbose=false, debug=false, gitcmd='git', root=Dir.pwd, nogit=true
+    attr_accessor :debug, :gitcmd, :logger, :nogit, :root, :nogem, :nobrew
+    def initialize verbose=false, debug=false, gitcmd='git', root=Dir.pwd, nogit=true, nogem=true, nobrew=true
       @debug = Dot.to_bool(debug)
       @gitcmd = gitcmd
       @info = OpenStruct.new
@@ -33,12 +35,20 @@ module Dot
       end
       @root = root
       @nogit = Dot.to_bool(nogit)
+      @nogem = Dot.to_bool(nogem)
+      @nobrew = Dot.to_bool(nobrew)
     end
     def debug?
       debug
     end
     def nogit?
       nogit
+    end
+    def nogems?
+      nogem
+    end
+    def nobrew?
+      nobrew
     end
 
     def create_dirs
