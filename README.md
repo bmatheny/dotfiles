@@ -98,3 +98,4 @@ echo "# Install home dir files"
 echo "cd src/bmatheny-dotfiles* && rake install"
 echo "gem install jekyll RedCloth redcarpet jeweler github-markup"
 </code></pre>
+
