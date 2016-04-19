@@ -47,3 +47,6 @@
 [submodule ".zprezto"]
 	path = .zprezto
 	url = https://github.com/sorin-ionescu/prezto.git
+[submodule ".vim/bundle/vim-mercenary"]
+	path = .vim/bundle/vim-mercenary
+	url = https://github.com/phleet/vim-mercenary.git
