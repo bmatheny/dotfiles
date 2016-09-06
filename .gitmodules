@@ -46,3 +46,6 @@
 [submodule ".vim/bundle/vim-mercenary"]
 	path = .vim/bundle/vim-mercenary
 	url = https://github.com/phleet/vim-mercenary.git
+[submodule ".vim/bundle/powerline"]
+	path = .vim/bundle/powerline
+	url = https://github.com/powerline/powerline.git
