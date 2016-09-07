@@ -7,7 +7,7 @@ blame = annotate --changeset --user --date --line-number
 
 [pager]
 pager = LESS='FSRX' less
-attend = annotate, cat, diff, export, glog, log, qdiff, gitlog, blame
+attend = annotate, cat, diff, export, glog, log, qdiff, gitlog, blame, show
 
 [extensions]
 pager =

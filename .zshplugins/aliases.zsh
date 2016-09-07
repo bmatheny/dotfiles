@@ -17,6 +17,7 @@ alias -g XS="| egrep -v ${IGNORES}\|${OBJS}"
 
 # dev stuff
 alias tmux='tmux -2'
+alias gca='git commit -a'
 alias gd='git diff'
 alias gst='git status'
 alias ggpush='git push origin "$(git-branch-current 2> /dev/null)"'
