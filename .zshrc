@@ -5,7 +5,10 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
+path+=("/usr/local/bin")
+
 if [[ "$OSTYPE" == darwin* ]]; then
+  path+=("$HOME/Library/Python/2.7/bin")
   if (( $+commands[brew] )); then
     if [ $(brew --prefix coreutils 2>/dev/null) ]; then
       path=("$(brew --prefix coreutils)/libexec/gnubin" $path)
