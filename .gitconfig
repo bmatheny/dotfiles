@@ -74,3 +74,6 @@
   sl = stash list
   sa = stash apply
   ss = stash save
+
+[init]
+	defaultBranch = main

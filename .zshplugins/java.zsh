@@ -14,4 +14,4 @@ function find_java {
   done
 }
 
-find_java
+# find_java
