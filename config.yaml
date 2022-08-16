@@ -47,8 +47,10 @@
   - mercurial
   - rbenv
   - ruby-build
+  - screen
   - tmux
   - tree
+  - unzip
   - wget
   - zsh
 :gems:
@@ -57,11 +59,14 @@
   - chronic
   - chronic_duration
   - facter
+  - github-markup
+  - jekyll
   - jeweler
   - kramdown
   - mustache
   - pry
   - rake
+  - RedCloth
   - redcarpet
   - rspec
   - terminal-table

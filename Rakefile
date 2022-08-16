@@ -10,11 +10,11 @@ config.populate_info_from_yaml 'config.yaml'
 Dot::Config.instance = config
 
 desc "Synchronize dotfiles with $HOME"
-task :setup => ['files:mkdirs', 'git:submodule:update', 'install:prereq'] do
+task :setup => ['files:mkdirs', 'git:submodule:update', 'install:homebrew'] do
   print_banner "Setup"
 
-  # Install homebrew (osx only) - done in install:prereq
-  # Install rbenv (different for osx vs linux) - done in install:prereq
+  # Install homebrew (osx only) - done in install:homebrew
+  # TODO Install rbenv (different for osx vs linux)
   files_install config.simple_symlinks
   files_install config.subdir_symlinks
   file_merge config.merged_configs
@@ -55,14 +55,13 @@ namespace :install do
   task :gems do
     unless config.nogems? then
       print_banner "Installing gems"
-      config.gems.each do |gem|
-        system("gem install #{gem}")
-      end
+      gems = config.gems.join(' ')
+      system("gem install #{gems}")
     end
   end
 
-  desc "Install pre-requisite software"
-  task :prereq do
+  desc "Install/Update homebrew packages"
+  task :homebrew do
     if Dot.is_darwin? then
       if Dot::Software.install_homebrew? config then
         print_banner "Installing Homebrew"

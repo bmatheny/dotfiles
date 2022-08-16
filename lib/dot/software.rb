@@ -30,13 +30,6 @@ module Dot
     end
 
     def self.install_homebrew_packages! cfg, packages
-      packages.each do |pkg|
-        if homebrew_package_installed? cfg, pkg then
-          upgrade_homebrew_package! cfg, pkg
-        else
-          install_homebrew_package! cfg, pkg
-        end
-      end
       cmd = "brew install #{packages.join(' ')}"
       Dot::Command::Runner.run(cfg, cmd)
     end

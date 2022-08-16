@@ -8,6 +8,9 @@
 path+=("/usr/local/bin")
 
 if [[ "$OSTYPE" == darwin* ]]; then
+  if [[ -d ~/src/third-party/homebrew/bin ]]; then
+    eval "$(~/src/third-party/homebrew/bin/brew shellenv)"
+  fi
   if (( $+commands[brew] )); then
     if [ $(brew --prefix coreutils 2>/dev/null) ]; then
       path=("$(brew --prefix coreutils)/libexec/gnubin" $path)
