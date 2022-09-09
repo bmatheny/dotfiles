@@ -34,15 +34,9 @@
 [submodule "src/phpsh"]
   path = src/phpsh
   url = https://github.com/facebook/phpsh.git
-[submodule ".vim/bundle/command-t"]
-  path = .vim/bundle/command-t
-  url = https://github.com/wincent/Command-T.git
 [submodule ".vim/bundle/vim-fugitive"]
   path = .vim/bundle/vim-fugitive
   url = https://github.com/tpope/vim-fugitive.git
-[submodule ".zprezto"]
-	path = .zprezto
-	url = https://github.com/sorin-ionescu/prezto.git
 [submodule ".vim/bundle/vim-mercenary"]
 	path = .vim/bundle/vim-mercenary
 	url = https://github.com/phleet/vim-mercenary.git
