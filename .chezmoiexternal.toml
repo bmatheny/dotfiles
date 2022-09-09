@@ -1,5 +1,4 @@
 [".zprezto"]
     type = "git-repo"
-    url = "https://github.com/sorin-ionescu/prezto.git"
-    refreshPeriod = "168h"
-    clone.args = ["--recursive"]
+    url = "https://github.com/bmatheny/prezto.git"
+    clone.args = ["--recursive", "--branch=personal"]

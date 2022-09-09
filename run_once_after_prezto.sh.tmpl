@@ -1,7 +1,17 @@
 #!/usr/bin/env zsh
 
 # .zprezto/runcoms/zpreztorc hash: {{joinPath .chezmoi.homeDir ".zprezto/runcoms/zpreztorc" | include | sha256sum }}
-setopt EXTENDED_GLOB
-for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+
+# We don't need all the runcoms files, just...
+
+rcfiles=(
+# zshrc - define aliases, functions, shell options, key bindings, etc
+'zshrc'
+# zpreztorc - configure prezto
+'zpreztorc')
+
+for rcfile in $rcfiles; do
+  src="${ZDOTDIR:-$HOME}/.zprezto/runcoms/${rcfile}"
+  dst="${ZDOTDIR:-$HOME}/.${rcfile}"
+  ln -sf "${src}" "${dst}"
 done
