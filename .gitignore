@@ -7,10 +7,6 @@ src/phpsh/*.pyc
 .vim/.netrwhist
 .gitconfig.private
 .ssh_config.private
-.ssh/config
-.ssh/compendium.rsa
-.ssh/compendium.x509.pem
-.ssh/compendium.x509.pk.pem
 .ssh/id_dsa
 .ssh/id_rsa
 .ssh/known_hosts
