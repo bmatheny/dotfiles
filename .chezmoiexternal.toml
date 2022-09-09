@@ -1,6 +1,5 @@
 [".zprezto"]
-    type = "archive"
-    url = "https://github.com/sorin-ionescu/prezto/archive/refs/heads/master.zip"
-    exact = true
-    stripComponents = 1
+    type = "git-repo"
+    url = "https://github.com/sorin-ionescu/prezto.git"
     refreshPeriod = "168h"
+    clone.args = ["--recursive"]
