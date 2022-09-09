@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+# .zprezto/runcoms/zpreztorc hash: {{joinPath .chezmoi.homeDir ".zprezto/runcoms/zpreztorc" | include | sha256sum }}
+setopt EXTENDED_GLOB
+for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+done

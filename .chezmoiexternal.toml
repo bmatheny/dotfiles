@@ -1,0 +1,6 @@
+[".zprezto"]
+    type = "archive"
+    url = "https://github.com/sorin-ionescu/prezto/archive/refs/heads/master.zip"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
