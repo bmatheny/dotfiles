@@ -11,7 +11,7 @@
 
 #  {{ $key }} - {{ $file }}
 if [[ -f "{{ $file }}" ]]; then
-  cp -f "{{ $file }}" "~/.ssh/{{ $key }}"
+  cp -f "{{ $file }}" ~/.ssh/{{ $key }}
 fi
 
 {{ end }}
