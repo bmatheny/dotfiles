@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# if ! brew --version
+# then
+#    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+#    brew install coreutils wget vim git
+# fi
+
+# Install vim plugins
+vim -es -u ~/.vimrc -i NONE -c "PlugInstall" -c "qa"
