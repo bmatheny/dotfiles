@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# plugin hash: {{joinPath .chezmoi.homeDir ".vim/plug.vim" | include | sha256sum}}
+
+# Install vim plugins
+vim -es -u ~/.vimrc -i NONE -c "PlugInstall" -c "qa"

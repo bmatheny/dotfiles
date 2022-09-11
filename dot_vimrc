@@ -17,6 +17,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   endif
 endif
 
+
 " ========== General Configuration ==========
 
 set hidden                     " Allow buffers to exist in the background
