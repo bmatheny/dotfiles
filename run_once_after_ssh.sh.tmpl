@@ -1,0 +1,17 @@
+#!/usr/bin/env zsh
+
+{{- $home := .chezmoi.homeDir }}
+{{- $ssh_keys := .ssh.keys }}
+{{- $ssh_configs := .ssh.configs }}
+
+{{- range $key := $ssh_keys }}
+
+{{- $file := (printf "%s/%s" $ssh_configs $key) }}
+{{- $file = $file | replace "$HOME" $home }}
+
+#  {{ $key }} - {{ $file }}
+if [[ -f "{{ $file }}" ]]; then
+  cp -f "{{ $file }}" "~/.ssh/{{ $key }}"
+fi
+
+{{ end }}
