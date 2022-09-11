@@ -16,8 +16,8 @@ filetype indent on
 
 " ========== Pathogen Initialization ==========
 " https://github.com/tpope/vim-pathogen/
-call pathogen#infect()   " Load all plugins in ~/.vim/bundle
-call pathogen#helptags() " Invoke :helptags on all non-$VIM doc directories in runtime path
+" call pathogen#infect()   " Load all plugins in ~/.vim/bundle
+" call pathogen#helptags() " Invoke :helptags on all non-$VIM doc directories in runtime path
 
 " ========== General Configuration ==========
 
