@@ -23,10 +23,14 @@ Plug 'vim-airline/vim-airline-themes'
 
 
 " ========== Navigation ==========
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'mileszs/ack.vim'
+Plug 'jlanzarotta/bufexplorer'
 Plug 'ryanoasis/vim-devicons'
 Plug 'preservim/nerdtree'
 Plug 'preservim/tagbar'
+
+
+" ========== Search ==========
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'mileszs/ack.vim'
 
 call plug#end()

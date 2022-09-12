@@ -1,3 +1,21 @@
+{{- $name := "Blake Matheny" -}}
+{{- $email := "bmatheny@mobocracy.net" -}}
+{{- $configs := "$HOME/SynologyDrive/Home/configs/ssh" -}}
+{{- $keys_s := "id_rsa" -}}
+
+{{- if (env "ASK") }}
+{{- $name := promptString "Name to use for git" -}}
+{{- $email := promptString "Email to use for git" -}}
+{{- $configs := promptString "Location of SSH configs? Absolute path to drop level directory which has keys and a config.d directory." -}}
+{{- $keys_s := promptString "Keys (separated by space) to copy from above to ~/.ssh/. Just the name, no path." -}}
+{{- end -}}
+
+{{- $keys := splitList " " $keys_s -}}
+
+[data.git]
+  name = "{{ $name }}"
+  email = "{{ $email }}"
+
 [data.ssh]
-  configs = ""
-  keys = []
+  configs = "{{ $configs }}"
+  keys = {{ $keys | toJson }}

@@ -7,8 +7,14 @@ The configuration template (`.chezmoi.toml.tmpl`) should get copied into
 `~/.config/chezmoi/chezmoi.toml` where you can fill out configuration values.
 Things should work if you do nothing. Intent of variables are outlined below.
 
+## environment variables
+
+* `ASK=y` before initialization in order to get prompted for some variables
+
 ## chezmoi Variables
 
+* `data.git.name` - Your name
+* `data.git.email` - Your email address
 * `data.ssh.configs` - Location where SSH configurations including keys can be found.
     * If `$HOME` is found in string, it will be replaced with home directory
     * SSH configuration will include files `$data.ssh.configs/config.d/*`
