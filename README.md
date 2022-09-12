@@ -21,16 +21,6 @@ Things should work if you do nothing. Intent of variables are outlined below.
 * `data.ssh.keys` - Array of private keys that should be copied into `~/.ssh/`
     * Note: File will be copied from `$data.ssh.configs/$data.ssh.keys`
 
-## git
-
-Create a `~/.gitconfig.user` and put the following in it:
-
-    [user]
-      name = Your Name
-      email = Your Email
-
-Also put any other customizations to git you would like in that file.
-
 ## vim
 
 If you would like to add things to your vim configuration the best place to do
@@ -75,4 +65,4 @@ all be handled via the normal chezmoi flow.
 # TODO items
 
 * Could move SSH configs (private keys) into 1password or something similar
-* Make prezto and vim configurations not depend on my stuff; allow them to be extended
+* Make prezto, git, vim configurations not depend on my stuff; allow them to be extended
