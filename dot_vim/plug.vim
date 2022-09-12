@@ -17,7 +17,7 @@ Plug 'preservim/vim-markdown'
 
 
 " ========== Look ==========
-Plug 'skwp/vim-colors-solarized'
+Plug 'ericbn/vim-solarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 

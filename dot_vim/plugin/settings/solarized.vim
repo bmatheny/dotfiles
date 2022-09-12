@@ -1,5 +1,4 @@
-" Taken from https://github.com/skwp/dotfiles/blob/4f444cbc1343785fac223722fff6e382527b02bc/vim/settings/solarized.vim
-if !exists("g:yadr_disable_solarized_enhancements")
+if !exists("g:disable_solarized_enhancements")
   hi! link txtBold Identifier
   hi! link zshVariableDef Identifier
   hi! link zshFunction Function
