@@ -57,9 +57,9 @@ set wildignore+=*.orig " ignore mercurial backups
 
 " ========== Swap/Undo File Settings ==========
 
-set backupdir=~/.vim-swap,~/.tmp,~/tmp,/var/tmp,/tmp " Use ~/.vim-swap
-set directory=~/.vim-swap,~/.tmp,~/tmp,/var/tmp,/tmp " Use ~/.vim-swap
-set undodir=~/.vim-undo                              " Use ~/.vim-undo
+set backupdir=~/.local/vim/swap                      " Use ~/.local/vim/swap
+set directory=~/.local/vim/swap                      " Use ~/.local/vim/swap
+set undodir=~/.local/vim/undo                        " Use ~/.local/vim/undo
 set undofile                                         " Use it
 set updatetime=60000                                 " Write to swap every 60s
 

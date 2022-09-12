@@ -5,3 +5,15 @@
 #    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 #    brew install coreutils wget vim git
 # fi
+
+dirs=(
+'~/.local/vim/plugged'
+'~/.local/vim/swap'
+'~/.local/vim/undo'
+'~/.config/zsh/after'
+'~/.config/zsh/before'
+)
+for dir in "${dirs[@]}"
+do
+  mkdir -p $dir
+done
