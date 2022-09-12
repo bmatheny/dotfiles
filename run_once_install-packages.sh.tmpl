@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 # if ! brew --version
 # then
@@ -6,14 +6,17 @@
 #    brew install coreutils wget vim git
 # fi
 
+# For tilde expansion below
+set -o magicequalsubst
+
 dirs=(
-'~/.local/vim/plugged'
-'~/.local/vim/swap'
-'~/.local/vim/undo'
-'~/.config/zsh/after'
-'~/.config/zsh/before'
+~/.local/vim/plugged
+~/.local/vim/swap
+~/.local/vim/undo
+~/.config/zsh/after
+~/.config/zsh/before
 )
-for dir in "${dirs[@]}"
-do
-  mkdir -p $dir
+
+for dir in $dirs; do
+  mkdir -p "${dir}" && echo "Created directory: ${dir}"
 done
