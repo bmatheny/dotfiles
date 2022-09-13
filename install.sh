@@ -35,14 +35,4 @@ else
   "$CHEZMOI_CMD" init --apply $GIT_REPO || error_fn "Failed to initialize dotfiles from git repository '$GIT_REPO'"
 fi
 
-# if [[ ! -d src/third-party/homebrew ]]; then
-#   cd src/third-party
-#   git clone https://github.com/Homebrew/brew homebrew
-#   eval "$(homebrew/bin/brew shellenv)"
-#   brew update --force --quiet
-#   chmod -R go-w "$(brew --prefix)/share/zsh"
-# else
-#   eval "$(src/third-party/homebrew/bin/brew shellenv)"
-# fi
-
 exit 0
