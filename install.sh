@@ -8,7 +8,7 @@ set -x
 # TODO: Some zsh snippits would be helpful to pull into one file
 
 CHEZMOI_CMD="chezmoi"
-: "${DOTFILES_REPO:=bmatheny/dotfiles.git}"
+: "${GIT_REPO:=bmatheny/dotfiles.git}"
 
 function error_fn {
   echo "Exiting with error: '$1'"
@@ -29,7 +29,7 @@ if (( ! $+commands[chezmoi] )); then
   fi
 fi
 
-if [[ -d ".local/share/chezmoi/.git" ]]; then
+if [[ -d "$HOME/.local/share/chezmoi/.git" ]]; then
   "$CHEZMOI_CMD" update --apply --verbose
 else
 	"$CHEZMOI_CMD" init --apply $GIT_REPO || error_fn "Failed to initialize dotfiles from git repository '$GIT_REPO'"
