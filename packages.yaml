@@ -1,0 +1,42 @@
+---
+brew:
+  essentials:
+    - chezmoi
+    - coreutils
+    - curl
+    - git
+    - mercurial
+    - mosh
+    - screen
+    - tmux
+    - wget
+    - zsh
+  devtools:
+    - cscope
+    - ctags
+    - lua
+    - perl
+    - python@3.10
+    - ruby
+  editors:
+    - vim
+  whee:
+    - ack
+    - bat
+    - colordiff
+    - htop
+    - nb
+    - nmap
+    - pandoc
+    - telnet
+    - unzip
+    - watch
+    - w3m
+    - xz
+    - zstd
+gems:
+  - fizz
+  - buzz
+mas:
+  - bazz
+  - qaz

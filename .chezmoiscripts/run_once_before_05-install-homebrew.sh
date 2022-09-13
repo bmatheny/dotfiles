@@ -29,4 +29,7 @@ eval "$(./homebrew/bin/brew shellenv)"
 brew update --force --quiet || error_fn "brew update failed"
 chmod -R go-w "$(brew --prefix)/share/zsh" || error_fn "chmod failed"
 
+# This is a pre-requisite for most of the other scripts used for managing software
+brew install "shyaml"
+
 exit 0

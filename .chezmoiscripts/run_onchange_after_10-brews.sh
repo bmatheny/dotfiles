@@ -20,6 +20,15 @@ if (( ! $+commands[brew] )); then
   exit 1
 fi
 
+shyaml get-values :brew
+
+mydir=${0:a:h}
+file="${mydir}/config.yaml"
+
+for b in $(cat .chezmoiscripts/config.yaml | shyaml keys brew); do cat .chezmoiscripts/config.yaml | shyaml get-values brew.$b; done
+
+exit 1
+
 # Install libraries
 brew bundle --file=- <<EOF
 brew "gettext"
@@ -35,33 +44,6 @@ brew "berkeley-db"
 brew "gdbm"
 brew "sqlite"
 EOF
-
-# Ensure essential bundles are installed
-brew bundle --file=- <<EOF
-brew "chezmoi"
-brew "coreutils"
-brew "curl"
-brew "git"
-brew "mercurial"
-brew "mosh"
-brew "screen"
-brew "tmux"
-brew "wget"
-brew "zsh"
-EOF
-
-# Ensure languages and dev tools are installed; needed before vim
-brew bundle --file=- <<EOF
-brew "cscope"
-brew "ctags"
-brew "lua"
-brew "perl"
-brew "python@3.10"
-brew "ruby"
-EOF
-
-rehash
-brew install vim
 
 # Ensure some nice to haves
 brew bundle --file=- <<EOF
