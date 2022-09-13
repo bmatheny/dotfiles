@@ -1,11 +1,5 @@
 #!/usr/bin/env zsh
 
-# if ! brew --version
-# then
-#    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-#    brew install coreutils wget vim git
-# fi
-
 # For tilde expansion below
 set -o magicequalsubst
 
