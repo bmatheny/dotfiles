@@ -32,7 +32,7 @@ fi
 if [[ -d "$HOME/.local/share/chezmoi/.git" ]]; then
   "$CHEZMOI_CMD" update --apply --verbose
 else
-	"$CHEZMOI_CMD" init --apply $GIT_REPO || error_fn "Failed to initialize dotfiles from git repository '$GIT_REPO'"
+  "$CHEZMOI_CMD" init --apply $GIT_REPO || error_fn "Failed to initialize dotfiles from git repository '$GIT_REPO'"
 fi
 
 # if [[ ! -d src/third-party/homebrew ]]; then
