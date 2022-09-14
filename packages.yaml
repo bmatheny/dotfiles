@@ -35,8 +35,24 @@ brew:
     - xz
     - zstd
 gems:
-  - fizz
-  - buzz
+  - bundler
+  - cheat
+  - chronic
+  - chronic_duration
+  - facter
+  - github-markup
+  - jekyll
+  - jeweler
+  - kramdown
+  - mustache
+  - pry
+  - rake
+  - RedCloth
+  - redcarpet
+  - rspec
+  - terminal-table
+  - thor
+  - yard
 mas:
   - bazz
   - qaz

@@ -1,7 +1,13 @@
 #!/usr/bin/env zsh
 # vim: set ft=zsh:
 
-cd $HOME
+# TODO: 1password-cli
+# TODO: ruby-build rbenv?
+
+function error_fn {
+  echo "Exiting with error: '$1'"
+  exit 1
+}
 
 if (( ! $+commands[brew] )); then
   homebrew_locations=(
@@ -15,52 +21,21 @@ if (( ! $+commands[brew] )); then
   done
 fi
 
-if (( ! $+commands[brew] )); then
-  echo "Could not find homebrew, exiting"
-  exit 1
-fi
+(( $+commands[brew] )) || error_fn "Could not find homebrew"
+(( $+commands[chezmoi] )) || error_fn "Could not find chezmoi"
+(( $+commands[shyaml] )) || error_fn "Could not find shyaml"
 
-shyaml get-values :brew
+packages="$(chezmoi source-path)/packages.yaml"
 
-mydir=${0:a:h}
-file="${mydir}/config.yaml"
+[[ -f $packages ]] || error_fn "Could not find packages file '${packages}'"
 
-for b in $(cat .chezmoiscripts/config.yaml | shyaml keys brew); do cat .chezmoiscripts/config.yaml | shyaml get-values brew.$b; done
+for group in $(cat "${packages}" | shyaml keys brew); do
+  brewfile=""
+  for brew in $(cat "${packages}" | shyaml get-values "brew.${group}"); do
+    brewfile="${brewfile}\nbrew \"${brew}\""
+  done
+  echo $brewfile | brew bundle --quiet --file=-
+done
 
-exit 1
+exit 0
 
-# Install libraries
-brew bundle --file=- <<EOF
-brew "gettext"
-brew "gmp"
-brew "ncurses"
-brew "pcre"
-brew "pcre2"
-EOF
-
-# Install databases
-brew bundle --file=- <<EOF
-brew "berkeley-db"
-brew "gdbm"
-brew "sqlite"
-EOF
-
-# Ensure some nice to haves
-brew bundle --file=- <<EOF
-brew "ack"
-brew "bat"
-brew "colordiff"
-brew "htop"
-brew "nb"
-brew "nmap"
-brew "pandoc"
-brew "telnet"
-brew "unzip"
-brew "watch"
-brew "w3m"
-brew "xz"
-brew "zstd"
-EOF
-
-# foo="1password-cli"
-# bar="ruby-build rbenv"
