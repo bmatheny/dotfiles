@@ -30,6 +30,9 @@ brew update --force --quiet || error_fn "brew update failed"
 chmod -R go-w "$(brew --prefix)/share/zsh" || error_fn "chmod failed"
 
 # This is a pre-requisite for most of the other scripts used for managing software
-brew install "shyaml"
+brew bundle --file=- <<EOF
+brew "chezmoi"
+brew "shyaml"
+EOF
 
 exit 0
