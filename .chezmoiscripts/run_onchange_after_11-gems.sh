@@ -6,6 +6,13 @@
 # by homebrew. But if you prefer a different ruby (e.g. rbenv)
 # then you should install that and setup the path correctly.
 
+{{- $cmd := joinPath .chezmoi.sourceDir "support/checksum.sh" }}
+{{- $pkgs := joinPath .chezmoi.sourceDir "packages.yaml" }}
+{{- $upkgs := joinPath .chezmoi.homeDir ".local/bmatheny/packages.yaml" }}
+
+# packages.yaml hash: {{ output $cmd $pkgs | trim }}
+# ~/.local/bmatheny/packages.yaml hash: {{ output $cmd $upkgs | trim }}
+
 function error_fn {
   echo "Exiting with error: '$1'"
   exit 1
@@ -27,12 +34,11 @@ fi
 (( $+commands[chezmoi] )) || error_fn "Could not find chezmoi"
 (( $+commands[shyaml] )) || error_fn "Could not find shyaml"
 
-packages="$(chezmoi source-path)/packages.yaml"
-
+packages="{{ $pkgs }}"
 [[ -f "${packages}" ]] || error_fn "Could not find packages file '${packages}'"
 
 function gem_install {
-  gem="$1"
+  local gem="$1"
   if gem info --installed --silent "${gem}"; then
     gem update --silent "${gem}" || error_fn "Failed to update gem '$gem'"
   else
@@ -40,8 +46,16 @@ function gem_install {
   fi
 }
 
-for gem in $(cat "${packages}" | shyaml get-values gems | tr "\n" " "); do
-  gem_install "${gem}"
-done
+function install_gems_from_file {
+  local file="$1"
+  if [[ -f "${file}" ]]; then
+    for gem in $(cat "${file}" | shyaml get-values gems | tr "\n" " "); do
+      gem_install "${gem}"
+    done
+  fi
+}
+
+install_gems_from_file "$packages"
+install_gems_from_file "{{ $upkgs }}"
 
 exit 0

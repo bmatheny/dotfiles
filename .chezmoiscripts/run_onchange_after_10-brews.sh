@@ -4,6 +4,13 @@
 # TODO: 1password-cli
 # TODO: ruby-build rbenv?
 
+{{- $cmd := joinPath .chezmoi.sourceDir "support/checksum.sh" }}
+{{- $pkgs := joinPath .chezmoi.sourceDir "packages.yaml" }}
+{{- $upkgs := joinPath .chezmoi.homeDir ".local/bmatheny/packages.yaml" }}
+
+# packages.yaml hash: {{ output $cmd $pkgs | trim }}
+# ~/.local/bmatheny/packages.yaml hash: {{ output $cmd $upkgs | trim }}
+
 function error_fn {
   echo "Exiting with error: '$1'"
   exit 1
@@ -25,17 +32,23 @@ fi
 (( $+commands[chezmoi] )) || error_fn "Could not find chezmoi"
 (( $+commands[shyaml] )) || error_fn "Could not find shyaml"
 
-packages="$(chezmoi source-path)/packages.yaml"
-
+packages="{{ $pkgs }}"
 [[ -f $packages ]] || error_fn "Could not find packages file '${packages}'"
 
-for group in $(cat "${packages}" | shyaml keys brew); do
-  brewfile=""
-  for brew in $(cat "${packages}" | shyaml get-values "brew.${group}"); do
-    brewfile="${brewfile}\nbrew \"${brew}\""
-  done
-  echo $brewfile | brew bundle --quiet --file=-
-done
+function install_brews_from_file {
+  local file="$1"
+  if [[ -f "${file}" ]]; then
+    for group in $(cat "${file}" | shyaml keys brew); do
+      brewfile=""
+      for brew in $(cat "${file}" | shyaml get-values "brew.${group}"); do
+        brewfile="${brewfile}\nbrew \"${brew}\""
+      done
+      echo $brewfile | brew bundle --quiet --file=-
+    done
+  fi
+}
+
+install_brew_from_file "$packages"
+install_brew_from_file "{{ $upkgs }}"
 
 exit 0
-
