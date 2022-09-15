@@ -8,8 +8,8 @@
 # {{- $pkgs := joinPath .chezmoi.sourceDir "packages.yaml" }}
 # {{- $upkgs := joinPath .chezmoi.homeDir ".config/bmatheny/packages.yaml" }}
 
-# packages.yaml hash: {{ output $cmd $pkgs | trim }}
-# ~/.config/bmatheny/packages.yaml hash: {{ output $cmd $upkgs | trim }}
+# packages.yaml hash: {{ output $cmd $pkgs "brew" | trim }}
+# ~/.config/bmatheny/packages.yaml hash: {{ output $cmd $upkgs "brew" | trim }}
 
 function error_fn {
   echo "Exiting with error: '$1'"
@@ -47,6 +47,8 @@ function install_brews_from_file {
     done
   fi
 }
+
+echo "Updating homebrew"
 
 install_brews_from_file "$packages"
 install_brews_from_file "$HOME/.config/bmatheny/packages.yaml"

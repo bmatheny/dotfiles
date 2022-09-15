@@ -10,8 +10,8 @@
 # {{- $pkgs := joinPath .chezmoi.sourceDir "packages.yaml" }}
 # {{- $upkgs := joinPath .chezmoi.homeDir ".config/bmatheny/packages.yaml" }}
 
-# packages.yaml hash: {{ output $cmd $pkgs | trim }}
-# ~/.config/bmatheny/packages.yaml hash: {{ output $cmd $upkgs | trim }}
+# packages.yaml hash: {{ output $cmd $pkgs "gems" | trim }}
+# ~/.config/bmatheny/packages.yaml hash: {{ output $cmd $upkgs "gems" | trim }}
 
 function error_fn {
   echo "Exiting with error: '$1'"
@@ -56,6 +56,8 @@ function install_gems_from_file {
     done
   fi
 }
+
+echo "Updating ruby gems"
 
 install_gems_from_file "$packages"
 install_gems_from_file "$HOME/.config/bmatheny/packages.yaml"
