@@ -5,9 +5,11 @@
 # TODO: ruby-build rbenv?
 
 # {{- $cmd := joinPath .chezmoi.sourceDir "support/checksum.sh" }}
-# {{- $pkgs := joinPath .chezmoi.sourceDir "packages.yaml" }}
+# {{- $pkgs := joinPath .chezmoi.homeDir ".config/bmatheny/packages.yaml" }}
 
-# packages.yaml hash: {{ output $cmd $pkgs "brew" | trim }}
+# ~/.config/bmatheny/packages.yaml hash: {{ output $cmd $pkgs "brew" | trim }}
+
+# Search for template value, sourcedir, chezmoi and then fail
 
 function initialize_support() {
   local sourcedir="{{ .chezmoi.sourceDir }}"
@@ -25,7 +27,7 @@ function initialize_support() {
 }
 
 initialize_support "brews.zsh"
-packages="$SOURCEDIR/packages.yaml"
-brew_install "$packages" 1
+packages="$HOME/.config/bmatheny/packages.yaml"
+brew_install "$packages" 0
 
 exit 0
