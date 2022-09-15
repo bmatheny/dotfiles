@@ -73,6 +73,33 @@ Look at `install.sh`. This is old and needs to be updated. I'm hoping this will 
 * Linux support
 * xcode install/select support for macos: sudo xcodebuild -license accept and something else
 
+# Apps
+
+* 1Password - cask 1password
+* Adobe Acrobat - cask adobe-acrobat-reader
+* Alfred 5 - cask alfred, built in backup
+* Balance Lock - mas install
+* balenaEtcher - cask balenaetcher
+* Bartender 4 - cask bartender, mackup backup
+* Divvy - cask divvy, mackup backup (maybe license, yes config)
+* Elgato Camera Hub - cask elgato-camera-hub
+* Elgato Control Center - cask elgato-control-center
+* Elgato Stream Deck - cask elgato-stream-deck
+* Google Chrome - cask google-chrome
+* iTerm2 - cask iterm2, mackup backup
+* Krisp - cask krisp
+* Logi Options+ - cask logi-options-plus
+* SizeUp - cask sizeup, mackup backup (license and config)
+* Slack - mas install
+* Sonos - cask sonos
+* Spotify - cask spotify, mackup backup
+* Synology Drive Client - cask synology-drive
+* Things3 - mas install
+* Tidal - cask tidal
+* Witch - cask witch, mackup backup
+* Xcode - mas install
+* Zoom - cask zoom
+
 # Notes
 
 ```
@@ -99,3 +126,5 @@ XDG_CONFIG_DIRS if not populated defaults to /etc/xdg/
 
 Search for data files by default would be: .local/share, /usr/local/share, /usr/share
 Search for config dirs by default would be: .config/, /etc/xdg
+
+
