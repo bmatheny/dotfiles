@@ -7,10 +7,10 @@
 # then you should install that and setup the path correctly.
 
 # {{- $cmd := joinPath .chezmoi.sourceDir "support/checksum.sh" }}
-# {{- $pkgs := joinPath .chezmoi.sourceDir "packages.yaml" }}
+# {{- $pkgs := joinPath .chezmoi.sourceDir "support/packages.yaml" }}
 # {{- $upkgs := joinPath .chezmoi.homeDir ".config/bmatheny/packages.yaml" }}
 
-# packages.yaml hash: {{ output $cmd $pkgs "gems" | trim }}
+# support/packages.yaml hash: {{ output $cmd $pkgs "gems" | trim }}
 # ~/.config/bmatheny/packages.yaml hash: {{ output $cmd $upkgs "gems" | trim }}
 
 function error_fn {
@@ -34,7 +34,7 @@ fi
 (( $+commands[chezmoi] )) || error_fn "Could not find chezmoi"
 (( $+commands[shyaml] )) || error_fn "Could not find shyaml"
 
-packages="$(chezmoi source-path)/packages.yaml"
+packages="$(chezmoi source-path)/support/packages.yaml"
 [[ -f "${packages}" ]] || error_fn "Could not find packages file '${packages}'"
 
 function install_gem {

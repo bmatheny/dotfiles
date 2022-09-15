@@ -5,9 +5,9 @@
 # TODO: ruby-build rbenv?
 
 # {{- $cmd := joinPath .chezmoi.sourceDir "support/checksum.sh" }}
-# {{- $pkgs := joinPath .chezmoi.sourceDir "packages.yaml" }}
+# {{- $pkgs := joinPath .chezmoi.sourceDir "support/packages.yaml" }}
 
-# packages.yaml hash: {{ output $cmd $pkgs "brew" | trim }}
+# support/packages.yaml hash: {{ output $cmd $pkgs "brew" | trim }}
 
 function initialize_support() {
   local sourcedir="{{ .chezmoi.sourceDir }}"
@@ -25,7 +25,7 @@ function initialize_support() {
 }
 
 initialize_support "brews.zsh"
-packages="$SOURCEDIR/packages.yaml"
+packages="$SOURCEDIR/support/packages.yaml"
 brew_install "$packages" 1
 
 exit 0
