@@ -1,9 +1,6 @@
 #!/usr/bin/env zsh
 # vim: set ft=zsh:
 
-# TODO: 1password-cli
-# TODO: ruby-build rbenv?
-
 # {{- $cmd := joinPath .chezmoi.sourceDir "support/checksum.sh" }}
 # {{- $pkgs := joinPath .chezmoi.sourceDir "packages.yaml" }}
 # {{- $upkgs := joinPath .chezmoi.homeDir ".config/bmatheny/packages.yaml" }}
@@ -30,25 +27,27 @@ fi
 
 (( $+commands[brew] )) || error_fn "Could not find homebrew"
 (( $+commands[chezmoi] )) || error_fn "Could not find chezmoi"
+(( $+commands[mas] )) || error_fn "Could not find mas"
 (( $+commands[shyaml] )) || error_fn "Could not find shyaml"
 
 packages="$(chezmoi source-path)/packages.yaml"
 [[ -f $packages ]] || error_fn "Could not find packages file '${packages}'"
 
-function install_brews_from_file {
+function install_apps_from_file {
   local file="$1"
+  local IFS=$'\n'
   if [[ -f "${file}" ]]; then
-    for group in $(cat "${file}" | shyaml -q -y keys brew); do
-      brewfile=""
-      for brew in $(cat "${file}" | shyaml get-values "brew.${group}"); do
-        brewfile="${brewfile}\nbrew \"${brew}\""
-      done
-      echo $brewfile | brew bundle --quiet --file=-
+    for line in $(cat "${file}" | shyaml -y -q get-values mas); do
+      local appname=$(echo "${line}" | shyaml keys)
+      local appid=$(echo "${line}" | shyaml values)
+      echo "Installing or upgrading '${appname}'"
+      mas install "${appid}" 2>/dev/null # Will silently do nothing if already installed
+      mas upgrade "${appid}" 2>/dev/null # Will silently do nothing if already installed
     done
   fi
 }
 
-install_brews_from_file "$packages"
-install_brews_from_file "$HOME/.config/bmatheny/packages.yaml"
+install_apps_from_file "$packages"
+install_apps_from_file "$HOME/.config/bmatheny/packages.yaml"
 
 exit 0

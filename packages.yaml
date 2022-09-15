@@ -5,6 +5,7 @@ brew:
     - coreutils
     - curl
     - git
+    - mas
     - mercurial
     - mosh
     - screen
@@ -54,5 +55,7 @@ gems:
   - thor
   - yard
 mas:
-  - bazz
-  - qaz
+  - Balance Lock: "1019371109"
+  - Amphetamine: "937984704"
+  - Slack: "803453959"
+  - Xcode: "497799835"

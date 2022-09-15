@@ -71,7 +71,7 @@ Look at `install.sh`. This is old and needs to be updated. I'm hoping this will 
 * Document relationship between scripts. When do they execute? On a first run, what executes and in what order? In a 'normal' run, what executes and in what order?
 * Handle HTTP/HTTP proxy early
 * Linux support
-* xcode install/select support for macos
+* xcode install/select support for macos: sudo xcodebuild -license accept and something else
 
 # Notes
 
