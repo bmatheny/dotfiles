@@ -6,8 +6,8 @@ function _check_cmds() {
 }
 
 function _check_file() {
-  local readonly file="$1"
-  local readonly required=$2
+  local file="$1"
+  local required=$2
 
   if [[ ! -f $file ]]; then
     if [[ $required -eq 1 ]]; then
@@ -19,8 +19,8 @@ function _check_file() {
 }
 
 function brew_install() {
-  local readonly file="$1"
-  local readonly required=$2
+  local file="$1"
+  local required=$2
 
   brew_source
   _check_cmds

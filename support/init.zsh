@@ -16,7 +16,7 @@ function init_source() {
 }
 
 function load_support_script() {
-  local readonly script="$1"
+  local script="$1"
   if [ -z "${SOURCEDIR}" ]; then
     echo "Please call init_source first"
     exit 1

@@ -9,8 +9,6 @@
 
 # ~/.config/bmatheny/Brewfile hash: {{ output $cmd $pkgs | trim }}
 
-# Search for template value, sourcedir, chezmoi and then fail
-
 function initialize_support() {
   local sourcedir="{{ .chezmoi.sourceDir }}"
   if [ ! -d "${sourcedir}" -a $+commands[chezmoi] ]; then
