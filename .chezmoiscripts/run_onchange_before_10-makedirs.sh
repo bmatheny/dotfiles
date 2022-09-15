@@ -5,11 +5,12 @@ set -o magicequalsubst
 
 dirs=(
 ~/tmp
-~/.local/vim/plugged
-~/.local/vim/swap
-~/.local/vim/undo
+~/.cache/vim/plugs
+~/.local/state/vim/swap
+~/.local/state/vim/undo
 ~/.config/zsh/after
 ~/.config/zsh/before
+~/.config/bmatheny
 )
 
 for dir in $dirs; do

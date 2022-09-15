@@ -8,10 +8,10 @@
 
 {{- $cmd := joinPath .chezmoi.sourceDir "support/checksum.sh" }}
 {{- $pkgs := joinPath .chezmoi.sourceDir "packages.yaml" }}
-{{- $upkgs := joinPath .chezmoi.homeDir ".local/bmatheny/packages.yaml" }}
+{{- $upkgs := joinPath .chezmoi.homeDir ".config/bmatheny/packages.yaml" }}
 
 # packages.yaml hash: {{ output $cmd $pkgs | trim }}
-# ~/.local/bmatheny/packages.yaml hash: {{ output $cmd $upkgs | trim }}
+# ~/.config/bmatheny/packages.yaml hash: {{ output $cmd $upkgs | trim }}
 
 function error_fn {
   echo "Exiting with error: '$1'"
@@ -40,8 +40,10 @@ packages="{{ $pkgs }}"
 function gem_install {
   local gem="$1"
   if gem info --installed --silent "${gem}"; then
+    echo "Updating gem '${gem}'"
     gem update --silent "${gem}" || error_fn "Failed to update gem '$gem'"
   else
+    echo "Installing gem '${gem}'"
     gem install --silent "${gem}" || error_fn "Failed to install gem '$gem'"
   fi
 }

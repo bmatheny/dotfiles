@@ -1,4 +1,4 @@
-call plug#begin("~/.local/vim/plugged")
+call plug#begin("~/.cache/vim/plugs")
 
 " ========== General vim Improvements ==========
 " Look at https://github.com/tpope/vim-sensible/blob/master/plugin/sensible.vim

@@ -6,10 +6,10 @@
 
 {{- $cmd := joinPath .chezmoi.sourceDir "support/checksum.sh" }}
 {{- $pkgs := joinPath .chezmoi.sourceDir "packages.yaml" }}
-{{- $upkgs := joinPath .chezmoi.homeDir ".local/bmatheny/packages.yaml" }}
+{{- $upkgs := joinPath .chezmoi.homeDir ".config/bmatheny/packages.yaml" }}
 
 # packages.yaml hash: {{ output $cmd $pkgs | trim }}
-# ~/.local/bmatheny/packages.yaml hash: {{ output $cmd $upkgs | trim }}
+# ~/.config/bmatheny/packages.yaml hash: {{ output $cmd $upkgs | trim }}
 
 function error_fn {
   echo "Exiting with error: '$1'"
@@ -48,7 +48,7 @@ function install_brews_from_file {
   fi
 }
 
-install_brew_from_file "$packages"
-install_brew_from_file "{{ $upkgs }}"
+install_brews_from_file "$packages"
+install_brews_from_file "{{ $upkgs }}"
 
 exit 0

@@ -72,3 +72,30 @@ Look at `install.sh`. This is old and needs to be updated. I'm hoping this will 
 * Handle HTTP/HTTP proxy early
 * Linux support
 * xcode install/select support for macos
+
+# Notes
+
+```
+# Modern home directory
+find ~/
+.cache/          # XDG_CACHE_HOME user-specific non-essential (cached) data files
+.config/         # XDG_CONFIG_HOME user-specific configuration files
+.local/bin       # In PATH, user-specific executable files
+.local/share/    # XDG_DATA_HOME user-specific data files
+.local/state/    # XDG_STATE_HOME user-specific state files
+```
+
+XDG_STATE_HOME: action history (logs, history, recently used files) and current
+state of app that can be used on restart (view, layout, open files, undo
+history)
+XDG_CACHE_HOME: things not above
+
+What is XDG_DATA_DIRS and XDG_CONFIG_DIRS for?
+If defined, XDG_DATA_DIR and XDG_CONFIG_DIR takes precedence over anything in
+XDG_{DATA,CONFIG}_DIRS.
+
+XDG_DATA_DIRS if not populated defaults to /usr/local/share:/usr/share
+XDG_CONFIG_DIRS if not populated defaults to /etc/xdg/
+
+Search for data files by default would be: .local/share, /usr/local/share, /usr/share
+Search for config dirs by default would be: .config/, /etc/xdg
