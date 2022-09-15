@@ -1,0 +1,43 @@
+# Essential software
+brew "chezmoi"
+brew "coreutils"
+brew "curl"
+brew "git"
+brew "mas"
+brew "mercurial"
+brew "mosh"
+brew "screen"
+brew "tmux"
+brew "wget"
+brew "zsh"
+
+# Developer tools
+brew "cscope"
+brew "ctags"
+brew "lua"
+brew "perl"
+brew "python@3.10"
+brew "ruby"
+
+# I install vim after the above so it gets built the way I want it
+brew "vim"
+
+# All the other stuff to make it fun
+brew "ack"
+brew "bat"
+brew "colordiff"
+brew "htop"
+brew "nb"
+brew "nmap"
+brew "pandoc"
+brew "telnet"
+brew "unzip"
+brew "watch"
+brew "w3m"
+brew "xz"
+brew "zstd"
+
+mas "Balance Lock", id: 1019371109
+mas "Amphetamine", id: 937984704
+mas "Slack", id: 803453959
+mas "Xcode", id: 497799835
