@@ -37,3 +37,26 @@ function brew_source() {
     done
   fi
 }
+
+function check_cmds() {
+  (( $+commands[brew] )) || error_fn "Could not find homebrew"
+  (( $+commands[chezmoi] )) || error_fn "Could not find chezmoi"
+  if [ $# -gt 0 ]; then
+    for cmd in $*; do
+      (( $+commands[$cmd] )) || error_fn "Could not find ${cmd}"
+    done
+  fi
+}
+
+function check_file() {
+  local file="$1"
+  local required=$2
+
+  if [[ ! -f $file ]]; then
+    if [[ $required -eq 1 ]]; then
+      error_fn "Could not find file '$file'"
+    else
+      exit 0
+    fi
+  fi
+}

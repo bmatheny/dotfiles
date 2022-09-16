@@ -32,7 +32,6 @@ chmod -R go-w "$(brew --prefix)/share/zsh" || error_fn "chmod failed"
 # This is a pre-requisite for most of the other scripts used for managing software
 brew bundle --file=- <<EOF
 brew "chezmoi"
-brew "shyaml"
 EOF
 
 exit 0

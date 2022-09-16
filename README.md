@@ -72,6 +72,7 @@ Look at `install.sh`. This is old and needs to be updated. I'm hoping this will 
 * Handle HTTP/HTTP proxy early
 * Linux support
 * xcode install/select support for macos: sudo xcodebuild -license accept and something else
+* Remove shyaml dependency
 
 # Apps
 
@@ -86,7 +87,7 @@ Look at `install.sh`. This is old and needs to be updated. I'm hoping this will 
 * Elgato Control Center - cask elgato-control-center
 * Elgato Stream Deck - cask elgato-stream-deck
 * Google Chrome - cask google-chrome
-* iTerm2 - cask iterm2, mackup backup
+* iTerm2 - cask iterm2, built in backup
 * Krisp - cask krisp
 * Logi Options+ - cask logi-options-plus
 * SizeUp - cask sizeup, mackup backup (license and config)

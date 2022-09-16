@@ -14,3 +14,4 @@ dot_ssh/known_hosts
 *.swp
 util/
 support/packages/Brewfile.lock.json
+support/packages/Gemfile.lock

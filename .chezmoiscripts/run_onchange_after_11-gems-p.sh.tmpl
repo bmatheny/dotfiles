@@ -7,9 +7,9 @@
 # then you should install that and setup the path correctly.
 
 # {{- $cmd := joinPath .chezmoi.sourceDir "support/checksum.sh" }}
-# {{- $pkgs := joinPath .chezmoi.sourceDir "support/packages/Gemfile" }}
+# {{- $upkgs := joinPath .chezmoi.homeDir ".config/bmatheny/Gemfile" }}
 
-# support/packages/Gemfile hash: {{ output $cmd $pkgs | trim }}
+# .config/bmatheny/Gemfile hash: {{ output $cmd $upkgs | trim }}
 
 function initialize_support() {
   local sourcedir="{{ .chezmoi.sourceDir }}"
@@ -27,7 +27,7 @@ function initialize_support() {
 }
 
 initialize_support "gems.zsh"
-packages="$SOURCEDIR/support/packages/Gemfile"
-gem_install "$packages" 1
+packages="$HOME/.config/bmatheny/Gemfile"
+gem_install "$packages" 0
 
 exit 0
