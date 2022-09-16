@@ -3,7 +3,7 @@ brew "chezmoi"
 brew "coreutils"
 brew "curl"
 brew "git"
-brew "mas"
+brew "mas" if OS.mac?
 brew "mercurial"
 brew "mosh"
 brew "screen"
@@ -28,7 +28,7 @@ brew "bat"
 brew "colordiff"
 brew "htop"
 brew "nb"
-brew "nmap"
+brew "nmap" if OS.linux?
 brew "pandoc"
 brew "telnet"
 brew "unzip"
@@ -37,7 +37,7 @@ brew "w3m"
 brew "xz"
 brew "zstd"
 
-mas "Balance Lock", id: 1019371109
-mas "Amphetamine", id: 937984704
-mas "Slack", id: 803453959
-mas "Xcode", id: 497799835
+mas "Balance Lock", id: 1019371109 if OS.mac?
+mas "Amphetamine", id: 937984704 if OS.mac?
+mas "Slack", id: 803453959 if OS.mac?
+mas "Xcode", id: 497799835 if OS.mac?
