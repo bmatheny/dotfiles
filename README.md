@@ -63,16 +63,18 @@ Look at `install.sh`. This is old and needs to be updated. I'm hoping this will 
 
 # TODO items
 
-* Could move SSH configs (private keys) into 1password or something similar
-* Make prezto, git, vim configurations not depend on my stuff; allow them to be extended
-    * For gems, homebrew, etc look at my own file but allow it to be extended as well
-    * Update those scripts to be templates that get the hash of files (mine and user)
+* Update docs
+    * Document relationship between scripts. When do they execute? On a first run, what executes and in what order? In a 'normal' run, what executes and in what order?
+* Test on other mac
 * Read TODO items in scripts
-* Document relationship between scripts. When do they execute? On a first run, what executes and in what order? In a 'normal' run, what executes and in what order?
+
+## Ideas
+
 * Handle HTTP/HTTP proxy early
 * Linux support
+* Could move SSH configs (private keys) into 1password or something similar
+* Make prezto, git, vim configurations not depend on my stuff; allow them to be extended
 * xcode install/select support for macos: sudo xcodebuild -license accept and something else
-* Remove shyaml dependency
 
 # Apps
 
