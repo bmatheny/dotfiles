@@ -29,9 +29,17 @@ if (( ! $+commands[chezmoi] )); then
 fi
 
 if [[ -d "$HOME/.local/share/chezmoi/.git" ]]; then
-  "$CHEZMOI_CMD" update --apply --verbose
+  "$CHEZMOI_CMD" update --apply --verbose || error_fn "Failed to chezmoi update --apply"
+  exit 0
 else
-  "$CHEZMOI_CMD" init --apply $GIT_REPO || error_fn "Failed to initialize dotfiles from git repository '$GIT_REPO'"
+  "$CHEZMOI_CMD" init --apply $GIT_REPO
+  if [ $? -ne 0 ]; then
+    echo "Non-zero exit code, recommend running 'chezmoi apply' to address"
+    exit 1
+  else
+    echo "Success!"
+    exit 0
+  fi
 fi
 
-exit 0
+exit 1
