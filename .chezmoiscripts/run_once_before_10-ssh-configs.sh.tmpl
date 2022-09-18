@@ -10,8 +10,9 @@
 {{- $file = $file | replace "$HOME" $home }}
 
 #  {{ $key }} - {{ $file }}
-if [[ -f "{{ $file }}" ]]; then
+if [[ ! -z "{{ $file }}" && -f "{{ $file }}" ]]; then
   cp -f "{{ $file }}" ~/.ssh/{{ $key }}
+  chmod 600 "~/.ssh/{{ $file }}"
 fi
 
 {{ end }}
