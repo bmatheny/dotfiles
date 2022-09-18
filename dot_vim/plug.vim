@@ -12,8 +12,7 @@ Plug 'tpope/vim-git'
 
 
 " ========== Languages ==========
-Plug 'godlygeek/tabular'                " Required by vim-markdown below
-Plug 'preservim/vim-markdown'
+Plug 'rhysd/vim-gfm-syntax'
 
 
 " ========== Look ==========

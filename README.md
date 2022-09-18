@@ -1,3 +1,36 @@
+# What is this?
+
+My unix environment (macOS, Linux) including all dotfiles, software
+installation, etc. I spin up new shells somewhat regularly, and it's a huge
+hassle to rebuild my environment each time.
+
+This was designed so that anyone can use it, but that's mostly so I don't have a
+bunch of things hardcoded. I can't imagine anyone besides me actually using
+this, but it could serve as an inspiration for others or just another example
+for how to use `chezmoi`.
+
+# Installation
+
+There is an
+[install.sh](https://github.com/bmatheny/dotfiles/blob/main/install.sh) script
+which you can use to get started. It will install `chezmoi`, which will take
+care of everything else.
+
+The only pre-requisites for installation and setup are:
+
+* `curl` or `wget`
+* `git`
+* `zsh`
+
+Assuming you have the appropriate pre-requisites installed, I would recommend
+installing as:
+
+```bash
+$ ASK=y zsh -c "$(curl -fsLS https://raw.githubusercontent.com/bmatheny/dotfiles/main/install.sh)"
+```
+
+Please note all the usual caveats about trusting code from a remote location.
+
 # Customization
 
 This project uses chezmoi for dotfiles management. As such I try to follow
@@ -56,10 +89,6 @@ again if the hash is updated.
 * `run_once_vim_plugins` - Installs vim plugins anytime `.vim/plug.vim` changes
 
 ## Templates
-
-# Installation
-
-Look at `install.sh`. This is old and needs to be updated. I'm hoping this will all be handled via the normal chezmoi flow.
 
 # TODO items
 

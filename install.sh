@@ -3,7 +3,6 @@
 
 set -x
 
-# TODO: Look at morganson.tools and connect that to this install.sh
 # TODO: Should this install homebrew and install chezmoi from homebrew?
 # TODO: Some zsh snippits would be helpful to pull into one file
 
