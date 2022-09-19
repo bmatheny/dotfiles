@@ -30,7 +30,7 @@ brew "htop"
 brew "nb"
 brew "nmap" if OS.linux?
 brew "pandoc"
-brew "telnet"
+brew "telnet" if OS.mac?
 brew "unzip"
 brew "watch"
 brew "w3m"
