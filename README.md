@@ -16,11 +16,13 @@ There is an
 which you can use to get started. It will install `chezmoi`, which will take
 care of everything else.
 
-The only pre-requisites for installation and setup are:
+If you are installing on macOS you shouldn't need to do anything other than
+install xcode and CLI tools. If you are installing on Ubuntu I would recommend:
 
-* `curl` or `wget`
-* `git`
-* `zsh`
+```bash
+apt install build-essential procps curl file git zsh
+bash <(curl -sL https://gist.githubusercontent.com/bmatheny/f7cef71291d1ea3175b6d9d1bf312a3e/raw/install_ruby_rpi.sh)
+```
 
 Assuming you have the appropriate pre-requisites installed, I would recommend
 installing as:
@@ -31,14 +33,38 @@ $ ASK=y zsh -c "$(curl -fsLS https://raw.githubusercontent.com/bmatheny/dotfiles
 
 Please note all the usual caveats about trusting code from a remote location.
 
-# Customization
+# Basic customization
+
+For day to day tweaks and adjustments, these are the locations to put things.
+
+## Packages
+
+Be sure to put new packages to be installed in `~/.config/bmatheny/Brewfile` and
+any new ruby gems to be installed in `~/.config/bmatheny/Gemfile`. These will be
+part of a small number of files that will be managed outside of the repository.
+
+## vim
+
+* Plugins
+    * After you add or update plugins, although automated, you may want to run the following command in your shell: `vim -es -u ~/.vimrc -i NONE -c "PlugInstall" -c "qa"`
+    * Adding new plugins should be done in...
+* Scripts/customizations
+
+## zsh
+
+Put customizations in `~/.config/zsh/before` or `~/.config/zsh/after`. These
+will be sourced before and after other dotfiles included with this project.
+
+# Chezmoi Customization
 
 This project uses chezmoi for dotfiles management. As such I try to follow
 chezmoi conventions.
 
-The configuration template (`.chezmoi.toml.tmpl`) should get copied into
-`~/.config/chezmoi/chezmoi.toml` where you can fill out configuration values.
-Things should work if you do nothing. Intent of variables are outlined below.
+The configuration template (`.chezmoi.toml.tmpl`) will get expanded when you
+first initialize the repository and put in `~/.config/chezmoi/chezmoi.toml`
+where you can fill out configuration values. Things should work if you do
+nothing (besides git name/email being wrong). Intent of variables are outlined
+below.
 
 ## environment variables
 
@@ -54,28 +80,17 @@ Things should work if you do nothing. Intent of variables are outlined below.
 * `data.ssh.keys` - Array of private keys that should be copied into `~/.ssh/`
     * Note: File will be copied from `$data.ssh.configs/$data.ssh.keys`
 
-## vim
-
-If you would like to add things to your vim configuration the best place to do
-it is...
-
-## zsh
-
-Put customizations in `~/.zsh.before` or `~/.zsh.after`, these will be sourced
-before and after other dotfiles included with this project. If you want a custom
-theme put it in `~/.zsh.prompts` and create a `~/.zsh.after/prompt.zsh` with a
-single line like `prompt "pname"` assuming you put your custom prompt as
-`~/.zsh.prompts/prompt_pname_setup`.
-
-If you don't have much going on, just drop any changes you want in
-`~/.zshrc.private`j.
-
 # How chezmoi is used
 
 ## Externals
 
-A variety of code and configs are sourced from github repositories. Take a look
-at `.chezmoiexternal.toml`.
+You can find externally sourced software in `.chezmoiexternal.toml`. These are:
+
+* My prezto fork
+* plug.vim plugin manager
+
+Although, if you have not installed homebrew and chezmoi, those will be sourced
+as well.
 
 ## Scripts
 
@@ -90,11 +105,12 @@ again if the hash is updated.
 
 ## Templates
 
+Some documentation here
+
 # TODO items
 
 * Update docs
     * Document relationship between scripts. When do they execute? On a first run, what executes and in what order? In a 'normal' run, what executes and in what order?
-* Test on other mac
 * Read TODO items in scripts
 
 ## Ideas
@@ -104,33 +120,6 @@ again if the hash is updated.
 * Could move SSH configs (private keys) into 1password or something similar
 * Make prezto, git, vim configurations not depend on my stuff; allow them to be extended
 * xcode install/select support for macos: sudo xcodebuild -license accept and something else
-
-# Apps
-
-* 1Password - cask 1password
-* Adobe Acrobat - cask adobe-acrobat-reader
-* Alfred 5 - cask alfred, built in backup
-* Balance Lock - mas install
-* balenaEtcher - cask balenaetcher
-* Bartender 4 - cask bartender, mackup backup
-* Divvy - cask divvy, mackup backup (maybe license, yes config)
-* Elgato Camera Hub - cask elgato-camera-hub
-* Elgato Control Center - cask elgato-control-center
-* Elgato Stream Deck - cask elgato-stream-deck
-* Google Chrome - cask google-chrome
-* iTerm2 - cask iterm2, built in backup
-* Krisp - cask krisp
-* Logi Options+ - cask logi-options-plus
-* SizeUp - cask sizeup, mackup backup (license and config)
-* Slack - mas install
-* Sonos - cask sonos
-* Spotify - cask spotify, mackup backup
-* Synology Drive Client - cask synology-drive
-* Things3 - mas install
-* Tidal - cask tidal
-* Witch - cask witch, mackup backup
-* Xcode - mas install
-* Zoom - cask zoom
 
 # Notes
 
@@ -158,5 +147,3 @@ XDG_CONFIG_DIRS if not populated defaults to /etc/xdg/
 
 Search for data files by default would be: .local/share, /usr/local/share, /usr/share
 Search for config dirs by default would be: .config/, /etc/xdg
-
-
