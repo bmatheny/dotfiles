@@ -1,0 +1,24 @@
+#!/usr/bin/env zsh
+
+# Setup homebrew environment info if available
+function get_platform_name() {
+  local os_type=$(uname -s) # Darwin, Linux
+  local machine_type=$(uname -m) # x86_64, arm64, aarch64
+  local flavor="" # rocky, ubuntu, 12.6 (for mac)
+  if [[ -s "/etc/os-release" ]]; then
+    source "/etc/os-release"
+    if [ -n "${ID}" ]; then
+      flavor="${ID}_${VERSION_ID:-Unknown}"
+    fi
+    if [[ "$OSTYPE" == darwin* ]]; then
+      flavor="$(sw_vers -productVersion)"
+    fi
+  fi
+  if [ -z "${flavor}" ]; then
+    flavor="unknown"
+  fi
+  echo "${os_type}-${machine_type}-${flavor}" # e.g. Linux-x86_64-rocky_9.0
+}
+get_platform_name
+
+exit 0
