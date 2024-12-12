@@ -95,7 +95,7 @@ as well.
 ## Scripts
 
 There are a number of scripts for managing parts of the repository and your
-dotfiles. These are not very complex. They are all tempaltes, primarily
+dotfiles. These are not very complex. They are all templates, primarily
 because they are run once scripts that track the hash of repo files and run
 again if the hash is updated.
 

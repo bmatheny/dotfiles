@@ -24,6 +24,11 @@ function initialize_support() {
   load_support_script "$1"
 }
 
+if [[ "$(uname)" != Darwin ]]; then
+  echo "Exiting since we only install homebrew packages on MacOS"
+  exit 0
+fi
+
 initialize_support "brews.zsh"
 packages="$SOURCEDIR/support/packages/Brewfile"
 brew_install "$packages" 1

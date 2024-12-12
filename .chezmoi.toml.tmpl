@@ -1,7 +1,7 @@
 {{- $name := "Blake Matheny" -}}
 {{- $email := "bmatheny@mobocracy.net" -}}
 {{- $configs := "$HOME/SynologyDrive/Home/configs/ssh" -}}
-{{- $keys_s := "id_rsa" -}}
+{{- $keys_s := "id_ed25519" -}}
 
 {{- if (env "ASK") }}
 {{- $name := promptString "Name to use for git" -}}

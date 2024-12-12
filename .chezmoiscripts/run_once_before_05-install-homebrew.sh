@@ -6,28 +6,12 @@ function error_fn {
   exit 1
 }
 
-# Create a robust platform name string so that if homebrew is installed in a
-# location using this name, it will work on that machine.
-function get_platform_name() {
-  local os_type=$(uname -s) # Darwin, Linux
-  local machine_type=$(uname -m) # x86_64, arm64, aarch64
-  local flavor="" # rocky, ubuntu, 12.6 (for mac)
-  if [[ -s "/etc/os-release" ]]; then
-    source "/etc/os-release"
-    if [ -n "${ID}" ]; then
-      flavor="${ID}_${VERSION_ID:-Unknown}"
-    fi
-    if [[ "$OSTYPE" == darwin* ]]; then
-      flavor="$(sw_vers -productVersion)"
-    fi
-  fi
-  if [ -z "${flavor}" ]; then
-    flavor="unknown"
-  fi
-  echo "${os_type}-${machine_type}-${flavor}" # e.g. Linux-x86_64-rocky
-}
-
 cd $HOME
+
+if [[ "$(uname)" != Darwin ]]; then
+  echo "Only installing homebrew on Darwin, exiting"
+  exit 0
+fi
 
 if (( $+commands[brew] )); then
   echo "Found existing brew installation, exiting with success"
@@ -39,23 +23,31 @@ if (( ! $+commands[git] )); then
   exit 1
 fi
 
-typeset -l HOMEBREW_PLATFORM_NAME=$(get_platform_name)
-_homebrew_home="${HOME}/.homebrew/${HOMEBREW_PLATFORM_NAME}"
+local homebrew_locations=(
+  "/opt/homebrew"
+  "/usr/local")
+for location in $homebrew_locations; do
+  if [[ -d "$location/bin" && -x "$location/bin/brew" ]]; then
+    echo "Found existing homebrew directory at '$location', exiting with error"
+    exit 1
+  fi
+done
 
-if [[ -d "${_homebrew_home}" ]]; then
-  echo "Found existing homebrew directory at '${_homebrew_home}', exiting with error"
-  echo "Remove this directory if you want to use this script"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+for location in $homebrew_locations; do
+  if [[ -d "$location/bin" && -x "$location/bin/brew" ]]; then
+    path=("$location/bin" "$location/sbin" $path)
+    break
+  fi
+done
+
+if (( ! $+commands[brew] )); then
+  echo "Could not find brew command, exiting with error"
   exit 1
 fi
 
-git clone https://github.com/Homebrew/brew "${_homebrew_home}" || error_fn "git clone failed"
-eval "$(${_homebrew_home}/bin/brew shellenv)"
+eval "${(@M)${(f)"$(brew shellenv 2> /dev/null)"}:#export HOMEBREW*}"
 brew update --force --quiet || error_fn "brew update failed"
 chmod -R go-w "$(brew --prefix)/share/zsh" || error_fn "chmod failed"
-
-# This is a pre-requisite for most of the other scripts used for managing software
-brew bundle --file=- <<EOF
-brew "chezmoi"
-EOF
 
 exit 0
