@@ -40,7 +40,9 @@ function brew_source() {
 }
 
 function check_cmds() {
-  (( $+commands[brew] )) || error_fn "Could not find homebrew"
+  if [[ "$(uname)" == Darwin ]]; then
+    (( $+commands[brew] )) || error_fn "Could not find homebrew"
+  fi
   (( $+commands[chezmoi] )) || error_fn "Could not find chezmoi"
   if [ $# -gt 0 ]; then
     for cmd in $*; do
