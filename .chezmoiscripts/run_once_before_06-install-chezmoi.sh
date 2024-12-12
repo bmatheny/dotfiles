@@ -13,8 +13,10 @@ done
 
 if (( $+commands[brew] )); then
   brew install chezmoi
+  path=("$(brew --prefix chezmoi)/bin" $path)
 else
   sh -c "$(curl -fsLS get.chezmoi.io)"
+  path=("$HOME/bin" $path)
 fi
 
 
