@@ -28,6 +28,7 @@ function brew_source() {
   if (( ! $+commands[brew] )); then
     homebrew_locations=(
       "${HOME}/homebrew"
+      "/opt/homebrew"
       "/usr/local")
     for location in $homebrew_locations; do
       if [[ -d "$location/bin" && -x "$location/bin/brew" ]]; then

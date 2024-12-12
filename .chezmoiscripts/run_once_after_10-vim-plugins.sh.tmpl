@@ -4,4 +4,7 @@
 # plugin hash: {{joinPath .chezmoi.homeDir ".vim/plug.vim" | include | sha256sum}}
 
 # Install vim plugins
+# FIXME this doesn't work for some reason, exits non zero
 vim -es -u ~/.vimrc -i NONE -c "PlugInstall" -c "qa"
+
+exit 0

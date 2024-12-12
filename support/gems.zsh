@@ -4,7 +4,9 @@ function gem_install() {
   local file="$1"
   local required=$2
 
-  brew_source
+  if [[ "$(uname)" == Darwin ]]; then
+    brew_source
+  fi
   check_cmds "ruby"
   check_file "${file}" $required
   if (( ! $+commands[bundle] )); then
