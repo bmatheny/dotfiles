@@ -40,6 +40,8 @@ function brew_source() {
 }
 
 function check_cmds() {
+  # We always check for brew and chezmoi since we can't operate without them
+  # Except on Linux where we don't depend on homebrew
   if [[ "$(uname)" == Darwin ]]; then
     (( $+commands[brew] )) || error_fn "Could not find homebrew"
   fi
