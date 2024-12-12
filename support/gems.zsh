@@ -12,8 +12,6 @@ function gem_install() {
     if [ $(brew --prefix ruby 2>/dev/null) ]; then
       path=("$(brew --prefix ruby)/bin" $path)
       path=("$(gem environment gemdir)/bin" $path)
-    else
-      path=("$(gem environment user_gemhome)/bin" $path)
     fi
   else
     path=("$(gem environment user_gemhome)/bin" $path)

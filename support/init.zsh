@@ -13,6 +13,9 @@ function init_source() {
     echo "Specified directory is not a directory or does not exist: '${SOURCEDIR}'"
     exit 1
   fi
+  if (( ! $+commands[chezmoi] )); then
+    path=("$HOME/bin" $path)
+  fi
 }
 
 function load_support_script() {
