@@ -44,6 +44,7 @@ set tabstop=2
 set expandtab
 set textwidth=80
 
+
 " ========== Completion ==========
 
 set wildmode=list:longest
@@ -69,6 +70,7 @@ set showmatch                        " Show matching brace
 set showmode                         " Good if vim-powerline not installed
 set rulerformat=%17(%l/%L,%c\ %p%%%) " Good if vim-powerline not installed
 set cursorline                       " Current line is highlighted
+set mouse=                           " Turn off mouse features
 
 for f in split(glob('~/.vim/plugin/settings/*.vim'), '\n')
   exe 'source' f
