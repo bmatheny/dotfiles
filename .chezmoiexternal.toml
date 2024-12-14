@@ -6,3 +6,6 @@
     type = "git-repo"
     url = "https://github.com/bmatheny/prezto.git"
     clone.args = ["--recursive", "--branch=personal"]
+[".tmux/plugins/tpm"]
+    type = "git-repo"
+    url = "https://github.com/tmux-plugins/tpm.git"

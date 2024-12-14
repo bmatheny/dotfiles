@@ -11,6 +11,7 @@ dirs=(
 ~/.config/zsh/after
 ~/.config/zsh/before
 ~/.config/bmatheny
+~/.tmux/plugins
 ~/.ssh/
 )
 
