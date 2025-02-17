@@ -16,7 +16,7 @@ Plug 'rhysd/vim-gfm-syntax'
 
 
 " ========== Look ==========
-Plug 'ericbn/vim-solarized'
+Plug 'lifepillar/vim-solarized8'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 

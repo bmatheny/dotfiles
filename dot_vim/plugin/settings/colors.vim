@@ -1,3 +1,3 @@
 syntax enable
 set background=dark
-colorscheme solarized
+autocmd vimenter * ++nested colorscheme solarized8

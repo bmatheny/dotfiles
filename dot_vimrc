@@ -5,6 +5,11 @@
 set nocompatible
 let mapleader="," " , is just easier to type than \
 
+" Needs to be set early, prior to loading colorscheme
+if has("termguicolors")
+  set termguicolors
+endif
+
 " This must be set before nerdtree is loaded. Allows you to specify per directory bookmarks
 if filereadable(".NERDTreeBookmarks")
 	let NERDTreeBookmarksFile=".NERDTreeBookmarks"
