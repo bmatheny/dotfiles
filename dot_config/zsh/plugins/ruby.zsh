@@ -14,7 +14,7 @@ else
   # Not a homebrew environment so...
   if [ -z "$_t_rpath" ]; then
     # Setup gem path only and assume we are using system ruby
-    _t_gpath="$(gem environment user_gemhome)/bin"
+    _t_gpath="$(gem environment user_gemhome 2>/dev/null)/bin"
     # If user_gemhome isn't available
     if [ $? -eq 1 ]; then
       # Fallback to using ruby directly to get the user_dir
