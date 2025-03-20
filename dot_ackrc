@@ -28,15 +28,63 @@
 ##############################################################
 # File finding:
 ##############################################################
-# Ignore folders with generated source code
---ignore-dir=src_managed
+# Git
+# https://git-scm.com/
+--ignore-directory=is:.git
 
+# When submodules are used, .git is a file.
+--ignore-file=is:.git
+
+# Node modules created by npm
+--ignore-directory=is:node_modules
+
+# Python caches
+# https://docs.python.org/3/tutorial/modules.html
+--ignore-directory=is:__pycache__
+--ignore-directory=is:.pytest_cache
+
+# macOS Finder remnants
+--ignore-directory=is:__MACOSX
+--ignore-file=is:.DS_Store
+
+# Backup files
+--ignore-file=ext:bak
+--ignore-file=match:/~$/
+
+# vi/vim swap files https://www.vim.org/
+--ignore-file=match:/[._].*[.]swp$/
+
+# core dumps
+--ignore-file=match:/core[.]\d+$/
+
+# minified JavaScript
+--ignore-file=match:/[.-]min[.]js$/
+--ignore-file=match:/[.]js[.]min$/
+
+# minified CSS
+--ignore-file=match:/[.]min[.]css$/
+--ignore-file=match:/[.]css[.]min$/
+
+# JS and CSS source maps
+--ignore-file=match:/[.]js[.]map$/
+--ignore-file=match:/[.]css[.]map$/
+
+# PDFs, because they pass Perl's -T detection
+--ignore-file=ext:pdf
+
+# Common graphics, just as an optimization
+--ignore-file=ext:gif,jpg,jpeg,png
+
+# Common archives, as an optimization
+--ignore-file=ext:gz,tar,tgz,zip
+
+# Python compiled modules
+--ignore-file=ext:pyc,pyd,pyo
 
 ##############################################################
 # File type specifications:
 ##############################################################
 --type-add=csv:ext:csv,tsv
---type-add=fbmake:is:TARGETS
 --type-add=gettext:ext:pot,po
 --type-add=html:ext:shtml,xhtml,tpl,vm
 --type-add=haml:ext:haml
@@ -52,3 +100,4 @@
 --nohtml
 --nocss
 --nojs
+--nojson

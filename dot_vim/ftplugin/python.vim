@@ -41,9 +41,9 @@ au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
 au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /\s\+$/
 
 " Wrap text after a certain number of characters
-" Python: 79 
+" Python: 88
 " C: 79
-au BufRead,BufNewFile *.py,*.pyw set textwidth=79
+au BufRead,BufNewFile *.py,*.pyw set textwidth=88
 
 " Use UNIX (\n) line endings.
 " Only used for new files so as to not force existing files to change their

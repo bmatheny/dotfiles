@@ -6,4 +6,7 @@ if [ -d $before_dir ]; then
     for config_file ($before_dir/*.zsh) source $config_file
   fi
 fi
+
+mkdir -p ~/.cache/bmatheny
+
 unset before_dir
