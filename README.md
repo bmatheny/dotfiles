@@ -43,6 +43,10 @@ Be sure to put new packages to be installed in `~/.config/bmatheny/Brewfile` and
 any new ruby gems to be installed in `~/.config/bmatheny/Gemfile`. These will be
 part of a small number of files that will be managed outside of the repository.
 
+## tmux
+
+The very first time you run tmux type `ctrl-A I` to install the tmux plugins specified in `.tmux.conf`.
+
 ## vim
 
 * Plugins
