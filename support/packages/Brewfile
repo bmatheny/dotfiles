@@ -76,12 +76,11 @@ if OS.mac? then
   cask "sizeup"
   cask "sonos"
   cask "spotify"
-  cask "ukelele"
   cask "witch"
 
   mas "Amphetamine", id: 937984704
-  mas "Balance Lock", id: 1019371109 if OS.mac?
-  mas "HP Smart", id: 1474276998 if OS.mac?
+  mas "Balance Lock", id: 1019371109
+  mas "HP Smart", id: 1474276998
   mas "Marked 2", id: 890031187
   mas "MQTT Explorer", id: 1455214828
   mas "Slack", id: 803453959

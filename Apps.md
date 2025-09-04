@@ -5,6 +5,7 @@ Below are a list of pretty much all the GUI applications I use on my mac.
 * 1Password - cask 1password
 * Adobe Acrobat - cask adobe-acrobat-reader
 * Alfred 5 - cask alfred, built in backup
+* Amphetamine - mas install 937984704
 * Balance Lock - mas install
 * balenaEtcher - cask balenaetcher
 * Bartender 4 - cask bartender, mackup backup
@@ -50,14 +51,14 @@ cask "1password-cli"
 cask "adobe-acrobat-reader"
 cask "alfred"
 cask "balenaetcher"
-cask "bartender"
+cask "cursr"
 cask "divvy"
 cask "elgato-camera-hub"
-cask "elgato-control-center"
 cask "elgato-stream-deck"
 cask "google-chrome"
 cask "iterm2"
-cask "logi-options-plus"
+cask "jordanbaird-ice"
+cask "logitune"
 cask "sizeup"
 cask "sonos"
 cask "spotify"
