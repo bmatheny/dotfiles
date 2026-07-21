@@ -1,5 +1,4 @@
 tap "1password/tap" if OS.mac?
-tap "homebrew/bundle"
 
 # Essential software
 brew "chezmoi"
@@ -66,26 +65,90 @@ brew "tree"
 brew "watch"
 brew "w3m"
 
+# ---------------------------------------------------------------------------
+# GUI applications (macOS)
+# Reconciled 2026-07-21 against installed apps in /Applications and the curated
+# installer set in ~/SynologyDrive/Home/Apps. Human-readable notes live in
+# Apps.md at the repo root -- keep the two in sync.
+# ---------------------------------------------------------------------------
 if OS.mac? then
+  # Password manager
+  cask "1password"
   cask "1password-cli"
+
+  # Launcher, window & menu-bar management
+  cask "alfred"
+  cask "rectangle-pro"
+  cask "witch"
+  cask "thaw"                   # menu-bar manager
+
+  # Terminal / editors
+  cask "iterm2"
+  cask "cursor"
+  cask "qt-creator"
+
+  # Cloud, sync & networking
+  cask "synology-drive"         # bootstrap prerequisite: pulls down configs/keys
+  cask "google-drive"
+  cask "tailscale"
+  cask "wifiman"
+
+  # AI / notes / productivity
+  cask "claude"
+  cask "claude-code"
+  cask "notion"
+  cask "notion-cli"
+  cask "antinote"
+
+  # Media & audio
+  cask "spotify"
+  cask "tidal"
+  cask "sonos"
+  cask "bluos-controller"
+  cask "vlc"
+
+  # Peripherals
+  cask "elgato-stream-deck"
+  cask "logitune"
+  cask "logi-options-plus"
+
+  # 3D printing / CAD / maker
+  cask "bambu-studio"
+  cask "orcaslicer"
+  cask "prusaslicer"
+  cask "openscad"
+  cask "autodesk-fusion"
+
+  # SDR / radio
+  cask "gqrx"
+
+  # Utilities
+  cask "appcleaner"
+  cask "quitall"
   cask "balenaetcher"
-  cask "divvy"
+  cask "macfuse"
+  cask "sshfs-mac"
+  cask "cursr"
+  cask "filebot"
+  cask "mqtt-explorer"          # replaces the old App Store "MQTT Explorer" (you run the beta dmg)
+  cask "zoom"
+
+  # Cloud SDK (renamed from google-cloud-sdk)
+  cask "gcloud-cli"
+
+  # Fonts
   cask "font-inconsolata-nerd-font"
   cask "font-meslo-for-powerline"
-  cask "google-cloud-sdk"
-  cask "sizeup"
-  cask "sonos"
-  cask "spotify"
-  cask "witch"
 
-  mas "Amphetamine", id: 937984704
+  # Mac App Store apps
+  mas "Amphetamine",  id: 937984704
   mas "Balance Lock", id: 1019371109
-  mas "HP Smart", id: 1474276998
-  mas "Marked 2", id: 890031187
-  mas "MQTT Explorer", id: 1455214828
-  mas "Slack", id: 803453959
-  mas "Things", id: 904280696
-  mas "Windows App", id: 1295203466
-  mas "WireGuard", id: 1451685025
-  mas "Xcode", id: 497799835
+  mas "HP Smart",     id: 1474276998
+  mas "Marked 2",     id: 890031187
+  mas "NordVPN",      id: 905953485
+  mas "Slack",        id: 803453959
+  mas "Things",       id: 904280696
+  mas "Windows App",  id: 1295203466
+  mas "WireGuard",    id: 1451685025
+  mas "Xcode",        id: 497799835
 end

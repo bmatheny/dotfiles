@@ -1,72 +1,87 @@
 # Apps
 
-Below are a list of pretty much all the GUI applications I use on my mac.
+Human-readable inventory of the GUI applications I run on macOS. The machine-
+readable source of truth is the `if OS.mac?` block at the bottom of
+`support/packages/Brewfile` (casks + Mac App Store entries) — **keep these two
+in sync.** Last reconciled 2026-07-21 against `/Applications` and the curated
+installer stash in `~/SynologyDrive/Home/Apps`.
 
-* 1Password - cask 1password
-* Adobe Acrobat - cask adobe-acrobat-reader
-* Alfred 5 - cask alfred, built in backup
-* Amphetamine - mas install 937984704
-* Balance Lock - mas install
-* balenaEtcher - cask balenaetcher
-* Bartender 4 - cask bartender, mackup backup
-* Divvy - cask divvy, mackup backup (maybe license, yes config)
-* Elgato Camera Hub - cask elgato-camera-hub
-* Elgato Control Center - cask elgato-control-center
-* Elgato Stream Deck - cask elgato-stream-deck
-* Google Chrome - cask google-chrome
-* iTerm2 - cask iterm2, built in backup
-* Krisp - cask krisp
-* Logi Options+ - cask logi-options-plus
-* SizeUp - cask sizeup, mackup backup (license and config)
-* Slack - mas install
-* Sonos - cask sonos
-* Spotify - cask spotify, mackup backup
-* Synology Drive Client - cask synology-drive
-* Things3 - mas install
-* Tidal - cask tidal
-* Witch - cask witch, mackup backup
-* Xcode - mas install
-* Zoom - cask zoom
+Install method: `cask` = Homebrew cask, `mas` = Mac App Store (with app id).
 
-## Brewfile
+## Password manager
+* 1Password — `cask 1password`
+* 1Password CLI — `cask 1password-cli`
 
-Here is the above materialized into a Brewfile. This is mostly for
-reference/documentation for me.
+## Launcher, window & menu bar
+* Alfred 5 — `cask alfred` (launcher, built-in backup; still my launcher — Raycast was tried and dropped, it no longer works)
+* Rectangle Pro — `cask rectangle-pro` (window manager; installed as a cask, not App Store)
+* Witch — `cask witch`, mackup backup
+* Thaw — `cask thaw` (menu-bar manager)
 
-```
-# casks
-tap "homebrew/cask"
-# found elgato camera hub, stream deck, sonos, etc here
-tap "homebrew/cask-drivers"
-# fonts
-tap "homebrew/cask-fonts"
-# mac software
-tap "homebrew/cask-versions"
+## Terminal & editors
+* iTerm2 — `cask iterm2`, built-in backup
+* Cursor — `cask cursor`
+* Qt Creator — `cask qt-creator`
+* Xcode — `mas Xcode, id 497799835`
 
-brew "mackup"
+## Cloud, sync & networking
+* Synology Drive Client — `cask synology-drive` (**bootstrap prerequisite** — pulls down configs/keys)
+* Google Drive — `cask google-drive`
+* Tailscale — `cask tailscale`
+* WiFiman — `cask wifiman`
+* NordVPN — `mas NordVPN, id 905953485`
+* WireGuard — `mas WireGuard, id 1451685025`
+* Windows App — `mas Windows App, id 1295203466`
 
-# TODO: Need to test some templates
-cask "1password"
-cask "1password-cli"
-cask "adobe-acrobat-reader"
-cask "alfred"
-cask "balenaetcher"
-cask "cursr"
-cask "divvy"
-cask "elgato-camera-hub"
-cask "elgato-stream-deck"
-cask "google-chrome"
-cask "iterm2"
-cask "jordanbaird-ice"
-cask "logitune"
-cask "sizeup"
-cask "sonos"
-cask "spotify"
-cask "synology-drive"
-cask "tidal"
-cask "witch"
-cask "zoom"
-cask "font-inconsolata-nerd-font"
+## AI / notes / productivity
+* Claude — `cask claude`
+* Claude Code — `cask claude-code`
+* Notion — `cask notion`
+* Notion CLI — `cask notion-cli`
+* Antinote — `cask antinote`
+* Marked 2 — `mas Marked 2, id 890031187`
+* Things 3 — `mas Things, id 904280696`
+* Amphetamine — `mas Amphetamine, id 937984704`
 
-mas "Things", id: 904280696
-```
+## Media & audio
+* Spotify — `cask spotify`, mackup backup
+* Tidal — `cask tidal`
+* Sonos — `cask sonos`
+* BluOS Controller — `cask bluos-controller`
+* VLC — `cask vlc`
+* Balance Lock — `mas Balance Lock, id 1019371109`
+
+## Peripherals
+* Elgato Stream Deck — `cask elgato-stream-deck`
+* Logi Tune — `cask logitune`
+* Logi Options+ — `cask logi-options-plus`
+* HP Smart — `mas HP Smart, id 1474276998`
+
+## 3D printing / CAD / maker
+* Bambu Studio — `cask bambu-studio`
+* OrcaSlicer — `cask orcaslicer`
+* PrusaSlicer — `cask prusaslicer`
+* OpenSCAD — `cask openscad`
+* Autodesk Fusion — `cask autodesk-fusion`
+
+## SDR / radio
+* Gqrx — `cask gqrx` (see also the SDR CLI tools in the formulae section: `rtl_433`, `urh`, `inspectrum`, `dfu-util`)
+
+## Utilities
+* AppCleaner — `cask appcleaner`
+* QuitAll — `cask quitall`
+* balenaEtcher — `cask balenaetcher`
+* macFUSE — `cask macfuse`
+* sshfs-mac — `cask sshfs-mac`
+* Cursr — `cask cursr`
+* FileBot — `cask filebot`
+* MQTT Explorer — `cask mqtt-explorer` (was a `mas` entry; I run the beta dmg instead)
+* Zoom — `cask zoom`
+* Slack — `mas Slack, id 803453959`
+
+## Fonts
+* Inconsolata Nerd Font — `cask font-inconsolata-nerd-font`
+* Meslo for Powerline — `cask font-meslo-for-powerline`
+
+## Not captured here
+* Immich desktop — installed manually; no matching Homebrew cask as of this writing.
