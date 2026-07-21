@@ -1,6 +1,4 @@
-if [ -f ~/.cache/bmatheny/ruby.zsh ]; then
-  source ~/.cache/bmatheny/ruby.zsh
-else
+if [ ! -f ~/.cache/bmatheny/ruby.zsh ]; then
   setopt append_create
   _t_rpath=""
   _t_gpath=""
@@ -8,7 +6,7 @@ else
   if (( $+commands[brew] )); then
     if [ $(brew --prefix ruby 2>/dev/null) ]; then
       _t_rpath="$(brew --prefix ruby)/bin"
-      _t_gpath="$(gem environment gemdir)/bin"
+      _t_gpath="$(${_t_rpath}/gem environment gemdir)/bin"
     fi
   fi
   # Not a homebrew environment so...
@@ -27,4 +25,7 @@ else
   if [ ! -z "$_t_gpath" ]; then
     echo "path=(\"${_t_gpath}\" \$path)" >> ~/.cache/bmatheny/ruby.zsh
   fi
+fi
+if [ -f ~/.cache/bmatheny/ruby.zsh ]; then
+  source ~/.cache/bmatheny/ruby.zsh
 fi

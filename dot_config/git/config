@@ -18,6 +18,7 @@
 [core]
   editor = vim
   excludesfile = ~/.config/git/globalignore
+	pager = less -F -X
 
 [include]
   path = ~/.config/git/config.user
