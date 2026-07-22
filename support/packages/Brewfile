@@ -1,11 +1,12 @@
 tap "1password/tap" if OS.mac?
 
 # Essential software
+brew "bash"
 brew "chezmoi"
 brew "coreutils"
 brew "curl"
-brew "docker"
-brew "docker-compose"
+#brew "docker"
+#brew "docker-compose"
 brew "findutils"
 brew "git"
 brew "mas" if OS.mac?
@@ -85,24 +86,20 @@ if OS.mac? then
   # Terminal / editors
   cask "iterm2"
   cask "cursor"
-  cask "qt-creator"
 
   # Cloud, sync & networking
   cask "synology-drive"         # bootstrap prerequisite: pulls down configs/keys
   cask "google-drive"
   cask "tailscale"
-  cask "wifiman"
 
   # AI / notes / productivity
   cask "claude"
   cask "claude-code"
   cask "notion"
-  cask "notion-cli"
   cask "antinote"
 
   # Media & audio
   cask "spotify"
-  cask "tidal"
   cask "sonos"
   cask "bluos-controller"
   cask "vlc"
@@ -110,7 +107,6 @@ if OS.mac? then
   # Peripherals
   cask "elgato-stream-deck"
   cask "logitune"
-  cask "logi-options-plus"
 
   # 3D printing / CAD / maker
   cask "bambu-studio"
@@ -119,19 +115,13 @@ if OS.mac? then
   cask "openscad"
   cask "autodesk-fusion"
 
-  # SDR / radio
-  cask "gqrx"
-
   # Utilities
-  cask "appcleaner"
   cask "quitall"
   cask "balenaetcher"
   cask "macfuse"
   cask "sshfs-mac"
   cask "cursr"
-  cask "filebot"
   cask "mqtt-explorer"          # replaces the old App Store "MQTT Explorer" (you run the beta dmg)
-  cask "zoom"
 
   # Cloud SDK (renamed from google-cloud-sdk)
   cask "gcloud-cli"
