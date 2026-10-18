@@ -3,3 +3,6 @@ README.md
 install.sh
 .gitconfig
 support/
+{{ if ne .chezmoi.os "darwin" }}
+Drive
+{{ end }}
