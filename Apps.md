@@ -4,7 +4,7 @@ Human-readable inventory of the GUI applications I run on macOS. The machine-
 readable source of truth is the `if OS.mac?` block at the bottom of
 `support/packages/Brewfile` (casks + Mac App Store entries) — **keep these two
 in sync.** Last reconciled 2026-07-21 against `/Applications` and the curated
-installer stash in `~/SynologyDrive/Home/Apps`.
+installer stash in `~/Drive/Home/Apps`.
 
 Install method: `cask` = Homebrew cask, `mas` = Mac App Store (with app id).
 
@@ -25,7 +25,7 @@ Install method: `cask` = Homebrew cask, `mas` = Mac App Store (with app id).
 * Xcode — `mas Xcode, id 497799835`
 
 ## Cloud, sync & networking
-* Synology Drive Client — `cask synology-drive` (**bootstrap prerequisite** — pulls down configs/keys)
+* iCloud Drive — built into macOS (**bootstrap prerequisite** — sign in before `chezmoi init`; `~/Drive` links to it and it holds configs/keys)
 * Google Drive — `cask google-drive`
 * Tailscale — `cask tailscale`
 * WiFiman — `cask wifiman`

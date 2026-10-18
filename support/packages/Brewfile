@@ -69,7 +69,7 @@ brew "w3m"
 # ---------------------------------------------------------------------------
 # GUI applications (macOS)
 # Reconciled 2026-07-21 against installed apps in /Applications and the curated
-# installer set in ~/SynologyDrive/Home/Apps. Human-readable notes live in
+# installer set in ~/Drive/Home/Apps. Human-readable notes live in
 # Apps.md at the repo root -- keep the two in sync.
 # ---------------------------------------------------------------------------
 if OS.mac? then
@@ -88,7 +88,7 @@ if OS.mac? then
   cask "cursor"
 
   # Cloud, sync & networking
-  cask "synology-drive"         # bootstrap prerequisite: pulls down configs/keys
+  # (bootstrap prerequisite: sign in to iCloud Drive, which holds configs/keys)
   cask "google-drive"
   cask "tailscale"
 
