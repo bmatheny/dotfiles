@@ -62,7 +62,6 @@ Install method: `cask` = Homebrew cask, `mas` = Mac App Store (with app id).
 * OrcaSlicer — `cask orcaslicer`
 * PrusaSlicer — `cask prusaslicer`
 * OpenSCAD — `cask openscad`
-* Autodesk Fusion — `cask autodesk-fusion`
 
 ## SDR / radio
 * Gqrx — `cask gqrx` (see also the SDR CLI tools in the formulae section: `rtl_433`, `urh`, `inspectrum`, `dfu-util`)
